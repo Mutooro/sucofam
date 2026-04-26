@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SUCOFAM | Empowering Farmers Across Uganda</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --earth: #2C1810;
+      --soil: #4A2C17;
+      --bark: #6B3E26;
+      --gold: #C8891A;
+      --harvest: #E8A832;
+      --leaf: #3A6B35;
+      --sage: #5A8A52;
+      --cream: #F5EDD6;
+      --parchment: #EDE0C4;
+      --mist: #FAF6EE;
+      --text-dark: #1A0F08;
+      --text-mid: #4A3525;
+      --text-light: #8A7060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--mist);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1000; opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(44, 24, 16, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.8rem; text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: rgba(245,237,214,0.8);
+      text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--harvest); }
+    .nav-cta {
+      background: var(--gold); color: var(--earth) !important;
+      padding: 0.6rem 1.5rem; border-radius: 2px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--harvest) !important; color: var(--earth) !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: var(--earth);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(200,137,26,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(58,107,53,0.2) 0%, transparent 50%),
+        linear-gradient(160deg, #2C1810 0%, #1A0F08 100%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(
+        45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%
+      );
+      background-size: 30px 30px;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 8rem 4rem 4rem;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(200,137,26,0.15); border: 1px solid rgba(200,137,26,0.3);
+      color: var(--harvest); padding: 0.4rem 1rem;
+      border-radius: 2px; font-size: 0.75rem; letter-spacing: 0.15em;
+      text-transform: uppercase; font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: var(--harvest); border-radius: 50%; }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900; line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em { font-style: italic; color: var(--harvest); }
+    .hero-desc {
+      font-size: 1.05rem; line-height: 1.75;
+      color: rgba(245,237,214,0.7);
+      margin-bottom: 2.5rem; max-width: 500px;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--earth);
+      padding: 0.9rem 2rem; border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em;
+      cursor: pointer; transition: all 0.3s; text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--harvest); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,137,26,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--cream);
+      padding: 0.9rem 2rem; border: 1px solid rgba(245,237,214,0.3);
+      border-radius: 2px; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      transition: all 0.3s; text-decoration: none; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--harvest); color: var(--harvest); }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .stat-card {
+      background: rgba(245,237,214,0.05);
+      border: 1px solid rgba(245,237,214,0.08);
+      border-top: 2px solid var(--gold);
+      padding: 1.5rem; border-radius: 2px;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700; color: var(--harvest);
+    }
+    .stat-label { font-size: 0.8rem; color: rgba(245,237,214,0.6); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .hero-visual {
+      position: relative; display: flex; justify-content: center; align-items: center;
+    }
+    .hero-circle {
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(200,137,26,0.2), rgba(44,24,16,0.8));
+      border: 1px solid rgba(200,137,26,0.15);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .hero-circle::before {
+      content: '';
+      position: absolute; inset: 20px; border-radius: 50%;
+      border: 1px dashed rgba(200,137,26,0.2);
+      animation: spin 30s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-icon-center { font-size: 5rem; }
+    .floating-badge {
+      position: absolute;
+      background: var(--leaf);
+      color: white; padding: 0.7rem 1.2rem;
+      border-radius: 2px; font-size: 0.8rem; font-weight: 600;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+    .fb-1 { top: 10%; right: -10%; }
+    .fb-2 { bottom: 15%; left: -10%; background: var(--bark); }
+    .fb-3 { top: 45%; right: -15%; background: rgba(200,137,26,0.9); color: var(--earth); }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 6rem 4rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-tag::before {
+      content: ''; display: block; width: 30px; height: 2px; background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; line-height: 1.15; color: var(--earth);
+      margin-bottom: 1.2rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-desc {
+      font-size: 1.05rem; line-height: 1.75;
+      color: var(--text-mid); max-width: 600px;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--mist); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 4rem; }
+    .about-visual {
+      position: relative;
+    }
+    .about-main-box {
+      background: var(--earth);
+      padding: 3rem; border-radius: 4px;
+      position: relative; overflow: hidden;
+    }
+    .about-main-box::after {
+      content: '';
+      position: absolute; bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border: 3px solid var(--gold); border-radius: 50%; opacity: 0.3;
+    }
+    .about-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-style: italic;
+      color: var(--cream); line-height: 1.7;
+    }
+    .about-quote-author { color: var(--harvest); font-size: 0.85rem; margin-top: 1rem; font-style: normal; }
+    .about-accent {
+      position: absolute; top: -20px; right: -20px;
+      background: var(--gold);
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+    }
+    .value-chips { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+    .chip {
+      background: var(--parchment); color: var(--bark);
+      padding: 0.5rem 1.1rem; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 600;
+      border-left: 3px solid var(--gold);
+      letter-spacing: 0.03em;
+    }
+    .about-text p { color: var(--text-mid); line-height: 1.8; margin-bottom: 1.2rem; }
+
+    /* ─── PROGRAMS ─── */
+    #programs { background: var(--earth); }
+    #programs .section-title { color: var(--cream); }
+    #programs .section-tag { color: var(--harvest); }
+    #programs .section-tag::before { background: var(--harvest); }
+    #programs .section-desc { color: rgba(245,237,214,0.7); }
+    .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+    .program-card {
+      background: rgba(245,237,214,0.04);
+      border: 1px solid rgba(245,237,214,0.08);
+      padding: 2rem; border-radius: 2px;
+      transition: all 0.4s; cursor: pointer;
+      position: relative; overflow: hidden;
+    }
+    .program-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .program-card:hover { background: rgba(245,237,214,0.08); transform: translateY(-4px); }
+    .program-card:hover::before { transform: scaleX(1); }
+    .program-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
+    .program-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; color: rgba(245,237,214,0.06);
+      position: absolute; top: 1rem; right: 1.5rem;
+    }
+    .program-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--cream); margin-bottom: 0.8rem; }
+    .program-desc { font-size: 0.875rem; color: rgba(245,237,214,0.6); line-height: 1.7; }
+    .program-items { margin-top: 1rem; list-style: none; }
+    .program-items li { font-size: 0.8rem; color: rgba(245,237,214,0.5); padding: 0.2rem 0; display: flex; gap: 0.5rem; align-items: flex-start; }
+    .program-items li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+    /* ─── PRODUCTS ─── */
+    #products { background: var(--parchment); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+    .product-card {
+      background: white; border-radius: 4px;
+      overflow: hidden; box-shadow: 0 4px 20px rgba(44,24,16,0.08);
+      transition: all 0.4s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(44,24,16,0.15); }
+    .product-hero {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; position: relative;
+    }
+    .product-coffee .product-hero { background: linear-gradient(135deg, #2C1810, #6B3E26); }
+    .product-cocoa .product-hero { background: linear-gradient(135deg, #3D1C02, #7A4A20); }
+    .product-honey .product-hero { background: linear-gradient(135deg, #7A4A08, #C8891A); }
+    .product-body { padding: 1.8rem; }
+    .product-tag {
+      display: inline-block; background: var(--parchment); color: var(--bark);
+      padding: 0.25rem 0.7rem; border-radius: 2px;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 0.8rem;
+    }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 800; color: var(--earth); margin-bottom: 0.6rem; }
+    .product-desc { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── IMPACT ─── */
+    #impact { background: var(--leaf); }
+    #impact .section-title { color: var(--cream); }
+    #impact .section-tag { color: rgba(245,237,214,0.7); }
+    #impact .section-tag::before { background: rgba(245,237,214,0.5); }
+    #impact .section-desc { color: rgba(245,237,214,0.8); }
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; }
+    .impact-number-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 2.5rem; border-radius: 2px;
+    }
+    .impact-big { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--harvest); line-height: 1; }
+    .impact-label { color: rgba(245,237,214,0.8); margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.5; }
+    .impact-detail { color: rgba(245,237,214,0.5); font-size: 0.8rem; margin-top: 0.3rem; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--mist); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3.5rem; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--earth); margin-bottom: 0.5rem; }
+    .contact-info p { color: var(--text-mid); line-height: 1.8; margin-bottom: 2rem; }
+    .contact-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+    .contact-icon { font-size: 1.2rem; width: 40px; flex-shrink: 0; }
+    .contact-text strong { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.2rem; }
+    .contact-text span { color: var(--text-mid); font-size: 0.9rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid); }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(44,24,16,0.15);
+      border-radius: 2px; background: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--earth);
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,137,26,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--earth);
+      padding: 4rem 4rem 2rem;
+    }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(245,237,214,0.1); }
+    .footer-brand .nav-logo-text { font-size: 1.6rem; }
+    .footer-tagline { color: rgba(245,237,214,0.5); font-size: 0.875rem; line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+    .footer-col h4 { color: var(--harvest); font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 1.2rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a { color: rgba(245,237,214,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.3s; cursor: pointer; }
+    .footer-col ul li a:hover { color: var(--harvest); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; }
+    .footer-copy { color: rgba(245,237,214,0.4); font-size: 0.82rem; }
+
+    /* ─── MOBILE NAV ─── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--earth);
+      z-index: 400; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cream); text-decoration: none; cursor: pointer; }
+    .mobile-menu a:hover { color: var(--harvest); }
+    .close-btn { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: var(--cream); cursor: pointer; background: none; border: none; }
+
+    /* ─── TRANSITIONS ─── */
+    .fade-enter-active, .fade-leave-active { transition: opacity 0.3s, transform 0.3s; }
+    .fade-enter-from { opacity: 0; transform: translateY(10px); }
+    .fade-leave-to { opacity: 0; transform: translateY(-10px); }
+
+    /* ─── SCROLL ANIMATION ─── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.5rem; }
+      .hero-content { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 0.8rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .programs-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- NAV -->
+  <nav :class="{ scrolled: scrolled }">
+    <a class="nav-logo" @click="scrollTo('hero')">
+      <div class="nav-logo-icon">🌿</div>
+      <span class="nav-logo-text">SUCOFAM</span>
+    </a>
+    <ul class="nav-links">
+      <li><a :class="{ active: activeSection==='about' }" @click="scrollTo('about')">About</a></li>
+      <li><a :class="{ active: activeSection==='programs' }" @click="scrollTo('programs')">Programs</a></li>
+      <li><a :class="{ active: activeSection==='products' }" @click="scrollTo('products')">Products</a></li>
+      <li><a :class="{ active: activeSection==='impact' }" @click="scrollTo('impact')">Impact</a></li>
+      <li><a class="nav-cta" @click="scrollTo('contact')">Partner With Us</a></li>
+    </ul>
+    <div class="hamburger" @click="mobileOpen = true">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" :class="{ open: mobileOpen }">
+    <button class="close-btn" @click="mobileOpen = false">✕</button>
+    <a @click="scrollTo('about'); mobileOpen=false">About</a>
+    <a @click="scrollTo('programs'); mobileOpen=false">Programs</a>
+    <a @click="scrollTo('products'); mobileOpen=false">Products</a>
+    <a @click="scrollTo('impact'); mobileOpen=false">Impact</a>
+    <a @click="scrollTo('contact'); mobileOpen=false">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge"><span></span> Established June 2024 · Kasese, Uganda</div>
+        <h1 class="hero-title">
+          Transforming <em>Farmers,</em><br/>Building Resilient<br/>Communities
+        </h1>
+        <p class="hero-desc">
+          SUCOFAM empowers smallholder farmers — especially women and youth — across Uganda through the coffee, cocoa, and honey value chains. Sustainable livelihoods, not subsistence.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" @click="scrollTo('programs')">Explore Our Programs</button>
+          <button class="btn-outline" @click="scrollTo('contact')">Partner With Us</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Farmers Trained</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Trees Planted</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Value Chains</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-circle">
+          <span class="hero-icon-center">☕</span>
+        </div>
+        <div class="floating-badge fb-1">🍫 Premium Cocoa</div>
+        <div class="floating-badge fb-2">🌿 Climate-Smart</div>
+        <div class="floating-badge fb-3">🍯 Pure Honey</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title">A Movement for <em>Agricultural</em> Transformation</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>SUCOFAM is a national agricultural development organization committed to transforming farming households across Uganda. Headquartered in Kasese and operating nationwide, we address systemic challenges that keep smallholder farmers — especially women and youth — trapped in low-income systems.</p>
+          <p>We take a holistic approach: combining agronomic training, market linkages, financial inclusion, gender equity, and household well-being into one integrated farmer empowerment model.</p>
+          <p>Our vision is a Uganda where farmers adopt improved practices, produce high-quality market-compliant products, and participate equitably in transparent value chains — free from exploitation.</p>
+          <div class="value-chips">
+            <span v-for="val in coreValues" :key="val" class="chip">{{ val }}</span>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-main-box">
+            <div class="about-accent">🌱</div>
+            <p class="about-quote">
+              "To empower farmers through capacity building in good agronomic practices while strengthening access to market information and structured markets — enabling fair, sustainable incomes."
+            </p>
+            <p class="about-quote-author">— SUCOFAM Mission Statement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs">
+    <div class="container">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title" style="color:var(--cream)">Core Programs & <em>Interventions</em></h2>
+      <p class="section-desc">Ten integrated programs spanning agriculture, inclusion, health, and education — addressing the full household development picture.</p>
+      <div class="programs-grid">
+        <div class="program-card reveal" v-for="(prog, i) in programs" :key="i">
+          <div class="program-num">{{ String(i+1).padStart(2,'0') }}</div>
+          <div class="program-icon">{{ prog.icon }}</div>
+          <div class="program-title">{{ prog.title }}</div>
+          <div class="program-desc">{{ prog.desc }}</div>
+          <ul class="program-items">
+            <li v-for="item in prog.items" :key="item">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="container">
+      <div class="section-tag">Our Products</div>
+      <h2 class="section-title">SUCOFAM <em>Branded</em> Products</h2>
+      <p class="section-desc">Traceable, farmer-produced, and already on the market — connecting Uganda's smallholder farmers to premium value chains.</p>
+      <div class="products-grid">
+        <div class="product-card reveal" v-for="product in products" :key="product.name">
+          <div class="product-hero" :class="product.class">{{ product.emoji }}</div>
+          <div class="product-body">
+            <span class="product-tag">{{ product.tag }}</span>
+            <div class="product-name">{{ product.name }}</div>
+            <p class="product-desc">{{ product.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="container">
+      <div class="section-tag">Our Reach</div>
+      <h2 class="section-title" style="color:var(--cream)">Measurable <em>Impact</em> on the Ground</h2>
+      <p class="section-desc">Every program we run translates into real change at the farmer household level.</p>
+      <div class="impact-grid">
+        <div class="impact-number-card reveal" v-for="stat in impactStats" :key="stat.number">
+          <div class="impact-big">{{ stat.number }}</div>
+          <div class="impact-label">{{ stat.label }}</div>
+          <div class="impact-detail">{{ stat.detail }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Partner With <em>SUCOFAM</em></h2>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-info">
+            <h3>Let's Build Together</h3>
+            <p>Whether you're a donor, investor, market partner, or institution — we welcome collaboration that advances smallholder farmer empowerment across Uganda.</p>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text">
+              <strong>Head Office</strong>
+              <span>P.O.Box 430664, Rwenzori Road, Kasese Municipality</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">🏢</div>
+            <div class="contact-text">
+              <strong>Coordination Office</strong>
+              <span>Equatorial Mall, RM 09, Kampala Road, Kampala</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">🌾</div>
+            <div class="contact-text">
+              <strong>Field Office</strong>
+              <span>Hapuuyo Sub County, Kyegegwa District</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text">
+              <strong>Phone</strong>
+              <span>+256 782 285 490 / +256 775 199 363 / +256 706 432 002</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text">
+              <strong>Email</strong>
+              <span>info.sucofam@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input v-model="form.firstName" type="text" placeholder="Jane"/>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input v-model="form.lastName" type="text" placeholder="Doe"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input v-model="form.email" type="email" placeholder="jane@example.com"/>
+            </div>
+            <div class="form-group">
+              <label>Organization</label>
+              <input v-model="form.org" type="text" placeholder="Your organization (optional)"/>
+            </div>
+            <div class="form-group">
+              <label>Partnership Interest</label>
+              <select v-model="form.interest">
+                <option value="">Select an area...</option>
+                <option>Funding / Grants</option>
+                <option>Market Partnerships</option>
+                <option>Technical Support</option>
+                <option>Research Collaboration</option>
+                <option>Volunteer / Internship</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea v-model="form.message" placeholder="Tell us how you'd like to collaborate..."></textarea>
+            </div>
+            <button class="btn-primary" @click="submitForm" style="align-self:flex-start">
+              {{ formSent ? '✓ Message Sent!' : 'Send Message →' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">🌿</div>
+          <span class="nav-logo-text">SUCOFAM</span>
+        </div>
+        <p class="footer-tagline">Transforming farming households across Uganda through inclusive, market-driven agricultural empowerment.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a @click="scrollTo('about')">About Us</a></li>
+          <li><a @click="scrollTo('programs')">Programs</a></li>
+          <li><a @click="scrollTo('products')">Products</a></li>
+          <li><a @click="scrollTo('impact')">Our Impact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Value Chains</h4>
+        <ul>
+          <li><a>Coffee</a></li>
+          <li><a>Cocoa</a></li>
+          <li><a>Honey</a></li>
+          <li><a>Market Access</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a>info.sucofam@gmail.com</a></li>
+          <li><a>+256 782 285 490</a></li>
+          <li><a>Kasese, Uganda</a></li>
+          <li><a @click="scrollTo('contact')">Partner With Us →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 SUCOFAM. All rights reserved. Kasese, Uganda.</span>
+      <span class="footer-copy">Empowering Farmers. Building Futures.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      scrolled: false,
+      activeSection: 'hero',
+      mobileOpen: false,
+      formSent: false,
+      form: {
+        firstName: '', lastName: '', email: '', org: '', interest: '', message: ''
+      },
+      coreValues: [
+        'Farmer-Centered', 'Market-Driven', 'Inclusivity & Equity',
+        'Climate Responsibility', 'Holistic Transformation'
+      ],
+      programs: [
+        {
+          icon: '🌦️', title: 'Climate-Smart Agriculture',
+          desc: 'Promoting sustainable practices that build long-term productivity and climate resilience.',
+          items: ['Soil fertility improvement', 'Agroforestry systems', 'Climate adaptation']
+        },
+        {
+          icon: '👩‍🌾', title: 'Farmer Organization',
+          desc: 'Building strong, inclusive farmer groups with effective leadership and governance.',
+          items: ['Youth & women groups', 'Leadership development', 'Cooperative governance']
+        },
+        {
+          icon: '⚙️', title: 'Value Addition & Agribusiness',
+          desc: 'Transforming raw farm output into quality, market-ready branded products.',
+          items: ['Processing & branding', 'Youth enterprise dev', 'Post-harvest skills']
+        },
+        {
+          icon: '🛒', title: 'Market Access & Trade',
+          desc: 'Connecting farmers to structured, fair, and premium markets nationally.',
+          items: ['Aggregation systems', 'Market linkages', 'Branded product scaling']
+        },
+        {
+          icon: '🥗', title: 'Nutrition & Food Security',
+          desc: 'Strengthening household nutrition through kitchen gardens and education.',
+          items: ['Kitchen gardening', 'Nutrition education', 'Dietary diversity']
+        },
+        {
+          icon: '🌳', title: 'Environmental Sustainability',
+          desc: 'Restoring ecosystems and building carbon sequestration capacity.',
+          items: ['Afforestation programs', 'Land restoration', 'Carbon sequestration']
+        },
+        {
+          icon: '⚖️', title: 'Gender Inclusivity',
+          desc: 'Dismantling barriers to ensure equal participation and leadership for women.',
+          items: ['Women leadership', 'Equal resource access', 'Decision-making platforms']
+        },
+        {
+          icon: '💰', title: 'Financial Inclusion',
+          desc: 'Linking farmers to savings, credit, and investment opportunities.',
+          items: ['SACCOs & savings groups', 'Financial literacy', 'Credit access']
+        },
+        {
+          icon: '❤️', title: 'Health & Well-being',
+          desc: 'Promoting healthy lifestyles, sanitation, and access to health awareness.',
+          items: ['Health awareness', 'Nutrition & hygiene', 'Household well-being']
+        },
+        {
+          icon: '📚', title: 'Education',
+          desc: 'Supporting learning at every level — from children in farm households to youth in agribusiness.',
+          items: ['Children\'s education', 'Youth skills dev', 'Knowledge transfer']
+        }
+      ],
+      products: [
+        {
+          class: 'product-coffee', emoji: '☕',
+          tag: 'Value Chain Product',
+          name: 'SUCOFAM Coffee',
+          desc: 'High-quality, traceable coffee produced and processed by organized farmer groups. Connecting Uganda\'s coffee farmers to premium and structured markets.'
+        },
+        {
+          class: 'product-cocoa', emoji: '🍫',
+          tag: 'Value Chain Product',
+          name: 'SUCOFAM Cocoa',
+          desc: 'Premium cocoa supporting emerging cocoa farmers and youth-led enterprises. A growing value chain with significant export potential.'
+        },
+        {
+          class: 'product-honey', emoji: '🍯',
+          tag: 'Value Chain Product',
+          name: 'SUCOFAM Honey',
+          desc: 'Natural honey produced through sustainable beekeeping initiatives involving women and youth groups. Pure, traceable, and community-powered.'
+        }
+      ],
+      impactStats: [
+        { number: '200+', label: 'Youth & Women Trained', detail: 'In agronomy, agribusiness, and leadership' },
+        { number: '50,000+', label: 'Trees Planted', detail: 'Climate action initiatives in 2025/2026' },
+        { number: '3', label: 'Active Value Chains', detail: 'Coffee, Cocoa & Honey' },
+        { number: '3+', label: 'Operating Locations', detail: 'Kasese, Kampala & Kyegegwa' },
+      ]
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    this.initReveal();
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.scrolled = window.scrollY > 60;
+      const sections = ['hero', 'about', 'programs', 'products', 'impact', 'contact'];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom > 100) {
+            this.activeSection = id; break;
+          }
+        }
+      }
+    },
+    scrollTo(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    },
+    initReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      // Re-observe after Vue renders
+      this.$nextTick(() => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      });
+    },
+    submitForm() {
+      if (this.form.email && this.form.message) {
+        this.formSent = true;
+        setTimeout(() => { this.formSent = false; }, 4000);
+        this.form = { firstName: '', lastName: '', email: '', org: '', interest: '', message: '' };
+      }
+    }
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
