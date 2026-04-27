@@ -1,65 +1,85 @@
 <template>
-  <nav :class="['navbar', { scrolled }]">
-    <router-link to="/" class="nav-logo">
-      <div class="logo-mark">🌿</div>
-      <span class="logo-text">SUCOFAM</span>
-    </router-link>
+  <nav id="mainNav" :class="{ 'scrolled': scrolled }">
+    <div class="nav-inner container">
+      <router-link to="/" class="nav-logo">
+        <img src="/logo.jpeg" alt="SUCOFAM Logo" />
+      </router-link>
 
-    <ul class="nav-links">
-      <li v-for="link in navLinks" :key="link.section">
-        <router-link
-          :to="{ name: link.section }"
-          class="nav-link"
-          active-class="active"
-        >{{ link.label }}</router-link>
-      </li>
-      <li>
-        <router-link to="/contact" class="nav-cta">Partner With Us</router-link>
-      </li>
-    </ul>
 
-    <button class="hamburger" @click="mobileOpen = true" aria-label="Open menu">
-      <span /><span /><span />
-    </button>
+      <ul class="nav-links">
+        <li v-for="link in navLinks" :key="link.section">
+          <router-link
+            :to="{ name: link.section }"
+            active-class="active"
+          >
+            {{ link.label }}
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/contact" class="nav-cta" active-class="active-cta">Partner With Us</router-link>
+        </li>
+      </ul>
+
+      <button
+        class="nav-toggle"
+        @click="toggleMobileMenu"
+        :class="{ 'open': isMenuOpen }"
+        aria-label="Menu"
+      >
+        <span class="bar" />
+        <span class="bar" />
+        <span class="bar" />
+      </button>
+    </div>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <Transition name="mobile-fade">
-    <div v-if="mobileOpen" class="mobile-overlay">
-      <button class="close-btn" @click="mobileOpen = false" aria-label="Close menu">✕</button>
-      <nav class="mobile-nav">
-        <router-link
-          to="/"
-          class="mobile-link"
-          @click="mobileOpen = false"
-        >Home</router-link>
-        <router-link
-          v-for="link in navLinks"
-          :key="link.section"
-          :to="{ name: link.section }"
-          class="mobile-link"
-          @click="mobileOpen = false"
-        >{{ link.label }}</router-link>
-        <router-link
-          to="/contact"
-          class="mobile-link mobile-cta"
-          @click="mobileOpen = false"
-        >Partner With Us →</router-link>
-      </nav>
+  <Transition name="fade">
+    <div v-if="isMenuOpen" class="mobile-menu" @click="isMenuOpen = false">
+      <div class="mobile-menu-content" @click.stop>
+        <button class="close-btn" @click="isMenuOpen = false">✕</button>
+        <div class="mobile-links">
+
+          <router-link
+            v-for="link in navLinks"
+            :key="link.section"
+            :to="{ name: link.section }"
+            @click="isMenuOpen = false"
+            active-class="active"
+          >
+            {{ link.label }}
+          </router-link>
+          <router-link to="/contact" class="mobile-cta" @click="isMenuOpen = false">Partner With Us</router-link>
+        </div>
+      </div>
     </div>
   </Transition>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { RouterLink } from 'vue-router'
 import { navLinks } from '../data/content.js'
 
+
 const scrolled = ref(false)
-const mobileOpen = ref(false)
+const isMenuOpen = ref(false)
+
+const toggleMobileMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 const handleScroll = () => {
   scrolled.value = window.scrollY > 60
 }
+
+// Disable body scrolling when mobile menu is open
+watch(isMenuOpen, (open) => {
+  if (open) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
@@ -71,140 +91,184 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.navbar {
+#mainNav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 500;
+  z-index: 1000;
+  padding: 1.25rem 0;
+  background: var(--forest);
+  transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+}
+
+#mainNav.scrolled {
+  background: rgba(26, 61, 43, 0.96);
+  backdrop-filter: blur(12px);
+  padding: 0.8rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+
+
+
+
+.nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.1rem 4rem;
-  transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
-}
-.navbar.scrolled {
-  background: rgba(14, 61, 35, 0.97);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 2px 30px rgba(0,0,0,0.2);
-  padding: 0.85rem 4rem;
 }
 
-/* Logo */
 .nav-logo {
-  display: flex; align-items: center; gap: 0.75rem;
-  cursor: pointer;
-}
-.logo-mark {
-  width: 40px; height: 40px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-  transition: transform 0.3s;
-}
-.nav-logo:hover .logo-mark { transform: rotate(-8deg) scale(1.08); }
-.logo-text {
-  font-family: var(--ff-serif);
-  font-size: 1.35rem; font-weight: 900;
-  color: var(--white);
-  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-/* Desktop links */
-.nav-links {
-  display: flex; align-items: center;
-  gap: 2.2rem; list-style: none;
+.nav-logo img {
+  height: 42px;
+  width: auto;
+  border-radius: 4px;
 }
-.nav-link {
-  color: rgba(255,255,255,0.75);
-  font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  cursor: pointer;
+
+.nav-logo-text {
+  font-family: var(--ff-serif);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.05em;
   transition: color 0.3s;
-  position: relative;
-  padding-bottom: 2px;
 }
-.nav-link::after {
-  content: '';
-  position: absolute; bottom: -2px; left: 0;
-  width: 0; height: 1.5px;
-  background: var(--gold);
-  transition: width 0.3s;
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
 }
-.nav-link:hover, .nav-link.active { color: var(--white); }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--gold);
+}
 
 .nav-cta {
   background: var(--gold);
   color: var(--charcoal) !important;
   padding: 0.6rem 1.4rem;
-  border-radius: var(--radius);
-  font-size: 0.82rem; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  transition: background 0.3s, transform 0.3s !important;
 }
-.nav-cta:hover { background: var(--harvest); transform: translateY(-1px); }
 
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column; gap: 5px;
-  padding: 4px;
-  background: none; border: none; cursor: pointer;
+.nav-cta:hover {
+  background: var(--harvest) !important;
+  transform: translateY(-2px);
 }
-.hamburger span {
-  display: block; width: 22px; height: 2px;
-  background: var(--white); border-radius: 2px;
+
+/* Mobile Toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.bar {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
   transition: 0.3s;
 }
 
-/* Mobile overlay */
-.mobile-overlay {
-  position: fixed; inset: 0;
-  background: var(--forest);
-  z-index: 600;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 1.8rem;
+
+
+
+.nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
 }
-.close-btn {
-  position: absolute; top: 1.8rem; right: 2rem;
-  font-size: 1.8rem; color: var(--white);
-  background: none; border: none; cursor: pointer;
-  transition: color 0.2s;
+.nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
 }
-.close-btn:hover { color: var(--gold); }
-.mobile-nav { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; }
-.mobile-link {
-  font-family: var(--ff-serif);
-  font-size: 2rem; font-weight: 700;
-  color: rgba(255,255,255,0.85);
-  cursor: pointer; transition: color 0.3s;
-}
-.mobile-link:hover { color: var(--gold); }
-.mobile-cta {
-  font-family: var(--ff-sans);
-  font-size: 1rem; font-weight: 700;
-  background: var(--gold);
-  color: var(--charcoal);
-  padding: 0.85rem 2.2rem;
-  border-radius: var(--radius);
-  margin-top: 0.5rem;
+.nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Transition */
-.mobile-fade-enter-active, .mobile-fade-leave-active { transition: opacity 0.3s, transform 0.3s; }
-.mobile-fade-enter-from { opacity: 0; transform: scale(1.04); }
-.mobile-fade-leave-to { opacity: 0; }
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--earth);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mobile-menu-content {
+  width: 100%;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: var(--white);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobile-links a {
+  font-family: var(--ff-serif);
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.mobile-links a:hover {
+  color: var(--gold);
+}
+
+.mobile-cta {
+  background: var(--gold);
+  color: var(--charcoal) !important;
+  padding: 1rem 2rem;
+  display: inline-block;
+  margin: 0 auto;
+  border-radius: 4px;
+  font-family: var(--ff-sans) !important;
+  font-size: 1rem !important;
+}
 
 @media (max-width: 900px) {
-  .navbar {
-    padding: 1rem 1.5rem;
-    background: rgba(14, 61, 35, 0.97);
-    backdrop-filter: blur(14px);
-  }
-  .navbar.scrolled { padding: 0.8rem 1.5rem; }
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .nav-toggle { display: flex; }
+  .nav-logo-text { font-size: 1.2rem; }
 }
+
+.fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
+
+

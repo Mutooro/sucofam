@@ -3,12 +3,9 @@
     <NavBar />
 
     <main>
-      <RouterView v-slot="{ Component }">
-        <Transition name="page-fade" mode="out-in">
-          <component :is="Component" />
-        </Transition>
-      </RouterView>
+      <RouterView />
     </main>
+
 
     <AppFooter />
   </div>
@@ -16,9 +13,10 @@
 
 <script setup>
 import { onMounted, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import AppFooter from './components/AppFooter.vue'
+
 
 const route = useRoute()
 

@@ -50,8 +50,9 @@ import { products } from '../data/content.js'
 <style scoped>
 .products-section {
   padding: 7rem 0;
-  background: var(--mist);
+  background: var(--parchment);
 }
+
 
 .products-header {
   display: flex;

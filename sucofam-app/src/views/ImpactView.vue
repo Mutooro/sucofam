@@ -21,6 +21,7 @@ const goToContact = () => {
 }
 .view-spacer {
   height: 80px;
-  background: var(--leaf);
+  background: var(--forest);
 }
+
 </style>

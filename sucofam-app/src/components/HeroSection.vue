@@ -81,15 +81,14 @@
 </template>
 
 <script setup>
+import { impactStats } from '../data/content.js'
+
 defineProps({
   scrollTo: { type: Function, required: true },
 })
 
-const stats = [
-  { number: '200+',  label: 'Farmers Trained' },
-  { number: '50K+',  label: 'Trees Planted'   },
-  { number: '3',     label: 'Value Chains'     },
-]
+// Use the first 3 stats from content.js for the hero
+const stats = impactStats.slice(0, 3)
 </script>
 
 <style scoped>
@@ -105,10 +104,11 @@ const stats = [
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 65% 45%, rgba(197,160,74,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 70% at 5% 85%,  rgba(197,160,74,0.07) 0%, transparent 50%),
-    linear-gradient(150deg, #0a2e18 0%, #0e3d23 50%, #071f14 100%);
+    radial-gradient(ellipse 70% 60% at 65% 45%, rgba(200, 137, 26, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 70% at 5% 85%,  rgba(58, 107, 53, 0.07) 0%, transparent 50%),
+    linear-gradient(150deg, #2C1810 0%, #1A0F08 50%, #000000 100%);
 }
+
 
 .hero-grid-overlay {
   position: absolute; inset: 0;

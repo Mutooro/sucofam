@@ -2,11 +2,13 @@
   <div class="page-view">
     <div class="view-spacer" />
     <AboutSection />
+    <PartnerSection />
   </div>
 </template>
 
 <script setup>
 import AboutSection from '../components/AboutSection.vue'
+import PartnerSection from '../components/PartnerSection.vue'
 </script>
 
 <style scoped>
@@ -14,7 +16,7 @@ import AboutSection from '../components/AboutSection.vue'
   min-height: 80vh;
 }
 .view-spacer {
-  height: 80px; /* Offset for fixed navbar */
+  height: 80px;
   background: var(--forest);
 }
 </style>

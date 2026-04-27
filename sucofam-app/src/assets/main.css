@@ -1,25 +1,30 @@
 /* ─── DESIGN TOKENS ─── */
 :root {
-  --earth:     #2C1810;
-  --soil:      #4A2C17;
-  --bark:      #6B3E26;
-  --gold:      #C5A04A;
+  --forest:    #1A3D2B; /* Header/Primary */
+  --main-bg:   #FAF8F4; /* Main Background */
+  --sec-bg:    #F5F0E8; /* Secondary Background */
+  --footer-bg: #1C1C1C; /* Footer */
+  --gold:      #C9A84C; /* Buttons/Accents */
+
+  /* Derived and fallback tokens */
+  --white:     #FAF8F4;
+  --mist:      #F5F0E8;
+  --parchment: #F5F0E8;
+  --charcoal:  #1C1C1C;
+  --earth:     #1A3D2B;
   --harvest:   #D4B96A;
-  --forest:    #0E3D23;
-  --leaf:      #1A5C38;
-  --sage:      #2E7D52;
-  --cream:     #F5EDD6;
-  --parchment: #EDE0C4;
-  --mist:      #FAF7F2;
-  --white:     #FFFFFF;
-  --charcoal:  #1A1A1A;
-  --grey-light: #F9F9F9;
-  --text-dark: #1A1A1A;
+  --leaf:      #3A6B35;
+  --grey-light: #F5F0E8;
+  --text-dark: #1C1C1C;
+
   --text-mid:  #4A3525;
-  --text-muted:#7A6A5A;
+  --text-muted:#8A7060;
+
+
 
   --ff-serif:  'Playfair Display', Georgia, serif;
-  --ff-sans:   'Inter', system-ui, sans-serif;
+  --ff-sans:   'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', 'Inter', system-ui, sans-serif;
+  --ff-lucid:  'Lucida Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-sm: 0 2px 12px rgba(14,61,35,0.06);

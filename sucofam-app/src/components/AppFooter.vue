@@ -5,15 +5,15 @@
         <!-- Brand -->
         <div class="footer-brand">
           <router-link to="/" class="brand-logo">
-            <div class="brand-mark">🌿</div>
-            <span class="brand-name">SUCOFAM</span>
+            <img src="/logo.jpeg" alt="SUCOFAM Logo" class="footer-logo-img" />
           </router-link>
+
           <p class="brand-tagline">
             Transforming farming households across Uganda through inclusive,
             market-driven agricultural empowerment.
           </p>
           <div class="social-row">
-            <a class="social-btn" href="mailto:info.sucofam@gmail.com" title="Email us">✉️</a>
+            <a class="social-btn" href="mailto:info@sucofam.org" title="Email us">✉️</a>
             <a class="social-btn" href="tel:+256782285490" title="Call us">📞</a>
           </div>
         </div>
@@ -44,11 +44,12 @@
         <div class="footer-col">
           <h4 class="col-heading">Contact</h4>
           <ul>
-            <li><a href="mailto:info.sucofam@gmail.com">info.sucofam@gmail.com</a></li>
+            <li><a href="mailto:info@sucofam.org">info@sucofam.org</a></li>
             <li><a href="tel:+256782285490">+256 782 285 490</a></li>
             <li><a>Kasese, Uganda</a></li>
           </ul>
         </div>
+
       </div>
 
       <div class="footer-bottom">
@@ -60,16 +61,19 @@
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
 import { navLinks } from '../data/content.js'
+
 
 const year = new Date().getFullYear()
 </script>
 
 <style scoped>
 .app-footer {
-  background: var(--earth);
+  background: var(--footer-bg);
   color: var(--white);
 }
+
 .footer-inner { padding: 4.5rem 2rem 2rem; }
 
 .footer-top {
@@ -85,25 +89,19 @@ const year = new Date().getFullYear()
   display: flex; align-items: center; gap: 0.7rem;
   margin-bottom: 1rem;
 }
-.brand-mark {
-  width: 36px; height: 36px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-}
-.brand-name {
-  font-family: var(--ff-serif);
-  font-size: 1.4rem; font-weight: 900;
-  color: var(--white);
-  letter-spacing: 0.06em;
+.footer-logo-img {
+  height: 50px;
+  width: auto;
+  border-radius: 4px;
 }
 .brand-tagline {
   color: rgba(255,255,255,0.45);
   font-size: 0.85rem; line-height: 1.7;
   max-width: 260px;
+  margin-top: 1rem;
   margin-bottom: 1.4rem;
 }
+
 .social-row { display: flex; gap: 0.7rem; }
 .social-btn {
   width: 36px; height: 36px;

@@ -1,26 +1,24 @@
 <template>
   <section id="programs" class="programs-section">
-    <!-- Section header -->
-    <div class="programs-header container">
-      <div class="section-tag" style="color:rgba(245,237,214,0.6)">What We Do</div>
-      <h2 class="section-title" style="color:var(--white)">
-        Core Programs &amp; <em>Interventions</em>
-      </h2>
-      <p class="section-desc" style="color:rgba(255,255,255,0.6); max-width:560px">
-        Ten integrated programs spanning agriculture, inclusion, health, and education —
-        addressing the full household development picture.
-      </p>
-    </div>
-
-    <!-- Programs grid -->
     <div class="container">
+      <div class="programs-header">
+        <div class="section-tag">What We Do</div>
+        <h2 class="section-title" style="color:var(--white)">
+          Core Programs & <em>Interventions</em>
+        </h2>
+        <p class="section-desc" style="color:rgba(255,255,255,0.6)">
+          Ten integrated programs spanning agriculture, inclusion, health, and education.
+        </p>
+      </div>
+
       <div class="programs-grid">
         <div
           v-for="(prog, i) in programs"
-          :key="i"
+          :key="prog.title"
           class="program-card reveal"
-          :style="`transition-delay: ${(i % 3) * 0.08}s`"
+          :style="`transition-delay: ${i * 0.05}s`"
         >
+          <div class="card-bar" />
           <div class="card-num">{{ String(i + 1).padStart(2, '0') }}</div>
           <div class="card-icon">{{ prog.icon }}</div>
           <h3 class="card-title">{{ prog.title }}</h3>
@@ -28,10 +26,11 @@
           <ul class="card-items">
             <li v-for="item in prog.items" :key="item">{{ item }}</li>
           </ul>
-          <div class="card-bar" />
         </div>
       </div>
     </div>
+
+    <div class="programs-bg-decor" />
   </section>
 </template>
 
@@ -42,12 +41,12 @@ import { programs } from '../data/content.js'
 <style scoped>
 .programs-section {
   padding: 7rem 0;
-  background: var(--forest);
+  background: var(--earth);
   position: relative;
   overflow: hidden;
 }
-.programs-section::before {
-  content: '';
+
+.programs-bg-decor {
   position: absolute; inset: 0;
   background:
     radial-gradient(ellipse 50% 40% at 90% 10%, rgba(197,160,74,0.07) 0%, transparent 55%),
