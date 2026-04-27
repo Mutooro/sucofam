@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import AppFooter from './components/AppFooter.vue'
@@ -20,23 +20,29 @@ import AppFooter from './components/AppFooter.vue'
 
 const route = useRoute()
 
-// Initialize reveal animations after each route change
-onMounted(() => {
-  // Simple intersection observer setup for the whole app
-  const initReveal = () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add('visible')
-        })
-      },
-      { threshold: 0.1 }
-    )
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
-  }
+// Initialize reveal animations
+const initReveal = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible')
+          observer.unobserve(e.target) // Stop observing once visible
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+}
 
-  // Watch for route changes to re-init observer on new components
-  // (In a real app, this might be better handled inside components or via a global directive)
+onMounted(() => {
+  initReveal()
+})
+
+// Re-run reveal logic whenever route changes to handle new components
+watch(() => route.path, async () => {
+  await nextTick()
   initReveal()
 })
 </script>
