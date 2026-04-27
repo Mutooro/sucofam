@@ -29,61 +29,61 @@ export const coreValues = [
 
 export const programs = [
   {
-    icon: '🌦️',
+    icon: 'CloudRain',
     title: 'Climate-Smart Agriculture',
     desc: 'Promoting sustainable practices that build long-term productivity and climate resilience.',
     items: ['Sustainable farming practices promotion', 'Soil fertility improvement & agroforestry', 'Climate adaptation & resilience building'],
   },
   {
-    icon: '👩‍🌾',
+    icon: 'Users',
     title: 'Farmer Organization & Empowerment',
     desc: 'Building strong, inclusive farmer groups with effective leadership and governance.',
     items: ['Youth & women farmer group formation', 'Leadership development & governance', 'Inclusive value chain participation'],
   },
   {
-    icon: '⚙️',
+    icon: 'Settings',
     title: 'Value Addition & Agribusiness',
     desc: 'Transforming raw farm output into quality, market-ready branded products.',
     items: ['Processing, quality assurance & branding', 'Youth-led agribusiness enterprise dev', 'Post-harvest handling skills'],
   },
   {
-    icon: '🛒',
+    icon: 'ShoppingBag',
     title: 'Market Access & Trade Linkages',
     desc: 'Connecting farmers to structured, fair, and premium markets nationally.',
     items: ['Structured aggregation & bulking', 'Coffee, cocoa & honey market connections', 'Branded product promotion & scaling'],
   },
   {
-    icon: '🥗',
+    icon: 'Utensils',
     title: 'Nutrition & Household Food Security',
     desc: 'Strengthening household nutrition through kitchen gardens and education.',
     items: ['Kitchen gardening promotion', 'Nutrition education for households', 'Improved dietary diversity'],
   },
   {
-    icon: '🌳',
+    icon: 'Trees',
     title: 'Environmental Sustainability',
     desc: 'Restoring ecosystems and building carbon sequestration capacity.',
     items: ['Afforestation & reforestation initiatives', 'Carbon sequestration programs', 'Land restoration initiatives'],
   },
   {
-    icon: '⚖️',
+    icon: 'Scale',
     title: 'Gender Inclusivity',
     desc: 'Dismantling barriers to ensure equal participation and leadership for women.',
     items: ['Equal participation in decision-making', 'Supporting women leadership', 'Addressing gender-based barriers'],
   },
   {
-    icon: '💰',
+    icon: 'Coins',
     title: 'Financial Inclusion',
     desc: 'Linking farmers to savings, credit, and investment opportunities.',
     items: ['Savings groups & SACCO linkages', 'Financial literacy promotion', 'Enterprise investment support'],
   },
   {
-    icon: '❤️',
+    icon: 'Heart',
     title: 'Health & Well-being',
     desc: 'Promoting healthy lifestyles, sanitation, and access to health awareness.',
     items: ['Healthy lifestyle promotion', 'Basic health awareness access', 'Nutrition, sanitation & hygiene integration'],
   },
   {
-    icon: '📚',
+    icon: 'BookOpen',
     title: 'Education',
     desc: 'Supporting learning from children in farm households to youth in agribusiness.',
     items: ["Children's education awareness", 'Youth agricultural skills development', 'Lifelong learning & knowledge transfer'],
@@ -93,7 +93,7 @@ export const programs = [
 export const products = [
   {
     id: 'coffee',
-    emoji: '☕',
+    icon: 'Coffee',
     tag: 'Value Chain Product',
     name: 'SUCOFAM Coffee',
     desc: 'High-quality, traceable coffee produced and processed by organized farmer groups. Connecting Uganda\'s coffee farmers to premium and structured markets.',
@@ -101,7 +101,7 @@ export const products = [
   },
   {
     id: 'cocoa',
-    emoji: '🍫',
+    icon: 'Bean',
     tag: 'Value Chain Product',
     name: 'SUCOFAM Cocoa',
     desc: 'Premium cocoa supporting emerging cocoa farmers and youth-led enterprises. A growing value chain with significant export potential.',
@@ -109,13 +109,14 @@ export const products = [
   },
   {
     id: 'honey',
-    emoji: '🍯',
+    icon: 'Droplets',
     tag: 'Value Chain Product',
     name: 'SUCOFAM Honey',
     desc: 'Natural honey produced through sustainable beekeeping initiatives involving women and youth groups. Pure, traceable, and community-powered.',
     gradient: 'linear-gradient(135deg, #7A4A08 0%, #C8891A 100%)',
   },
 ]
+
 
 export const impactStats = [
   { number: '200+',    label: 'Youth & Women Trained',   detail: 'In agronomy, agribusiness, and leadership' },
@@ -159,7 +160,6 @@ export const newsArticles = [
 ]
 
 export const navLinks = [
-
   { label: 'Home',     section: 'home' },
   { label: 'About',    section: 'about' },
   { label: 'Programs', section: 'programs' },
@@ -167,5 +167,58 @@ export const navLinks = [
   { label: 'Impact',   section: 'impact' },
   { label: 'News',     section: 'news' },
 ]
+
+export const teamMembers = [
+  {
+    name: 'Robert Mwesigwa',
+    role: 'Executive Director',
+    bio: 'Visionary leader with over 15 years of experience in agricultural value chain development and farmer cooperative management.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    social: { linkedin: '#', twitter: '#', email: 'robert@sucofam.org' }
+  },
+  {
+    name: 'Sarah Akello',
+    role: 'Head of Programs',
+    bio: 'Expert in climate-smart agriculture and women empowerment initiatives, dedicated to building resilient farming communities.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+    social: { linkedin: '#', twitter: '#', email: 'sarah@sucofam.org' }
+  },
+  {
+    name: 'David Okello',
+    role: 'Operations Manager',
+    bio: 'Specialist in agribusiness logistics and market linkages, ensuring efficient value chain integration for smallholder farmers.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    social: { linkedin: '#', twitter: '#', email: 'david@sucofam.org' }
+  },
+  {
+    name: 'Grace Musoke',
+    role: 'Nutrition & Food Security lead',
+    bio: 'Passionate advocate for household nutrition and food security, leading our kitchen garden and health awareness programs.',
+    image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=400',
+    social: { linkedin: '#', twitter: '#', email: 'grace@sucofam.org' }
+  }
+]
+
+export const testimonials = [
+  {
+    quote: "SUCOFAM has completely changed the way I manage my coffee farm. Their training in agronomic practices helped me double my yield in just one season.",
+    name: "John Baptist",
+    role: "Coffee Farmer, Kasese",
+    image: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&fit=crop&q=80&w=200'
+  },
+  {
+    quote: "As a young woman in agribusiness, SUCOFAM provided the technical support and market linkages I needed to scale my cocoa enterprise.",
+    name: "Aisha Nalule",
+    role: "Youth Entrepreneur",
+    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=200'
+  },
+  {
+    quote: "Their commitment to climate-smart agriculture is inspiring. We've integrated agroforestry into our honey production with great success.",
+    name: "Samuel K.",
+    role: "Honey Producer",
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200'
+  }
+]
+
 
 

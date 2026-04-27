@@ -18,7 +18,9 @@
 
           <div class="contact-details">
             <div v-for="detail in contactDetails" :key="detail.label" class="detail-row">
-              <span class="detail-icon">{{ detail.icon }}</span>
+              <div class="detail-icon-wrapper">
+                <component :is="detail.icon" :size="20" />
+              </div>
               <div class="detail-body">
                 <strong>{{ detail.label }}</strong>
                 <span>{{ detail.value }}</span>
@@ -76,8 +78,12 @@
 
             <button type="submit" class="btn-primary submit-btn" :class="{ sent: formSent }">
               <Transition name="btn-swap" mode="out-in">
-                <span v-if="formSent" key="sent">✓ Message Sent!</span>
-                <span v-else key="send">Send Message →</span>
+                <span v-if="formSent" key="sent" class="btn-inner">
+                  <Check :size="18" /> Message Sent!
+                </span>
+                <span v-else key="send" class="btn-inner">
+                  Send Message <Send :size="18" />
+                </span>
               </Transition>
             </button>
           </form>
@@ -89,16 +95,25 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+import {
+  MapPin,
+  Building2,
+  Sprout,
+  Phone,
+  Mail,
+  Send,
+  Check
+} from 'lucide-vue-next'
 
 const formSent = ref(false)
 const form = reactive({ firstName: '', lastName: '', email: '', org: '', interest: '', message: '' })
 
 const contactDetails = [
-  { icon: '📍', label: 'Head Office',         value: 'P.O.Box 430664, Rwenzori Road, Kasese Municipality' },
-  { icon: '🏢', label: 'Coordination Office', value: 'Equatorial Mall, RM 09, Kampala Road, Kampala' },
-  { icon: '🌾', label: 'Field Office',         value: 'Hapuuyo Sub County, Kyegegwa District' },
-  { icon: '📞', label: 'Phone',                value: '+256 782 285 490 / +256 775 199 363 / +256 706 432 002' },
-  { icon: '✉️', label: 'Email',                value: 'info.sucofam@gmail.com' },
+  { icon: MapPin,    label: 'Head Office',         value: 'P.O.Box 430664, Rwenzori Road, Kasese Municipality' },
+  { icon: Building2, label: 'Coordination Office', value: 'Equatorial Mall, RM 09, Kampala Road, Kampala' },
+  { icon: Sprout,    label: 'Field Office',         value: 'Hapuuyo Sub County, Kyegegwa District' },
+  { icon: Phone,     label: 'Phone',                value: '+256 782 285 490 / +256 775 199 363 / +256 706 432 002' },
+  { icon: Mail,      label: 'Email',                value: 'info.sucofam@gmail.com' },
 ]
 
 function submit() {
@@ -143,7 +158,14 @@ function submit() {
 .detail-row {
   display: flex; align-items: flex-start; gap: 1rem;
 }
-.detail-icon { font-size: 1.2rem; width: 36px; flex-shrink: 0; margin-top: 0.1rem; }
+.detail-icon-wrapper {
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.1);
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
 .detail-body { display: flex; flex-direction: column; gap: 0.15rem; }
 .detail-body strong {
   font-size: 0.72rem; font-weight: 700;
@@ -195,6 +217,12 @@ function submit() {
   color: var(--white);
 }
 
+.btn-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
 .btn-swap-enter-active, .btn-swap-leave-active { transition: opacity 0.2s, transform 0.2s; }
 .btn-swap-enter-from { opacity: 0; transform: translateY(8px); }
 .btn-swap-leave-to  { opacity: 0; transform: translateY(-8px); }
@@ -204,3 +232,4 @@ function submit() {
   .form-row { grid-template-columns: 1fr; }
 }
 </style>
+

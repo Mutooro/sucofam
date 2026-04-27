@@ -26,7 +26,7 @@
 
         <div class="hero-actions">
           <button class="btn-primary" @click="scrollTo('programs')">
-            Explore Programs <span class="arrow">→</span>
+            Explore Programs <ArrowRight class="icon-sm" />
           </button>
           <button class="btn-outline" @click="scrollTo('contact')">
             Partner With Us
@@ -46,24 +46,34 @@
       <div class="hero-right">
         <div class="hero-ring">
           <div class="hero-ring-inner">
-            <span class="hero-center-icon">☕</span>
+            <Coffee class="hero-center-icon" :size="80" :stroke-width="1.5" />
           </div>
           <!-- orbit dots -->
-          <div class="orbit-dot od-1">🍫</div>
-          <div class="orbit-dot od-2">🍯</div>
-          <div class="orbit-dot od-3">🌿</div>
+          <div class="orbit-dot od-1">
+            <Leaf :size="24" />
+          </div>
+          <div class="orbit-dot od-2">
+            <Droplets :size="24" />
+          </div>
+          <div class="orbit-dot od-3">
+            <Sprout :size="24" />
+          </div>
         </div>
 
         <!-- Floating info cards -->
         <div class="float-card fc-top">
-          <span class="fc-icon">🌱</span>
+          <div class="fc-icon-wrapper">
+            <TreePine :size="24" />
+          </div>
           <div>
             <div class="fc-value">50K+</div>
             <div class="fc-text">Trees Planted</div>
           </div>
         </div>
         <div class="float-card fc-bottom">
-          <span class="fc-icon">🏆</span>
+          <div class="fc-icon-wrapper">
+            <Award :size="24" />
+          </div>
           <div>
             <div class="fc-value">Climate-Smart</div>
             <div class="fc-text">Certified Practices</div>
@@ -82,6 +92,15 @@
 
 <script setup>
 import { impactStats } from '../data/content.js'
+import {
+  ArrowRight,
+  Coffee,
+  Leaf,
+  Droplets,
+  Sprout,
+  TreePine,
+  Award
+} from 'lucide-vue-next'
 
 defineProps({
   scrollTo: { type: Function, required: true },
@@ -166,8 +185,8 @@ const stats = impactStats.slice(0, 3)
 }
 
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
-.arrow { transition: transform 0.3s; }
-.btn-primary:hover .arrow { transform: translateX(4px); }
+.icon-sm { width: 1.1rem; height: 1.1rem; }
+.btn-primary:hover .icon-sm { transform: translateX(4px); transition: transform 0.3s; }
 
 /* Stats bar */
 .stats-bar {
@@ -208,21 +227,22 @@ const stats = impactStats.slice(0, 3)
   display: flex; align-items: center; justify-content: center;
   animation: slowSpin 40s linear infinite reverse;
 }
-.hero-center-icon { font-size: 4.5rem; }
+.hero-center-icon { color: var(--gold); }
 
 .orbit-dot {
   position: absolute;
-  width: 48px; height: 48px;
+  width: 54px; height: 54px;
   border-radius: 50%;
   background: rgba(197,160,74,0.15);
+  backdrop-filter: blur(4px);
   border: 1px solid rgba(197,160,74,0.25);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
+  color: var(--gold);
   animation: slowSpin 40s linear infinite reverse;
 }
-.od-1 { top: -18px; left: 50%; transform: translateX(-50%); }
-.od-2 { bottom: -18px; left: 50%; transform: translateX(-50%); }
-.od-3 { left: -18px; top: 50%; transform: translateY(-50%); }
+.od-1 { top: -22px; left: 50%; transform: translateX(-50%); }
+.od-2 { bottom: -22px; left: 50%; transform: translateX(-50%); }
+.od-3 { left: -22px; top: 50%; transform: translateY(-50%); }
 
 /* Floating cards */
 .float-card {
@@ -233,11 +253,17 @@ const stats = impactStats.slice(0, 3)
   border-radius: var(--radius);
   padding: 1rem 1.4rem;
   display: flex; align-items: center; gap: 0.8rem;
-  min-width: 160px;
+  min-width: 170px;
 }
 .fc-top  { top: 4%; right: -6%; }
 .fc-bottom { bottom: 8%; left: -8%; }
-.fc-icon { font-size: 1.6rem; }
+.fc-icon-wrapper {
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.1);
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+}
 .fc-value { font-family: var(--ff-serif); font-size: 1.1rem; font-weight: 700; color: var(--white); }
 .fc-text  { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.1rem; }
 
@@ -279,3 +305,4 @@ const stats = impactStats.slice(0, 3)
   .stats-bar { flex-direction: column; gap: 1rem; }
 }
 </style>
+

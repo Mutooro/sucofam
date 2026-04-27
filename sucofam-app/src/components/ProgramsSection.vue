@@ -20,7 +20,9 @@
         >
           <div class="card-bar" />
           <div class="card-num">{{ String(i + 1).padStart(2, '0') }}</div>
-          <div class="card-icon">{{ prog.icon }}</div>
+          <div class="card-icon">
+            <component :is="iconMap[prog.icon]" :size="32" stroke-width="1.5" />
+          </div>
           <h3 class="card-title">{{ prog.title }}</h3>
           <p class="card-desc">{{ prog.desc }}</p>
           <ul class="card-items">
@@ -36,6 +38,31 @@
 
 <script setup>
 import { programs } from '../data/content.js'
+import {
+  CloudRain,
+  Users,
+  Settings,
+  ShoppingBag,
+  Utensils,
+  Trees,
+  Scale,
+  Coins,
+  Heart,
+  BookOpen
+} from 'lucide-vue-next'
+
+const iconMap = {
+  CloudRain,
+  Users,
+  Settings,
+  ShoppingBag,
+  Utensils,
+  Trees,
+  Scale,
+  Coins,
+  Heart,
+  BookOpen
+}
 </script>
 
 <style scoped>
@@ -101,8 +128,9 @@ import { programs } from '../data/content.js'
 }
 
 .card-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  display: flex;
 }
 
 .card-title {
@@ -142,3 +170,4 @@ import { programs } from '../data/content.js'
   .programs-grid { grid-template-columns: 1fr; }
 }
 </style>
+

@@ -5,7 +5,9 @@
         <!-- Visual column -->
         <div class="about-visual reveal">
           <div class="visual-card">
-            <div class="vc-accent">🌱</div>
+            <div class="vc-accent">
+              <Sprout :size="32" />
+            </div>
             <blockquote class="mission-quote">
               "To empower farmers through capacity building in good agronomic practices
               while strengthening access to market information and structured markets —
@@ -56,6 +58,7 @@
 </template>
 
 <script setup>
+import { Sprout } from 'lucide-vue-next'
 import { coreValues, vision, mission } from '../data/content.js'
 </script>
 
@@ -99,7 +102,7 @@ import { coreValues, vision, mission } from '../data/content.js'
   background: var(--gold);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem;
+  color: var(--charcoal);
   z-index: 2;
 }
 
@@ -196,3 +199,4 @@ import { coreValues, vision, mission } from '../data/content.js'
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 </style>
+

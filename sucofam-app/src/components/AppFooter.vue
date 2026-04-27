@@ -13,8 +13,15 @@
             market-driven agricultural empowerment.
           </p>
           <div class="social-row">
-            <a class="social-btn" href="mailto:info@sucofam.org" title="Email us">✉️</a>
-            <a class="social-btn" href="tel:+256782285490" title="Call us">📞</a>
+            <a class="social-btn" href="mailto:info@sucofam.org" title="Email us">
+              <Mail :size="18" />
+            </a>
+            <a class="social-btn" href="tel:+256782285490" title="Call us">
+              <Phone :size="18" />
+            </a>
+            <a class="social-btn" href="#" title="Facebook">
+              <Facebook :size="18" />
+            </a>
           </div>
         </div>
 
@@ -43,10 +50,22 @@
         <!-- Contact -->
         <div class="footer-col">
           <h4 class="col-heading">Contact</h4>
-          <ul>
-            <li><a href="mailto:info@sucofam.org">info@sucofam.org</a></li>
-            <li><a href="tel:+256782285490">+256 782 285 490</a></li>
-            <li><a>Kasese, Uganda</a></li>
+          <ul class="contact-list">
+            <li>
+              <a href="mailto:info@sucofam.org">
+                <Mail :size="14" class="inline-icon" /> info@sucofam.org
+              </a>
+            </li>
+            <li>
+              <a href="tel:+256782285490">
+                <Phone :size="14" class="inline-icon" /> +256 782 285 490
+              </a>
+            </li>
+            <li>
+              <a>
+                <MapPin :size="14" class="inline-icon" /> Kasese, Uganda
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -62,6 +81,12 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
+import {
+  Mail,
+  Phone,
+  Facebook,
+  MapPin
+} from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
 
 
@@ -108,11 +133,15 @@ const year = new Date().getFullYear()
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-  transition: border-color 0.3s, background 0.3s;
+  color: rgba(255,255,255,0.6);
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
   cursor: pointer;
 }
-.social-btn:hover { border-color: var(--gold); background: rgba(197,160,74,0.1); }
+.social-btn:hover {
+  border-color: var(--gold);
+  background: rgba(197,160,74,0.1);
+  color: var(--gold);
+}
 
 /* Cols */
 .footer-col {}
@@ -127,8 +156,19 @@ const year = new Date().getFullYear()
   font-size: 0.875rem;
   cursor: pointer;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
 }
 .footer-col a:hover { color: var(--gold); }
+
+.contact-list a {
+  gap: 0.6rem;
+}
+
+.inline-icon {
+  flex-shrink: 0;
+  color: var(--gold);
+}
 
 /* Bottom */
 .footer-bottom {
@@ -146,3 +186,4 @@ const year = new Date().getFullYear()
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
 </style>
+

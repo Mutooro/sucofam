@@ -23,7 +23,7 @@
         >
           <!-- Hero banner -->
           <div class="product-banner" :style="`background: ${product.gradient}`">
-            <span class="product-emoji">{{ product.emoji }}</span>
+            <component :is="iconMap[product.icon]" :size="80" stroke-width="1.2" class="product-icon" />
             <div class="product-glow" />
           </div>
 
@@ -45,6 +45,19 @@
 
 <script setup>
 import { products } from '../data/content.js'
+import {
+  Coffee,
+  Bean,
+  Droplets,
+  Leaf
+} from 'lucide-vue-next'
+
+const iconMap = {
+  Coffee,
+  Bean,
+  Droplets,
+  Leaf
+}
 </script>
 
 <style scoped>
@@ -88,18 +101,20 @@ import { products } from '../data/content.js'
   position: relative;
   overflow: hidden;
 }
-.product-emoji {
-  font-size: 5rem;
+.product-icon {
+  color: var(--white);
   position: relative; z-index: 2;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.25));
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.2));
   transition: transform 0.4s;
+  opacity: 0.9;
 }
-.product-card:hover .product-emoji {
+.product-card:hover .product-icon {
   transform: scale(1.1) translateY(-4px);
+  opacity: 1;
 }
 .product-glow {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 80%, rgba(255,255,255,0.07) 0%, transparent 65%);
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
 }
 
 /* Body */
@@ -140,3 +155,4 @@ import { products } from '../data/content.js'
   .products-grid { grid-template-columns: 1fr; max-width: 480px; }
 }
 </style>
+

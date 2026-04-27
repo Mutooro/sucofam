@@ -26,9 +26,8 @@
         :class="{ 'open': isMenuOpen }"
         aria-label="Menu"
       >
-        <span class="bar" />
-        <span class="bar" />
-        <span class="bar" />
+        <Menu v-if="!isMenuOpen" :size="28" />
+        <X v-else :size="28" />
       </button>
     </div>
   </nav>
@@ -36,7 +35,9 @@
   <Transition name="fade">
     <div v-if="isMenuOpen" class="mobile-menu" @click="isMenuOpen = false">
       <div class="mobile-menu-content" @click.stop>
-        <button class="close-btn" @click="isMenuOpen = false">✕</button>
+        <button class="close-btn" @click="isMenuOpen = false">
+          <X :size="32" />
+        </button>
         <div class="mobile-links">
 
           <router-link
@@ -58,6 +59,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { RouterLink } from 'vue-router'
+import { Menu, X } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
 
 
@@ -177,32 +179,17 @@ onUnmounted(() => {
 /* Mobile Toggle */
 .nav-toggle {
   display: none;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--white);
 }
 
-.bar {
-  width: 24px;
-  height: 2px;
-  background: var(--white);
-  transition: 0.3s;
-}
-
-
-
-
-.nav-toggle.open .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.nav-toggle.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.nav-toggle.open .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+.nav-toggle:hover {
+  color: var(--gold);
 }
 
 /* Mobile Menu */
@@ -226,11 +213,17 @@ onUnmounted(() => {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  font-size: 2rem;
   color: var(--white);
   background: none;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: var(--gold);
 }
 
 .mobile-links {
@@ -270,5 +263,6 @@ onUnmounted(() => {
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
+
 
 

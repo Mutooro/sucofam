@@ -28,18 +28,20 @@
       <!-- CTA strip -->
       <div class="impact-cta reveal">
         <p>Join us in building a more equitable agricultural future for Uganda.</p>
-        <a class="btn-primary" @click="$emit('scroll-to', 'contact')">
-          Get Involved →
-        </a>
+        <button class="btn-primary" @click="$emit('scroll-to', 'contact')">
+          Get Involved <ArrowRight :size="18" />
+        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { ArrowRight } from 'lucide-vue-next'
 import { impactStats } from '../data/content.js'
 defineEmits(['scroll-to'])
 </script>
+
 
 <style scoped>
 .impact-section {
