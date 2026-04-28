@@ -22,7 +22,7 @@
               <div class="quote-icon">"</div>
               <p class="testimonial-quote">{{ t.quote }}</p>
               <div class="testimonial-author">
-                <img :src="t.image" :alt="t.name" />
+                <img :src="t.image" :alt="t.name" loading="lazy" />
                 <div class="author-info">
                   <span class="author-name">{{ t.name }}</span>
                   <span class="author-role">{{ t.role }}</span>

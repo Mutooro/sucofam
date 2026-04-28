@@ -5,11 +5,11 @@
   --primary-light: #2D6A4F;
   --primary-dark:  #081C15;
   
-  /* Accent - inspired by Malkia's magenta warmth */
-  --accent:      #D63384; /* Magenta pink */
-  --accent-light: #F06292;
-  --accent-soft:  #FFF0F5; /* Light pink tint */
-  --accent-hover: #B52A6F;
+  /* Accent - Rich Coffee Brown & Gold */
+  --accent:      #A67C52; /* Bronze Coffee */
+  --accent-light: #C9A84C; /* Gold */
+  --accent-soft:  #FAF3E0; /* Warm cream */
+  --accent-hover: #8B623B; /* Deep Brown */
   
   /* Gold for agricultural warmth */
   --gold:        #C9A84C;
@@ -19,8 +19,8 @@
   /* Neutrals */
   --white:       #FFFFFF;
   --bg:          #FAF8F4; /* Warm off-white */
-  --bg-soft:     #FFF8F5; /* Soft pink-white */
-  --bg-pink:     #FFF0F5; /* Light pink cards */
+  --bg-soft:     #F7F3EF; /* Soft earth white */
+  --bg-pink:     #F4EDE4; /* Light coffee tint */
   --bg-green:    #F0F7F4; /* Light green tint */
   
   --text-dark:   #1A1A1A;
@@ -398,8 +398,8 @@ ul, ol {
 /* ─── REVEAL ANIMATION ─── */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .reveal.visible {

@@ -2,27 +2,27 @@
   <section class="hero">
     <!-- Background image with overlay -->
     <div class="hero-bg">
-      <img src="./assets/img/background.jpeg" alt="Uganda farmland" />
+      <img src="/hero-bg.jpg" alt="Uganda farmland" />
       <div class="hero-overlay" />
     </div>
 
     <div class="hero-content container">
       <div class="hero-left">
-        <div class="hero-badge reveal">
+        <div class="hero-badge">
           <span class="badge-dot" />
           Empowering Farmers, Building Futures
         </div>
 
-        <h1 class="hero-title reveal reveal-delay-1">
-          Transforming <em>Agriculture,</em><br />
-          Improving <span>Livelihoods</span>
+        <h1 class="hero-title">
+          Transforming <em>Agriculture</em><br />
+          <!-- Improving <span>Livelihoods</span> -->
         </h1>
 
-        <p class="hero-desc reveal reveal-delay-2">
+        <p class="hero-desc">
           SUCOFAM empowers smallholder farmers across Uganda through coffee, cocoa, and honey value chains—ensuring fair incomes and sustainable growth.
         </p>
 
-        <div class="hero-actions reveal reveal-delay-2">
+        <div class="hero-actions">
           <router-link to="/programs" class="btn btn-accent">
             Explore Programs <ArrowRight class="icon-sm" />
           </router-link>
@@ -33,12 +33,12 @@
       </div>
 
       <!-- Right — floating trust card -->
-      <div class="hero-right reveal reveal-delay-3">
+      <div class="hero-right">
         <div class="trust-card">
           <div class="trust-avatars">
-            <img src="./assets/img/test_1.jpg" alt="Farmer" />
-            <img src="./assets/img/test_2.jpg" alt="Farmer" />
-            <img src="./assets/img/test_5.jpg" alt="Farmer" />
+            <img :src="test1" alt="Farmer" />
+            <img :src="test2" alt="Farmer" />
+            <img :src="test5" alt="Farmer" />
             <div class="trust-more">200+</div>
           </div>
           <p class="trust-text">Farmers empowered across Uganda</p>
@@ -56,6 +56,12 @@
 
 <script setup>
 import { ArrowRight } from 'lucide-vue-next'
+
+// Import assets
+const heroBg = '/hero-bg.jpg'
+import test1 from '@/assets/img/test_1.jpg'
+import test2 from '@/assets/img/test_2.jpg'
+import test5 from '@/assets/img/test_5.jpg'
 
 const scrollToAbout = () => {
   const about = document.getElementById('about')
@@ -85,13 +91,18 @@ const scrollToAbout = () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(8, 28, 21, 0.85) 0%, rgba(27, 67, 50, 0.75) 50%, rgba(8, 28, 21, 0.9) 100%);
+  background: linear-gradient(
+    135deg, 
+    rgba(8, 28, 21, 0.6) 0%, 
+    rgba(27, 67, 50, 0.4) 50%, 
+    rgba(8, 28, 21, 0.7) 100%
+  );
   z-index: 2;
 }
 

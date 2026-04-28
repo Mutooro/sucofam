@@ -10,7 +10,7 @@
       <div class="hn-grid">
         <article v-for="(article, i) in newsArticles.slice(0, 3)" :key="article.id" class="hn-card reveal" :class="`reveal-delay-${i}`">
           <div class="hn-image">
-            <img :src="article.image" :alt="article.title" />
+            <img :src="article.image" :alt="article.title" loading="lazy" />
           </div>
           <div class="hn-content">
             <div class="hnc-date">{{ article.date }}</div>

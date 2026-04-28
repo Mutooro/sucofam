@@ -43,14 +43,15 @@
       <div class="about-right reveal reveal-delay-2">
         <div class="about-images">
           <img 
-            src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600" 
+            :src="aboutMainImg" 
             alt="Community farming" 
             class="about-img-main"
           />
           <img 
-            src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=400" 
+            :src="aboutFloatImg" 
             alt="Coffee harvest" 
             class="about-img-float"
+            loading="lazy"
           />
           <div class="about-stat-float">
             <span class="stat-num">200+</span>
@@ -65,6 +66,10 @@
 <script setup>
 import { Eye, Target, ArrowRight } from 'lucide-vue-next'
 import { vision, mission } from '../data/content.js'
+
+// Import local images
+import aboutMainImg from '@/assets/img/coffee1.jpg'
+import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
 </script>
 
 <style scoped>

@@ -109,6 +109,37 @@
       </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <!-- Organizational Structure -->
+    <section class="structure-section bg-soft section-padding">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Governance</div>
+          <h2 class="section-title">Our <em>Structure</em></h2>
+          <div class="section-line" />
+          <p class="section-desc">
+            SUCOFAM is built on a robust governance framework designed to ensure transparency, 
+            efficiency, and maximum impact for our farming communities.
+          </p>
+        </div>
+
+        <div class="structure-box reveal">
+          <div class="organogram-wrapper">
+            <img :src="organogramImg" alt="SUCOFAM Organogram" class="organogram-img" />
+          </div>
+          <div class="structure-legend">
+            <p><Info :size="16" /> Tip: Click the image to view in full resolution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Team -->
     <section class="team-section bg-soft section-padding">
       <div class="container">
@@ -157,8 +188,9 @@
 </template>
 
 <script setup>
-import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight } from 'lucide-vue-next'
+import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info } from 'lucide-vue-next'
 import { vision, mission, coreValues, teamMembers } from '../data/content.js'
+import organogramImg from '@/assets/img/organogram.png'
 </script>
 
 <style scoped>
@@ -446,6 +478,66 @@ import { vision, mission, coreValues, teamMembers } from '../data/content.js'
   max-width: 560px;
   margin: 0 auto 1.5rem;
   line-height: 1.7;
+}
+
+/* Divider */
+.section-wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--white);
+}
+
+.section-wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.section-wave-divider .shape-fill {
+  fill: var(--bg-soft);
+}
+
+/* Structure */
+.structure-box {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.organogram-wrapper {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.organogram-wrapper:hover {
+  transform: scale(1.01);
+}
+
+.organogram-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.structure-legend {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.structure-legend p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 @media (max-width: 900px) {

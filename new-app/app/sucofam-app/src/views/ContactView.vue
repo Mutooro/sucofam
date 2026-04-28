@@ -26,13 +26,14 @@
             </p>
 
             <div class="info-items">
-              <div class="info-item">
+              <div v-for="loc in officeLocations" :key="loc.type" class="info-item">
                 <div class="info-icon">
                   <MapPin :size="22" />
                 </div>
                 <div>
-                  <span class="info-label">Address</span>
-                  <span class="info-value">Kasese, Uganda</span>
+                  <span class="info-label">{{ loc.type }}</span>
+                  <span class="info-value">{{ loc.address }}</span>
+                  <span class="info-detail">{{ loc.details }}</span>
                 </div>
               </div>
               <div class="info-item">
@@ -84,6 +85,21 @@
             </form>
           </div>
         </div>
+
+        <div class="map-section reveal">
+          <div class="map-wrapper">
+            <!-- Google Maps Embed Placeholder for Kasese -->
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.053641771!2d30.0768311!3d0.1874221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17616611f7a00001%3A0x8b3b3b3b3b3b3b3b!2sKasese!5e0!3m2!1sen!2sug!4v1714285000000!5m2!1sen!2sug" 
+              width="100%" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -92,6 +108,7 @@
 <script setup>
 import { ref } from 'vue'
 import { MapPin, Mail, Phone, Send } from 'lucide-vue-next'
+import { officeLocations } from '@/data/content.js'
 
 const submitting = ref(false)
 const submitted = ref(false)
@@ -215,6 +232,13 @@ const handleSubmit = () => {
   color: var(--accent);
 }
 
+.info-detail {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
 .contact-form-wrapper {
   background: var(--white);
   border-radius: var(--radius);
@@ -276,6 +300,18 @@ const handleSubmit = () => {
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
+}
+
+.map-section {
+  margin-top: 5rem;
+}
+
+.map-wrapper {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
 }
 
 @media (max-width: 900px) {

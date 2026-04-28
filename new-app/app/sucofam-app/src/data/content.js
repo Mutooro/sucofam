@@ -1,4 +1,14 @@
 // ─── STATIC CONTENT DATA ───
+import coffee1 from '@/assets/img/coffee1.jpg'
+import coffee3 from '@/assets/img/coffee3.jpeg'
+import coffeeBg from '@/assets/img/coffee_bg.jpeg'
+import smellCoffee from '@/assets/img/smell_coffee.jpg'
+import test1 from '@/assets/img/test_1.jpg'
+import test2 from '@/assets/img/test_2.jpg'
+import test5 from '@/assets/img/test_5.jpg'
+import logo from '@/assets/img/logo.jpeg'
+import placeholder1 from '@/assets/img/gettyimages-518782849-612x612.jpg'
+import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -139,21 +149,21 @@ export const newsArticles = [
     date: 'April 24, 2026',
     title: 'Expanding Our Climate-Smart Initiatives',
     summary: 'SUCOFAM reaches a milestone of 50,000 trees planted across Kasese region as part of our carbon sequestration program.',
-    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=600'
+    image: coffee1
   },
   {
     id: 2,
     date: 'April 15, 2026',
     title: 'New Market Linkages for Honey Producers',
     summary: 'Connecting our women-led bee keeping groups to premium export markets, ensuring fair prices and sustainable growth.',
-    image: 'https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&q=80&w=600'
+    image: placeholder1
   },
   {
     id: 3,
     date: 'March 28, 2026',
     title: 'Youth Agribusiness Training Kicks Off',
     summary: 'Over 100 young farmers have enrolled in our latest agribusiness and value addition masterclass.',
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600'
+    image: coffee3
   }
 ]
 
@@ -171,28 +181,28 @@ export const teamMembers = [
     name: 'Robert Mwesigwa',
     role: 'Executive Director',
     bio: 'Visionary leader with over 15 years of experience in agricultural value chain development and farmer cooperative management.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    image: test1,
     social: { linkedin: '#', twitter: '#', email: 'robert@sucofam.org' }
   },
   {
     name: 'Sarah Akello',
     role: 'Head of Programs',
     bio: 'Expert in climate-smart agriculture and women empowerment initiatives, dedicated to building resilient farming communities.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+    image: test2,
     social: { linkedin: '#', twitter: '#', email: 'sarah@sucofam.org' }
   },
   {
     name: 'David Okello',
     role: 'Operations Manager',
     bio: 'Specialist in agribusiness logistics and market linkages, ensuring efficient value chain integration for smallholder farmers.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    image: test5,
     social: { linkedin: '#', twitter: '#', email: 'david@sucofam.org' }
   },
   {
     name: 'Grace Musoke',
     role: 'Nutrition & Food Security lead',
     bio: 'Passionate advocate for household nutrition and food security, leading our kitchen garden and health awareness programs.',
-    image: 'https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=400',
+    image: test1,
     social: { linkedin: '#', twitter: '#', email: 'grace@sucofam.org' }
   }
 ]
@@ -202,18 +212,36 @@ export const testimonials = [
     quote: "SUCOFAM has completely changed the way I manage my coffee farm. Their training in agronomic practices helped me double my yield in just one season.",
     name: "John Baptist",
     role: "Coffee Farmer, Kasese",
-    image: 'https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&fit=crop&q=80&w=200'
+    image: test2
   },
   {
     quote: "As a young woman in agribusiness, SUCOFAM provided the technical support and market linkages I needed to scale my cocoa enterprise.",
     name: "Aisha Nalule",
     role: "Youth Entrepreneur",
-    image: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=200'
+    image: test5
   },
   {
     quote: "Their commitment to climate-smart agriculture is inspiring. We've integrated agroforestry into our honey production with great success.",
     name: "Samuel K.",
     role: "Honey Producer",
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200'
+    image: test1
+  }
+]
+
+export const officeLocations = [
+  {
+    type: 'Head Office',
+    address: 'P.O.Box, 430664, Kasese-Uganda',
+    details: 'Rwenzori Road-Kasese Municipality.'
+  },
+  {
+    type: 'Coordination Office',
+    address: 'Equatorial Mall, RM 09, Next to DTB Bank',
+    details: 'Kampala Road'
+  },
+  {
+    type: 'Field Office',
+    address: 'Kyegegwa District,',
+    details: 'Hapuuyo Sub County'
   }
 ]

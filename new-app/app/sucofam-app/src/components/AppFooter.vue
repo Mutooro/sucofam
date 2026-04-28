@@ -5,6 +5,7 @@
         <!-- Brand -->
         <div class="footer-brand">
           <router-link to="/" class="brand-logo">
+            <img :src="logoImg" alt="SUCOFAM Logo" class="footer-logo-img" />
             <span>SUCOFAM</span>
           </router-link>
           <p class="brand-tagline">
@@ -43,7 +44,7 @@
           <ul class="contact-list">
             <li>
               <MapPin :size="16" class="inline-icon" />
-              <span>Kasese, Uganda</span>
+              <span>Kasese-Uganda, Rwenzori Road</span>
             </li>
             <li>
               <Mail :size="16" class="inline-icon" />
@@ -69,6 +70,7 @@
 import { RouterLink } from 'vue-router'
 import { Mail, Phone, Facebook, MapPin, Twitter } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
+import logoImg from '@/assets/img/logo.jpeg'
 
 const year = new Date().getFullYear()
 </script>
@@ -97,6 +99,12 @@ const year = new Date().getFullYear()
   align-items: center;
   gap: 0.8rem;
   margin-bottom: 1.2rem;
+}
+
+.footer-logo-img {
+  height: 40px;
+  width: auto;
+  border-radius: var(--radius-sm);
 }
 
 .brand-logo span {

@@ -2,6 +2,7 @@
   <nav id="mainNav" :class="{ 'scrolled': scrolled, 'menu-open': isMenuOpen }">
     <div class="nav-inner container">
       <router-link to="/" class="nav-logo">
+        <img :src="logoImg" alt="SUCOFAM Logo" />
         <span class="nav-logo-text">SUCOFAM</span>
       </router-link>
 
@@ -59,6 +60,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Menu, X } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
+import logoImg from '@/assets/img/logo.jpeg'
 
 const scrolled = ref(false)
 const isMenuOpen = ref(false)
