@@ -118,10 +118,10 @@ export const products = [
 ]
 
 export const impactStats = [
-  { number: '200+',    label: 'Youth & Women Trained',   detail: 'In agronomy, agribusiness, and leadership' },
-  { number: '50,000+', label: 'Trees Planted',           detail: 'Climate action initiatives in 2025/2026' },
-  { number: 'Premium', label: 'Market Access',          detail: 'Connecting groups to structured markets' },
-  { number: '3+',      label: 'Operating Locations',     detail: 'Kasese, Kampala & Kyegegwa' },
+  { number: '200+', label: 'Youth & Women Trained', detail: 'In agronomy, agribusiness, and leadership' },
+  { number: '50,000+', label: 'Trees Planted', detail: 'Climate action initiatives in 2025/2026' },
+  { number: 'Premium', label: 'Market Access', detail: 'Connecting groups to structured markets' },
+  { number: '3+', label: 'Operating Locations', detail: 'Kasese, Kampala & Kyegegwa' },
 ]
 
 export const whyPartner = [
@@ -158,12 +158,12 @@ export const newsArticles = [
 ]
 
 export const navLinks = [
-  { label: 'Home',     section: 'home' },
-  { label: 'About',    section: 'about' },
+  { label: 'Home', section: 'home' },
+  { label: 'About', section: 'about' },
   { label: 'Programs', section: 'programs' },
   { label: 'Products', section: 'products' },
-  { label: 'Impact',   section: 'impact' },
-  { label: 'News',     section: 'news' },
+  { label: 'Impact', section: 'impact' },
+  { label: 'News', section: 'news' },
 ]
 
 export const teamMembers = [

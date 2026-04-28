@@ -2,7 +2,7 @@
   <section class="hero">
     <!-- Background image with overlay -->
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920" alt="Uganda farmland" />
+      <img src="./assets/img/background.jpeg" alt="Uganda farmland" />
       <div class="hero-overlay" />
     </div>
 
@@ -36,9 +36,9 @@
       <div class="hero-right reveal reveal-delay-3">
         <div class="trust-card">
           <div class="trust-avatars">
-            <img src="https://images.unsplash.com/photo-1530268729831-4b0b9e170218?auto=format&fit=crop&q=80&w=100" alt="Farmer" />
-            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=100" alt="Farmer" />
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100" alt="Farmer" />
+            <img src="./assets/img/test_1.jpg" alt="Farmer" />
+            <img src="./assets/img/test_2.jpg" alt="Farmer" />
+            <img src="./assets/img/test_5.jpg" alt="Farmer" />
             <div class="trust-more">200+</div>
           </div>
           <p class="trust-text">Farmers empowered across Uganda</p>
