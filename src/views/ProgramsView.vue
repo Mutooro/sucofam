@@ -68,7 +68,7 @@ const getIcon = (name) => iconMap[name] || Settings
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .page-hero-bg {

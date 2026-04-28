@@ -83,7 +83,7 @@ const getIcon = (i) => icons[i] || Users
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .page-hero-bg {

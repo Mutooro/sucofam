@@ -75,7 +75,7 @@ const scrollToAbout = () => {
   overflow: hidden;
   display: flex;
   align-items: center;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .hero-bg {

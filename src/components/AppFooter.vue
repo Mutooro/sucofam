@@ -80,7 +80,7 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .app-footer {
-  background: var(--primary-dark);
+  background: var(--primary-deep);
   color: rgba(255, 255, 255, 0.7);
 }
 

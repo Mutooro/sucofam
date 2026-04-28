@@ -235,7 +235,7 @@ import organogramImg from '@/assets/img/organogram.png'
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .page-hero-bg {

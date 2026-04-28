@@ -1,19 +1,20 @@
 /* ─── DESIGN TOKENS ─── */
 :root {
-  /* OPTION A: FRESH GROWTH (Light Green & Gold) - Current Selection */
-  --primary:      #74A12E; /* Fresh Leaf Green */
-  --primary-light: #9BC55B; 
-  --primary-dark:  #4A6D1E; /* Moss Green */
+  /* FRESH GROWTH (Light Green & Gold) - Optimized Hybrid */
+  --primary:       #74A12E; /* Fresh Leaf Green */
+  --primary-light:  #9BC55B; 
+  --primary-dark:   #4A6D1E; /* Moss Green */
+  --primary-deep:   #0B221A; /* Grounding Forest (for Footer/Hero) */
   
-  --accent:       #D4AF37; /* Metallic Gold */
-  --accent-light:  #E5C76B;
-  --accent-soft:   #FFF9E6;
-  --accent-hover:  #B8860B; /* Darker Gold/Bronze */
+  --accent:        #D4AF37; /* Metallic Gold */
+  --accent-light:   #E5C76B;
+  --accent-soft:    #FFF9E6;
+  --accent-hover:   #B8860B; /* Darker Gold/Bronze */
   
-  --bg:           #FAFBFA; 
-  --bg-soft:      #F4F7F2;
-  --bg-pink:      #F9F6F0; /* Creamier tint */
-  --bg-green:     #EDF3EA; /* Lightest sage */
+  --bg:            #FAFBFA; 
+  --bg-soft:       #F4F7F2;
+  --bg-pink:       #F9F6F0; /* Creamier tint */
+  --bg-green:      #EDF3EA; /* Lightest sage */
 
   /* OPTION B: DEEP FOREST & BRONZE (Original Coffee Theme)
   --primary:     #1B4332; 

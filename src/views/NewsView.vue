@@ -51,7 +51,7 @@ import { newsArticles } from '../data/content.js'
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .page-hero-bg {

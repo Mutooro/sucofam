@@ -33,7 +33,11 @@
             </router-link>
 
             <Transition name="dropdown">
-              <div v-if="activeDropdown === link.section" class="dropdown-panel">
+              <div 
+                v-if="activeDropdown === link.section" 
+                class="dropdown-panel"
+                :class="{ 'mega-menu': link.children.length > 4 }"
+              >
                 <router-link
                   v-for="child in link.children"
                   :key="child.label"
@@ -272,9 +276,18 @@ onUnmounted(() => {
   box-shadow: var(--shadow-lg);
   padding: 0.5rem;
   min-width: 220px;
-  max-height: 360px;
-  overflow-y: auto;
+  width: max-content;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-panel.mega-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.25rem;
+  padding: 0.75rem;
+  min-width: 460px;
 }
 
 .dropdown-link {

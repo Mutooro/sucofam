@@ -61,7 +61,7 @@ const getIcon = (name) => iconMap[name] || Coffee
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--primary-dark);
+  background: var(--primary-deep);
 }
 
 .page-hero-bg {

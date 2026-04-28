@@ -188,7 +188,6 @@ export const newsArticles = [
 export const navLinks = [
   { label: 'Home', section: 'home' },
   { label: 'About', section: 'about', children: [
-    { label: 'Overview', section: 'about' },
     { label: 'Who We Are', section: 'about', hash: '#who-we-are' },
     { label: 'What We Do', section: 'about', hash: '#what-we-do' },
     { label: 'How We Do It', section: 'about', hash: '#how-we-do-it' },
