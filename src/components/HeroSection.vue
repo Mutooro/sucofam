@@ -10,7 +10,7 @@
       <div class="hero-left">
         <div class="hero-badge">
           <span class="badge-dot" />
-          Empowering Farmers, Building Futures
+          Improving Farmer Livelihoods
         </div>
 
         <h1 class="hero-title">
