@@ -1,28 +1,38 @@
 /* ─── DESIGN TOKENS ─── */
 :root {
-  /* Primary palette */
-  --primary:     #1B4332; /* Deep forest green */
+  /* OPTION A: FRESH GROWTH (Light Green & Gold) - Current Selection */
+  --primary:      #74A12E; /* Fresh Leaf Green */
+  --primary-light: #9BC55B; 
+  --primary-dark:  #4A6D1E; /* Moss Green */
+  
+  --accent:       #D4AF37; /* Metallic Gold */
+  --accent-light:  #E5C76B;
+  --accent-soft:   #FFF9E6;
+  --accent-hover:  #B8860B; /* Darker Gold/Bronze */
+  
+  --bg:           #FAFBFA; 
+  --bg-soft:      #F4F7F2;
+  --bg-pink:      #F9F6F0; /* Creamier tint */
+  --bg-green:     #EDF3EA; /* Lightest sage */
+
+  /* OPTION B: DEEP FOREST & BRONZE (Original Coffee Theme)
+  --primary:     #1B4332; 
   --primary-light: #2D6A4F;
   --primary-dark:  #081C15;
+  --accent:      #A67C52;
+  --accent-light: #C9A84C;
+  --accent-soft:  #FAF3E0;
+  --accent-hover: #8B623B;
+  --bg:          #FAF8F4;
+  --bg-soft:     #F7F3EF;
+  */
   
-  /* Accent - Rich Coffee Brown & Gold */
-  --accent:      #A67C52; /* Bronze Coffee */
-  --accent-light: #C9A84C; /* Gold */
-  --accent-soft:  #FAF3E0; /* Warm cream */
-  --accent-hover: #8B623B; /* Deep Brown */
-  
-  /* Gold for agricultural warmth */
+  /* Shared Gold & Neutrals */
   --gold:        #C9A84C;
   --gold-light:  #E8D5A3;
   --gold-soft:   #FDF8EC;
   
-  /* Neutrals */
   --white:       #FFFFFF;
-  --bg:          #FAF8F4; /* Warm off-white */
-  --bg-soft:     #F7F3EF; /* Soft earth white */
-  --bg-pink:     #F4EDE4; /* Light coffee tint */
-  --bg-green:    #F0F7F4; /* Light green tint */
-  
   --text-dark:   #1A1A1A;
   --text-body:   #4A4A4A;
   --text-muted:  #6B6B6B;

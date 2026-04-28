@@ -8,21 +8,15 @@
 
     <div class="hero-content container">
       <div class="hero-left">
-        <div class="hero-badge">
-          <span class="badge-dot" />
-          Improving Farmer Livelihoods
-        </div>
-
-        <h1 class="hero-title">
-          Transforming <em>Agriculture</em><br />
-          <!-- Improving <span>Livelihoods</span> -->
+        <h1 class="hero-title reveal">
+          <em>Improving Farmer Livelihoods</em> 
         </h1>
 
-        <p class="hero-desc">
+        <p class="hero-desc reveal reveal-delay-1">
           SUCOFAM empowers smallholder farmers across Uganda through coffee, cocoa, and honey value chains—ensuring fair incomes and sustainable growth.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal reveal-delay-2">
           <router-link to="/programs" class="btn btn-accent">
             Explore Programs <ArrowRight class="icon-sm" />
           </router-link>
@@ -33,9 +27,12 @@
       </div>
 
       <!-- Right — floating trust card -->
-      <div class="hero-right">
+      <div class="hero-right reveal reveal-delay-3">
         <div class="trust-card">
           <div class="trust-avatars">
+            <img :src="test1" alt="Farmer" />
+            <img :src="test2" alt="Farmer" />
+            <img :src="test5" alt="Farmer" />
             <img :src="test1" alt="Farmer" />
             <img :src="test2" alt="Farmer" />
             <img :src="test5" alt="Farmer" />
