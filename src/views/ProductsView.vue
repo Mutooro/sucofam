@@ -6,10 +6,10 @@
         <div class="page-hero-overlay" />
       </div>
       <div class="page-hero-content container">
-        <div class="section-tag white reveal">What We Produce</div>
-        <h1 class="page-hero-title reveal reveal-delay-1">Our Products</h1>
+        <div class="section-tag white reveal">Our Value Chains</div>
+        <h1 class="page-hero-title reveal reveal-delay-1">Value Chains</h1>
         <p class="page-hero-desc reveal reveal-delay-2">
-          High-quality, traceable agricultural products from organized Ugandan farmer groups.
+          High-quality, traceable value chains empowering organized Ugandan farmer groups.
         </p>
       </div>
     </div>
@@ -20,6 +20,7 @@
           <div 
             v-for="(product, i) in products" 
             :key="product.id"
+            :id="product.id"
             class="product-card reveal"
             :class="`reveal-delay-${i}`"
           >

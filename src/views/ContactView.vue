@@ -51,7 +51,11 @@
                 </div>
                 <div>
                   <span class="info-label">Phone</span>
-                  <a href="tel:+256782285490" class="info-value">+256 782 285 490</a>
+                  <div class="info-phone-list">
+                    <a href="tel:+256782285490" class="info-value">+256 782 285 490</a>
+                    <a href="tel:+256775199363" class="info-value">+256 775 199 363</a>
+                    <a href="tel:+256706432002" class="info-value">+256 706 432 002</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,6 +234,12 @@ const handleSubmit = () => {
 
 .info-value:hover {
   color: var(--accent);
+}
+
+.info-phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .info-detail {

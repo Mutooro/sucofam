@@ -6,6 +6,7 @@ import ProductsView from '../views/ProductsView.vue'
 import ImpactView from '../views/ImpactView.vue'
 import ContactView from '../views/ContactView.vue'
 import NewsView from '../views/NewsView.vue'
+import GalleryView from '../views/GalleryView.vue'
 
 const routes = [
   {
@@ -26,12 +27,18 @@ const routes = [
   {
     path: '/products',
     name: 'products',
-    component: ProductsView
+    component: ProductsView,
+    alias: '/value-chains'
   },
   {
     path: '/impact',
     name: 'impact',
     component: ImpactView
+  },
+  {
+    path: '/gallery',
+    name: 'gallery',
+    component: GalleryView
   },
   {
     path: '/news',
@@ -45,12 +52,17 @@ const routes = [
   }
 ]
 
-
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+        top: 80
+      }
+    }
     if (savedPosition) {
       return savedPosition
     } else {

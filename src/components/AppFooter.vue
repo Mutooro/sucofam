@@ -6,7 +6,6 @@
         <div class="footer-brand">
           <router-link to="/" class="brand-logo">
             <img :src="logoImg" alt="SUCOFAM Logo" class="footer-logo-img" />
-            <span>SUCOFAM</span>
           </router-link>
           <p class="brand-tagline">
             Empowering smallholder farmers across Uganda through coffee, cocoa, and honey value chains—ensuring fair incomes and sustainable growth.
@@ -52,7 +51,11 @@
             </li>
             <li>
               <Phone :size="16" class="inline-icon" />
-              <a href="tel:+256782285490">+256 782 285 490</a>
+              <div class="phone-list">
+                <a href="tel:+256782285490">+256 782 285 490</a>
+                <a href="tel:+256775199363">+256 775 199 363</a>
+                <a href="tel:+256706432002">+256 706 432 002</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -102,7 +105,7 @@ const year = new Date().getFullYear()
 }
 
 .footer-logo-img {
-  height: 40px;
+  height: 56px;
   width: auto;
   border-radius: var(--radius-sm);
 }
@@ -179,9 +182,15 @@ const year = new Date().getFullYear()
 
 .contact-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.6rem;
   margin-bottom: 0.8rem;
+}
+
+.phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .inline-icon {

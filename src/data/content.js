@@ -14,26 +14,44 @@ export const vision = "To build a transformed agricultural sector in Uganda wher
 
 export const mission = "To empower farmers through capacity building in good agronomic practices, quality assurance, and post-harvest management, while strengthening access to market information, financial services, and structured markets enabling them to reduce distress sales, overcome middlemen exploitation, and secure fair, sustainable incomes from coffee, cocoa, and honey value chains."
 
-export const coreValues = [
+export const culture = [
   {
-    title: 'Farmer-Centered Empowerment',
-    desc: 'We prioritize the empowerment of smallholder farmers, particularly women and youth, by building their capacity, strengthening leadership, and enabling meaningful participation across agricultural value chains.'
+    title: 'Empowerment-Driven',
+    desc: 'We operate with a deep commitment to farmer empowerment, ensuring that every intervention builds the capacity, confidence, and agency of smallholder farmers especially women and youth to actively lead and benefit from agricultural value chains.'
   },
   {
-    title: 'Market-Driven Excellence',
-    desc: 'We promote quality production, value addition, and structured market access, ensuring farmers produce market-compliant products and secure fair, competitive, and sustainable incomes.'
+    title: 'Market-Oriented Performance',
+    desc: 'We foster a results-driven environment where quality, competitiveness, and market alignment guide all operations from production to value addition and trade ensuring farmers’ transition from subsistence to profitable agribusiness.'
   },
   {
-    title: 'Inclusivity & Equity',
-    desc: 'We are committed to eliminating systemic barriers by fostering gender equality, youth inclusion, and equitable access to resources, opportunities, and decision-making platforms.'
+    title: 'Inclusive & Participatory',
+    desc: 'We uphold a culture where every voice matters, promoting gender equality, youth inclusion, and participatory decision-making across farmer groups, cooperatives, and organizational structures.'
   },
   {
-    title: 'Sustainability & Climate Responsibility',
-    desc: 'We champion climate-smart agriculture, environmental conservation, and responsible natural resource management to ensure long-term productivity and resilience of farming systems.'
+    title: 'Sustainability & Resilience',
+    desc: 'We embed climate-smart thinking and environmental stewardship into all actions, ensuring that farming systems, communities, and ecosystems are resilient, regenerative, and future-ready.'
   },
   {
-    title: 'Holistic Household Transformation',
-    desc: 'We advance integrated development by addressing not only agricultural productivity but also financial inclusion, nutrition, education, health, and overall household well-being.'
+    title: 'Holistic Impact',
+    desc: 'We go beyond agriculture by promoting integrated household transformation, addressing income, nutrition, education, health, and financial inclusion as interconnected drivers of sustainable livelihoods.'
+  }
+]
+
+export const ourGoals = [
+  {
+    id: 1,
+    title: 'Increase Farmer Incomes and Market Participation',
+    desc: 'To transition smallholder farmers from subsistence to commercial, market-integrated production systems by strengthening value addition, aggregation, and direct market linkages for coffee, cocoa, and honey.'
+  },
+  {
+    id: 2,
+    title: 'Empower Women and Youth for Inclusive Agribusiness Leadership',
+    desc: 'To enhance equitable participation and leadership of women and youth across agricultural value chains by improving access to skills, finance, productive resources, and enterprise opportunities.'
+  },
+  {
+    id: 3,
+    title: 'Build Climate-Resilient and Sustainable Farming Systems',
+    desc: 'To promote climate-smart agriculture, environmental conservation, and resilience-building practices that safeguard productivity, restore ecosystems, and ensure long-term sustainability of farming households.'
   }
 ]
 
@@ -169,10 +187,22 @@ export const newsArticles = [
 
 export const navLinks = [
   { label: 'Home', section: 'home' },
-  { label: 'About', section: 'about' },
-  { label: 'Programs', section: 'programs' },
-  { label: 'Products', section: 'products' },
+  { label: 'About', section: 'about', children: [
+    { label: 'Overview', section: 'about' },
+    { label: 'Who We Are', section: 'about', hash: '#who-we-are' },
+    { label: 'What We Do', section: 'about', hash: '#what-we-do' },
+    { label: 'How We Do It', section: 'about', hash: '#how-we-do-it' },
+  ]},
+  { label: 'Programs', section: 'programs', children:
+    programs.map(p => ({ label: p.title, section: 'programs', hash: `#${p.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}` }))
+  },
+  { label: 'Value Chains', section: 'products', children: [
+    { label: 'Coffee', section: 'products', hash: '#coffee' },
+    { label: 'Honey', section: 'products', hash: '#honey' },
+    { label: 'Cocoa', section: 'products', hash: '#cocoa' },
+  ]},
   { label: 'Impact', section: 'impact' },
+  { label: 'Gallery', section: 'gallery' },
   { label: 'News', section: 'news' },
 ]
 
@@ -244,4 +274,16 @@ export const officeLocations = [
     address: 'Kyegegwa District,',
     details: 'Hapuuyo Sub County'
   }
+]
+
+export const galleryImages = [
+  { src: coffee1, alt: 'Coffee harvesting in Kasese', category: 'Coffee' },
+  { src: coffee3, alt: 'Coffee beans drying process', category: 'Coffee' },
+  { src: coffeeBg, alt: 'Coffee plantation landscape', category: 'Coffee' },
+  { src: smellCoffee, alt: 'Quality testing coffee aroma', category: 'Coffee' },
+  { src: placeholder1, alt: 'Community farming initiative', category: 'Community' },
+  { src: placeholder2, alt: 'Farmer training workshop', category: 'Community' },
+  { src: test1, alt: 'Farmer empowerment program', category: 'Community' },
+  { src: test2, alt: 'Women in agriculture', category: 'Community' },
+  { src: test5, alt: 'Youth agribusiness training', category: 'Community' },
 ]

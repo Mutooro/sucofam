@@ -20,6 +20,7 @@
           <div 
             v-for="(prog, i) in programs" 
             :key="prog.title"
+            :id="prog.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')"
             class="program-card reveal"
             :class="`reveal-delay-${i % 3}`"
           >

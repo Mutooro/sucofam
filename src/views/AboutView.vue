@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <section class="about-section bg-white section-padding">
+    <section id="who-we-are" class="about-section bg-white section-padding">
       <div class="container">
         <div class="about-grid">
           <div class="about-text-block reveal">
@@ -85,25 +85,51 @@
       </div>
     </section>
 
-    <!-- Core Values -->
-    <section class="values-section bg-white section-padding">
+    <!-- Our Goals -->
+    <section id="what-we-do" class="goals-section bg-soft section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">What Drives Us</div>
-          <h2 class="section-title">Our Core <em>Values</em></h2>
+          <div class="section-tag">Our Objectives</div>
+          <h2 class="section-title">Our <em>Goals</em></h2>
+          <div class="section-line" />
+        </div>
+
+        <div class="goals-list">
+          <div 
+            v-for="goal in ourGoals" 
+            :key="goal.id"
+            class="goal-item reveal"
+            :class="`reveal-delay-${goal.id}`"
+          >
+            <div class="goal-num">{{ goal.id }}</div>
+            <div class="goal-content">
+              <h3>{{ goal.title }}</h3>
+              <p>{{ goal.desc }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Culture -->
+    <section id="how-we-do-it" class="values-section bg-white section-padding">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Our Identity</div>
+          <h2 class="section-title">SUCOFAM <em>Culture</em></h2>
           <div class="section-line" />
         </div>
 
         <div class="values-grid">
           <div 
-            v-for="(value, i) in coreValues" 
-            :key="value.title"
+            v-for="(item, i) in culture" 
+            :key="item.title"
             class="value-card reveal"
             :class="`reveal-delay-${i % 3}`"
           >
             <div class="value-num">0{{ i + 1 }}</div>
-            <h3>{{ value.title }}</h3>
-            <p>{{ value.desc }}</p>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.desc }}</p>
           </div>
         </div>
       </div>
@@ -117,7 +143,7 @@
     </div>
 
     <!-- Organizational Structure -->
-    <section class="structure-section bg-soft section-padding">
+    <section id="structure" class="structure-section bg-soft section-padding">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-tag">Governance</div>
@@ -196,7 +222,7 @@
 
 <script setup>
 import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info } from 'lucide-vue-next'
-import { vision, mission, coreValues, teamMembers } from '../data/content.js'
+import { vision, mission, culture, ourGoals, teamMembers } from '../data/content.js'
 import organogramImg from '@/assets/img/organogram.png'
 </script>
 
@@ -399,6 +425,56 @@ import organogramImg from '@/assets/img/organogram.png'
   font-size: 0.9rem;
   line-height: 1.65;
   color: var(--text-muted);
+}
+
+/* Goals */
+.goals-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.goal-item {
+  display: flex;
+  gap: 2rem;
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  align-items: center;
+}
+
+.goal-num {
+  font-family: var(--ff-serif);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.goal-content h3 {
+  font-family: var(--ff-serif);
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.goal-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .goal-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
 }
 
 /* Team */
