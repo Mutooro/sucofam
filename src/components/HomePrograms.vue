@@ -81,7 +81,7 @@ const getIcon = (name) => iconMap[name] || Settings
   width: 56px;
   height: 56px;
   border-radius: var(--radius-sm);
-  background: rgba(214, 51, 132, 0.1);
+  background: rgba(166, 124, 82, 0.1);
   color: var(--accent);
   display: flex;
   align-items: center;

@@ -9,16 +9,19 @@
 </template>
 
 <script setup>
-import { onMounted, nextTick, watch } from 'vue'
+import { onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import AppFooter from './components/AppFooter.vue'
 
 const route = useRoute()
+let observer = null
+let mutationObserver = null
 
-// Initialize reveal animations
-const initReveal = () => {
-  const observer = new IntersectionObserver(
+// Create the IntersectionObserver (reused across calls)
+const createObserver = () => {
+  if (observer) return observer
+  observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -29,19 +32,62 @@ const initReveal = () => {
     },
     { 
       threshold: 0.01,
-      rootMargin: '0px 0px 200px 0px' 
+      rootMargin: '0px 0px -40px 0px'
     }
   )
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+  return observer
 }
 
-onMounted(() => {
-  initReveal()
+// Observe all .reveal elements that haven't been made visible yet
+const observeRevealElements = () => {
+  const obs = createObserver()
+  document.querySelectorAll('.reveal:not(.visible)').forEach((el) => obs.observe(el))
+}
+
+// Watch for new .reveal elements added to the DOM by child components
+const startMutationObserver = () => {
+  mutationObserver = new MutationObserver((mutations) => {
+    let hasNewReveals = false
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        if (node.nodeType === 1) {
+          if (node.classList?.contains('reveal') || node.querySelector?.('.reveal')) {
+            hasNewReveals = true
+            break
+          }
+        }
+      }
+      if (hasNewReveals) break
+    }
+    if (hasNewReveals) {
+      observeRevealElements()
+    }
+  })
+  mutationObserver.observe(document.getElementById('sucofam-app'), {
+    childList: true,
+    subtree: true
+  })
+}
+
+onMounted(async () => {
+  // Wait for child components to render
+  await nextTick()
+  observeRevealElements()
+  startMutationObserver()
+
+  // Safety fallback — catch any elements missed by the first pass
+  setTimeout(observeRevealElements, 300)
 })
 
 watch(() => route.path, async () => {
   await nextTick()
-  initReveal()
+  // Allow new route's components to mount
+  setTimeout(observeRevealElements, 100)
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+  mutationObserver?.disconnect()
 })
 </script>
 

@@ -75,7 +75,7 @@
             <p>{{ vision }}</p>
           </div>
           <div class="vm-block reveal reveal-delay-1">
-            <div class="vm-block-icon pink">
+            <div class="vm-block-icon accent">
               <Target :size="32" />
             </div>
             <h3 class="heading-sm">Our Mission</h3>
@@ -338,7 +338,7 @@ import organogramImg from '@/assets/img/organogram.png'
   margin-bottom: 1.25rem;
 }
 
-.vm-block-icon.pink {
+.vm-block-icon.accent {
   background: var(--bg-pink);
   color: var(--accent);
 }

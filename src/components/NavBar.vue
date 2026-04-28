@@ -164,12 +164,12 @@ onUnmounted(() => {
 
 .nav-links a:hover {
   color: var(--accent);
-  background: rgba(214, 51, 132, 0.06);
+  background: rgba(166, 124, 82, 0.06);
 }
 
 .nav-links a.active {
   color: var(--accent);
-  background: rgba(214, 51, 132, 0.1);
+  background: rgba(166, 124, 82, 0.1);
   font-weight: 600;
 }
 
@@ -178,14 +178,14 @@ onUnmounted(() => {
   color: var(--white) !important;
   padding: 0.55rem 1.2rem !important;
   font-weight: 600 !important;
-  box-shadow: 0 2px 12px rgba(214, 51, 132, 0.25);
+  box-shadow: 0 2px 12px rgba(166, 124, 82, 0.25);
   transition: all 0.3s ease !important;
 }
 
 .nav-cta:hover {
   background: var(--accent-hover) !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(214, 51, 132, 0.35);
+  box-shadow: 0 4px 20px rgba(166, 124, 82, 0.35);
 }
 
 .nav-cta.active-cta {
@@ -207,7 +207,7 @@ onUnmounted(() => {
 
 .nav-toggle:hover {
   color: var(--accent);
-  background: rgba(214, 51, 132, 0.06);
+  background: rgba(166, 124, 82, 0.06);
 }
 
 /* Mobile Menu */
@@ -248,7 +248,7 @@ onUnmounted(() => {
 
 .close-btn:hover {
   color: var(--accent);
-  background: rgba(214, 51, 132, 0.06);
+  background: rgba(166, 124, 82, 0.06);
 }
 
 .mobile-links {
@@ -269,7 +269,7 @@ onUnmounted(() => {
 .mobile-links a:hover,
 .mobile-links a.active {
   color: var(--accent);
-  background: rgba(214, 51, 132, 0.06);
+  background: rgba(166, 124, 82, 0.06);
 }
 
 .mobile-cta {

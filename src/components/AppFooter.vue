@@ -142,7 +142,7 @@ const year = new Date().getFullYear()
 
 .social-btn:hover {
   border-color: var(--accent);
-  background: rgba(214, 51, 132, 0.15);
+  background: rgba(166, 124, 82, 0.15);
   color: var(--accent);
 }
 

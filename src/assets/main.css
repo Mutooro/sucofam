@@ -288,12 +288,12 @@ ul, ol {
 .btn-accent {
   background: var(--accent);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(214, 51, 132, 0.25);
+  box-shadow: 0 4px 16px rgba(166, 124, 82, 0.25);
 }
 .btn-accent:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(214, 51, 132, 0.35);
+  box-shadow: 0 8px 24px rgba(166, 124, 82, 0.35);
 }
 
 .btn-primary {
