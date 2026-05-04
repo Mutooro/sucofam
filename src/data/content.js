@@ -6,6 +6,7 @@ import smellCoffee from '@/assets/img/smell_coffee.jpg'
 import test1 from '@/assets/img/test_1.jpg'
 import test2 from '@/assets/img/test_2.jpg'
 import test5 from '@/assets/img/test_5.jpg'
+import mukokoma from '@/assets/img/mukokoma.jpeg'
 import logo from '@/assets/img/logo.jpeg'
 import placeholder1 from '@/assets/img/gettyimages-518782849-612x612.jpg'
 import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
@@ -207,11 +208,11 @@ export const navLinks = [
 
 export const teamMembers = [
   {
-    name: 'Robert Mwesigwa',
+    name: 'David Mukokoma',
     role: 'Executive Director',
     bio: 'Visionary leader with over 15 years of experience in agricultural value chain development and farmer cooperative management.',
-    image: test1,
-    social: { linkedin: '#', twitter: '#', email: 'robert@sucofam.org' }
+    image: mukokoma,
+    social: { linkedin: '#', twitter: '#', email: 'david.mukokoma@sucofam.org' }
   },
   {
     name: 'Sarah Akello',

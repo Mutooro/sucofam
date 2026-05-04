@@ -21,7 +21,7 @@
             <h2 class="heading-md">Our Story</h2>
             <div class="section-line" />
             <p>
-              SUCOFAM was established in June 2024 in Kasese, Uganda, with a clear mandate: to transform 
+               Sustainably Connected Farmers Agriprenuer Market (SUCOFAM) was established in June 2024 in Kasese, Uganda, with a clear mandate: to transform 
               the lives of smallholder farmers through sustainable agriculture, market access, and inclusive 
               value chain participation.
             </p>
@@ -176,7 +176,7 @@
     <!-- Team -->
     <section class="team-section bg-white section-padding">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header reveal centered-mobile">
           <div class="section-tag">Our People</div>
           <h2 class="section-title">Meet the <em>Team</em></h2>
           <div class="section-line" />
@@ -191,6 +191,17 @@
           >
             <div class="team-image">
               <img :src="member.image" :alt="member.name" />
+              <div class="team-socials" v-if="member.social">
+                <a v-if="member.social.linkedin" :href="member.social.linkedin" target="_blank" class="social-link" title="LinkedIn">
+                  <Linkedin :size="18" />
+                </a>
+                <a v-if="member.social.twitter" :href="member.social.twitter" target="_blank" class="social-link" title="Twitter">
+                  <Twitter :size="18" />
+                </a>
+                <a v-if="member.social.email" :href="`mailto:${member.social.email}`" class="social-link" title="Email">
+                  <Mail :size="18" />
+                </a>
+              </div>
             </div>
             <div class="team-info">
               <h3>{{ member.name }}</h3>
@@ -221,7 +232,7 @@
 </template>
 
 <script setup>
-import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info } from 'lucide-vue-next'
+import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info, Linkedin, Twitter, Mail } from 'lucide-vue-next'
 import { vision, mission, culture, ourGoals, teamMembers } from '../data/content.js'
 import organogramImg from '@/assets/img/organogram.png'
 </script>
@@ -486,7 +497,7 @@ import organogramImg from '@/assets/img/organogram.png'
 
 .team-card {
   background: var(--white);
-  border-radius: var(--radius);
+  border-radius: 2rem;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
@@ -499,19 +510,57 @@ import organogramImg from '@/assets/img/organogram.png'
 }
 
 .team-image {
-  height: 240px;
+  height: 320px;
   overflow: hidden;
+  position: relative;
 }
 
 .team-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   transition: transform 0.5s ease;
 }
 
 .team-card:hover .team-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
+}
+
+.team-socials {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 67, 50, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(2px);
+}
+
+.team-card:hover .team-socials {
+  opacity: 1;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.social-link:hover {
+  background: var(--accent);
+  color: var(--white);
+  transform: translateY(-5px);
 }
 
 .team-info {
@@ -637,11 +686,17 @@ import organogramImg from '@/assets/img/organogram.png'
   .vm-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .centered-mobile { text-align: center; }
+  .centered-mobile .section-line { margin: 1rem auto; }
 }
 
 @media (max-width: 600px) {
   .values-grid { grid-template-columns: 1fr; }
-  .team-grid { grid-template-columns: 1fr; }
   .about-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .team-image { height: 280px; }
 }
 </style>

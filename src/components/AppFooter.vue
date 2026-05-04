@@ -214,14 +214,39 @@ const year = new Date().getFullYear()
 }
 
 @media (max-width: 768px) {
+  .footer-inner {
+    padding: 3rem 1.5rem 2rem;
+  }
   .footer-top {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
+    text-align: center;
+  }
+  .brand-logo {
+    justify-content: center;
+  }
+  .brand-tagline {
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+  }
+  .social-row {
+    justify-content: center;
+  }
+  .footer-col ul {
+    align-items: center;
+  }
+  .contact-list li {
+    justify-content: center;
+    text-align: center;
+  }
+  .phone-list {
+    align-items: center;
   }
   .footer-bottom {
     flex-direction: column;
     text-align: center;
     gap: 0.75rem;
+    padding-top: 1.5rem;
   }
 }
 </style>
