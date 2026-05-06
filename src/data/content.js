@@ -11,6 +11,7 @@ import logo from '@/assets/img/logo.jpeg'
 import placeholder1 from '@/assets/img/gettyimages-518782849-612x612.jpg'
 import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
 import partnership from '@/assets/img/partnership.jpeg'
+import raap from '@/assets/img/raap.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -165,6 +166,13 @@ export const whyPartner = [
 
 export const newsArticles = [
   {
+    id: 5,
+    date: 'May 06, 2026',
+    title: "Rwenzori Agroecology Actors' Platform Strategic Planning",
+    summary: "SUCOFAM believes that we do more together! We recently joined other likeminded organisations in the Rwenzori region under our coalition; Rwenzori Agroecology Actors' Platform (RAAP) to develop a five year strategic plan. RAAP is actively promoting sustainable agricultural practices to protect the ecosystem and ensure food security.",
+    image: raap
+  },
+  {
     id: 4,
     date: 'May 06, 2026',
     title: 'Promoting Agritourism in Rwenzori Region',
@@ -294,4 +302,6 @@ export const galleryImages = [
   { src: test1, alt: 'Farmer empowerment program', category: 'Community' },
   { src: test2, alt: 'Women in agriculture', category: 'Community' },
   { src: test5, alt: 'Youth agribusiness training', category: 'Community' },
+  { src: partnership, alt: 'Agritourism training in Fort Portal', category: 'Community' },
+  { src: raap, alt: 'RAAP strategic planning meeting', category: 'Community' },
 ]
