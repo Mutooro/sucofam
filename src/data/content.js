@@ -10,6 +10,7 @@ import mukokoma from '@/assets/img/mukokoma.jpeg'
 import logo from '@/assets/img/logo.jpeg'
 import placeholder1 from '@/assets/img/gettyimages-518782849-612x612.jpg'
 import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
+import partnership from '@/assets/img/partnership.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -163,6 +164,13 @@ export const whyPartner = [
 ]
 
 export const newsArticles = [
+  {
+    id: 4,
+    date: 'May 06, 2026',
+    title: 'Promoting Agritourism in Rwenzori Region',
+    summary: 'SUCOFAM joined the rest of the tourism actors in Rwenzori region to participate in a three weeks long training in Fort Portal. In partnership with Mubec safaris, we are on a journey to promote Agritourism in the value chains of coffee, cocoa and honey.',
+    image: partnership
+  },
   {
     id: 1,
     date: 'April 24, 2026',
