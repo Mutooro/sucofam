@@ -12,6 +12,7 @@ import placeholder1 from '@/assets/img/gettyimages-518782849-612x612.jpg'
 import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
 import partnership from '@/assets/img/partnership.jpeg'
 import raap from '@/assets/img/raap.jpeg'
+import nyamwamba from '@/assets/img/nyamwamba.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -166,6 +167,13 @@ export const whyPartner = [
 
 export const newsArticles = [
   {
+    id: 6,
+    date: 'May 07, 2026',
+    title: "Empowering Thuwatikanaye Coffee Cooperative",
+    summary: "Our team engaged members of Thuwatikanaye Coffee Cooperative Society in Nyamwamba Division in Kasese district and shared experiences on good agronomic practices. SUCOFAM is aiming at not only improving farmers' income but also emphasises on the quality and quantity of the harvest. We have trained and equipped our model farmers who will host our demo gardens from where the rest of the communities will learn from.",
+    image: nyamwamba
+  },
+  {
     id: 5,
     date: 'May 06, 2026',
     title: "Rwenzori Agroecology Actors' Platform Strategic Planning",
@@ -304,4 +312,5 @@ export const galleryImages = [
   { src: test5, alt: 'Youth agribusiness training', category: 'Community' },
   { src: partnership, alt: 'Agritourism training in Fort Portal', category: 'Community' },
   { src: raap, alt: 'RAAP strategic planning meeting', category: 'Community' },
+  { src: nyamwamba, alt: 'Training at Thuwatikanaye Coffee Cooperative', category: 'Community' },
 ]
