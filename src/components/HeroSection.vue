@@ -104,7 +104,7 @@ const scrollToAbout = () => {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   background: var(--primary-deep);
 }
 
@@ -128,32 +128,33 @@ const scrollToAbout = () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg, 
-    rgba(8, 28, 21, 0.6) 0%, 
-    rgba(27, 67, 50, 0.4) 50%, 
-    rgba(8, 28, 21, 0.7) 100%
+    to top, 
+    rgba(8, 28, 21, 0.9) 0%, 
+    rgba(8, 28, 21, 0.5) 40%, 
+    rgba(8, 28, 21, 0) 100%
   );
   z-index: 2;
-  pointer-events: none; /* Allow interaction with swiper if needed, though here it autoplays */
+  pointer-events: none;
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
-  padding: 9rem 1.5rem 5rem;
+  padding: 12rem 1.5rem 8rem;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
-  align-items: center;
+  align-items: flex-end;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* Left */
@@ -205,9 +206,9 @@ const scrollToAbout = () => {
 .hero-desc {
   font-size: 1.1rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2rem;
-  max-width: 480px;
+  max-width: 520px;
 }
 
 .hero-actions {
