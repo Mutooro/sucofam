@@ -1,8 +1,24 @@
 <template>
   <section class="hero">
-    <!-- Background image with overlay -->
+    <!-- Background image slider with overlay -->
     <div class="hero-bg">
-      <img src="/hero-bg.jpg" alt="Uganda farmland" />
+      <swiper
+        :modules="[Autoplay, EffectFade]"
+        :slides-per-view="1"
+        :effect="'fade'"
+        :loop="true"
+        :autoplay="{
+          delay: 5000,
+          disableOnInteraction: false
+        }"
+        class="hero-swiper"
+      >
+        <swiper-slide v-for="(article, index) in heroSlides" :key="article.id || index">
+          <div class="slide-image">
+            <img :src="article.image" :alt="article.title" />
+          </div>
+        </swiper-slide>
+      </swiper>
       <div class="hero-overlay" />
     </div>
 
@@ -52,13 +68,27 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { ArrowRight } from 'lucide-vue-next'
+import { newsArticles } from '../data/content.js'
 
-// Import assets
-const heroBg = '/hero-bg.jpg'
+// Swiper imports
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay, EffectFade } from 'swiper/modules'
+
+// Swiper styles
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+
+// Import assets for trust card
 import test1 from '@/assets/img/test_1.jpg'
 import test2 from '@/assets/img/test_2.jpg'
 import test5 from '@/assets/img/test_5.jpg'
+
+// Get top 3 news photos for the hero
+const heroSlides = computed(() => {
+  return newsArticles.slice(0, 3)
+})
 
 const scrollToAbout = () => {
   const about = document.getElementById('about')
@@ -84,7 +114,17 @@ const scrollToAbout = () => {
   z-index: 1;
 }
 
-.hero-bg img {
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -101,6 +141,7 @@ const scrollToAbout = () => {
     rgba(8, 28, 21, 0.7) 100%
   );
   z-index: 2;
+  pointer-events: none; /* Allow interaction with swiper if needed, though here it autoplays */
 }
 
 .hero-content {
@@ -298,6 +339,15 @@ const scrollToAbout = () => {
   }
   .trust-card {
     max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: 85vh; /* Slightly reduced height on mobile to show more photo width */
+  }
+  .slide-image img {
+    object-position: center 30%; /* Focus on the upper-middle part of photos where subjects usually are */
   }
 }
 

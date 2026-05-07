@@ -13,6 +13,7 @@ import placeholder2 from '@/assets/img/istockphoto-2212181979-612x612.webp'
 import partnership from '@/assets/img/partnership.jpeg'
 import raap from '@/assets/img/raap.jpeg'
 import nyamwamba from '@/assets/img/nyamwamba.jpeg'
+import agronomy from '@/assets/img/agronomy.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -167,6 +168,13 @@ export const whyPartner = [
 
 export const newsArticles = [
   {
+    id: 4,
+    date: 'May 06, 2026',
+    title: 'Promoting Agritourism in Rwenzori Region',
+    summary: 'SUCOFAM joined the rest of the tourism actors in Rwenzori region to participate in a three weeks long training in Fort Portal. In partnership with Mubec safaris, we are on a journey to promote Agritourism in the value chains of coffee, cocoa and honey.',
+    image: partnership
+  },
+  {
     id: 6,
     date: 'May 07, 2026',
     title: "Empowering Thuwatikanaye Coffee Cooperative",
@@ -181,11 +189,11 @@ export const newsArticles = [
     image: raap
   },
   {
-    id: 4,
-    date: 'May 06, 2026',
-    title: 'Promoting Agritourism in Rwenzori Region',
-    summary: 'SUCOFAM joined the rest of the tourism actors in Rwenzori region to participate in a three weeks long training in Fort Portal. In partnership with Mubec safaris, we are on a journey to promote Agritourism in the value chains of coffee, cocoa and honey.',
-    image: partnership
+    id: 7,
+    date: 'May 07, 2026',
+    title: "Scaling Good Agronomic Practices for Farmer Prosperity",
+    summary: "Our agronomists are actively on the ground training farmers in Good Agronomic Practices (GAP). Through this continuous capacity building, farming households are seeing a significant transformation—harvest quantities are increasing, and farmers are earning more from their gardens than ever before.",
+    image: agronomy
   },
   {
     id: 1,
@@ -313,4 +321,5 @@ export const galleryImages = [
   { src: partnership, alt: 'Agritourism training in Fort Portal', category: 'Community' },
   { src: raap, alt: 'RAAP strategic planning meeting', category: 'Community' },
   { src: nyamwamba, alt: 'Training at Thuwatikanaye Coffee Cooperative', category: 'Community' },
+  { src: agronomy, alt: 'Agronomy training for smallholder farmers', category: 'Community' },
 ]
