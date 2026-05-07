@@ -68,7 +68,7 @@ import { Eye, Target, ArrowRight } from 'lucide-vue-next'
 import { vision, mission } from '../data/content.js'
 
 // Import local images
-import aboutMainImg from '@/assets/img/coffee1.jpg'
+import aboutMainImg from '@/assets/img/rwenzori_farmers.jpeg'
 import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
 </script>
 

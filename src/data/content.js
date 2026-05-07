@@ -14,6 +14,7 @@ import partnership from '@/assets/img/partnership.jpeg'
 import raap from '@/assets/img/raap.jpeg'
 import nyamwamba from '@/assets/img/nyamwamba.jpeg'
 import agronomy from '@/assets/img/agronomy.jpeg'
+import rwenzori_farmers from '@/assets/img/rwenzori_farmers.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -200,7 +201,7 @@ export const newsArticles = [
     date: 'April 24, 2026',
     title: 'Expanding Our Climate-Smart Initiatives',
     summary: 'SUCOFAM reaches a milestone of 50,000 trees planted across Kasese region as part of our carbon sequestration program.',
-    image: coffee1
+    image: rwenzori_farmers
   },
   {
     id: 2,
@@ -309,7 +310,7 @@ export const officeLocations = [
 ]
 
 export const galleryImages = [
-  { src: coffee1, alt: 'Coffee harvesting in Kasese', category: 'Coffee' },
+  { src: rwenzori_farmers, alt: 'Coffee harvesting in Kasese', category: 'Coffee' },
   { src: coffee3, alt: 'Coffee beans drying process', category: 'Coffee' },
   { src: coffeeBg, alt: 'Coffee plantation landscape', category: 'Coffee' },
   { src: smellCoffee, alt: 'Quality testing coffee aroma', category: 'Coffee' },
