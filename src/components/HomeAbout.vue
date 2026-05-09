@@ -236,15 +236,15 @@ import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
 
 @media (max-width: 900px) {
   .vm-overlap-container {
-    margin-top: -5rem;
+    margin-top: -3rem;
   }
   .vm-overlap-card {
-    padding: 2.5rem;
-    border-radius: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
   }
   .vm-grid-overlap {
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
   }
   .vm-divider {
     display: none;

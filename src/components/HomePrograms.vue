@@ -12,7 +12,7 @@
 
       <div class="hp-grid">
         <div 
-          v-for="(prog, i) in programs.slice(0, 6)" 
+          v-for="(prog, i) in programs.slice(0, 3)" 
           :key="prog.title" 
           class="hp-card reveal"
           :class="`reveal-delay-${i % 3 + 1}`"

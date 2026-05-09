@@ -137,8 +137,8 @@ const scrollToAbout = () => {
   inset: 0;
   background: linear-gradient(
     to top, 
-    rgba(8, 28, 21, 0.9) 0%, 
-    rgba(8, 28, 21, 0.5) 40%, 
+    rgba(8, 28, 21, 0.6) 0%, 
+    rgba(8, 28, 21, 0.3) 40%, 
     rgba(8, 28, 21, 0) 100%
   );
   z-index: 2;
@@ -337,19 +337,27 @@ const scrollToAbout = () => {
 }
 
 @media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 8rem 1.5rem 4rem;
+    gap: 2rem;
+    padding: 6rem 1.5rem 2rem;
+    width: 100%;
   }
   .hero-right-float {
     position: static;
-    justify-content: flex-start;
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
+    justify-content: center;
+    padding: 0 1.5rem;
+    margin-bottom: 4rem;
+    width: 100%;
   }
   .trust-card {
-    max-width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }
 
