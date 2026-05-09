@@ -173,6 +173,18 @@
       </svg>
     </div>
 
+    <!-- Group Photo -->
+    <section class="group-photo-section bg-white">
+      <div class="container">
+        <div class="group-photo-box reveal">
+          <img :src="groupPhoto" alt="SUCOFAM Team and Partners" class="group-photo-img" />
+          <div class="group-photo-caption">
+            <p>Our dedicated team and partners working together for agricultural transformation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Team -->
     <section class="team-section bg-white section-padding">
       <div class="container">
@@ -187,7 +199,7 @@
             v-for="(member, i) in teamMembers" 
             :key="member.name"
             class="team-card reveal"
-            :class="`reveal-delay-${i % 4}`"
+            :class="`reveal-delay-${i % 3}`"
           >
             <div class="team-image">
               <img :src="member.image" :alt="member.name" />
@@ -235,6 +247,7 @@
 import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info, Linkedin, Twitter, Mail } from 'lucide-vue-next'
 import { vision, mission, culture, ourGoals, teamMembers } from '../data/content.js'
 import organogramImg from '@/assets/img/organogram.png'
+import groupPhoto from '@/assets/img/partnership.jpeg'
 </script>
 
 <style scoped>
@@ -491,7 +504,7 @@ import organogramImg from '@/assets/img/organogram.png'
 /* Team */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -586,6 +599,48 @@ import organogramImg from '@/assets/img/organogram.png'
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--text-muted);
+}
+
+/* Group Photo */
+.group-photo-section {
+  padding: 2rem 0;
+}
+
+.group-photo-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  position: relative;
+  background: var(--white);
+}
+
+.group-photo-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.group-photo-caption {
+  padding: 1.5rem;
+  background: var(--white);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.group-photo-caption p {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .group-photo-img {
+    height: 300px;
+  }
 }
 
 /* Partner CTA */

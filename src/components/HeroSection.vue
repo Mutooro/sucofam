@@ -24,46 +24,47 @@
 
     <div class="hero-content container">
       <div class="hero-left">
-        <h1 class="hero-title reveal">
+        <!-- <h1 class="hero-title reveal">
           <em>Improving Farmer Livelihoods</em> 
-        </h1>
+        </h1> -->
 
-        <p class="hero-desc reveal reveal-delay-1">
+        <!-- <p class="hero-desc reveal reveal-delay-1">
           SUCOFAM empowers smallholder farmers across Uganda through coffee, cocoa, and honey value chains—ensuring fair incomes and sustainable growth.
-        </p>
+        </p> -->
 
-        <div class="hero-actions reveal reveal-delay-2">
+        <!-- <div class="hero-actions reveal reveal-delay-2">
           <router-link to="/programs" class="btn btn-accent">
             Explore Programs <ArrowRight class="icon-sm" />
           </router-link>
           <router-link to="/contact" class="btn btn-outline-white">
             Partner With Us
           </router-link>
-        </div>
+        </div> -->
       </div>
 
-      <!-- Right — floating trust card -->
-      <div class="hero-right reveal reveal-delay-3">
-        <div class="trust-card">
-          <div class="trust-avatars">
-            <img :src="test1" alt="Farmer" />
-            <img :src="test2" alt="Farmer" />
-            <img :src="test5" alt="Farmer" />
-            <img :src="test1" alt="Farmer" />
-            <img :src="test2" alt="Farmer" />
-            <img :src="test5" alt="Farmer" />
-            <div class="trust-more">200+</div>
-          </div>
-          <p class="trust-text">Farmers empowered across Uganda</p>
+    </div>
+    
+    <!-- Right — floating trust card (Absolute positioned relative to hero) -->
+    <div class="hero-right-float reveal reveal-delay-3">
+      <div class="trust-card">
+        <div class="trust-avatars">
+          <img :src="test1" alt="Farmer" />
+          <img :src="test2" alt="Farmer" />
+          <img :src="test5" alt="Farmer" />
+          <img :src="test1" alt="Farmer" />
+          <img :src="test2" alt="Farmer" />
+          <img :src="test5" alt="Farmer" />
+          <div class="trust-more">200+</div>
         </div>
+        <p class="trust-text">Farmers empowered across Uganda</p>
       </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="scroll-hint" @click="scrollToAbout">
+    <!-- <div class="scroll-hint" @click="scrollToAbout">
       <div class="scroll-wheel" />
       <span>Scroll</span>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -147,7 +148,7 @@ const scrollToAbout = () => {
 .hero-content {
   position: relative;
   z-index: 3;
-  padding: 12rem 1.5rem 8rem;
+  padding: 12rem 1.5rem 12rem;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 4rem;
@@ -223,20 +224,25 @@ const scrollToAbout = () => {
 }
 
 /* Right — trust card */
-.hero-right {
+.hero-right-float {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  z-index: 10;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
 .trust-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  max-width: 280px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  padding: 1.5rem 2rem;
+  max-width: 300px;
+  box-shadow: var(--shadow-lg);
 }
 
 .trust-avatars {
@@ -274,9 +280,10 @@ const scrollToAbout = () => {
 }
 
 .trust-text {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  color: var(--text-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* Scroll hint */
@@ -335,8 +342,11 @@ const scrollToAbout = () => {
     gap: 3rem;
     padding: 8rem 1.5rem 4rem;
   }
-  .hero-right {
+  .hero-right-float {
+    position: static;
     justify-content: flex-start;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
   }
   .trust-card {
     max-width: 100%;

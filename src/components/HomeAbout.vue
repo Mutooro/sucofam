@@ -1,20 +1,29 @@
 <template>
   <section id="about" class="home-about">
-    <!-- Vision & Mission Cards (overlapping hero) -->
-    <div class="vm-cards container">
-      <div class="vm-card reveal">
-        <div class="vm-icon">
-          <Eye :size="28" />
+    <!-- Vision & Mission Overlap Card -->
+    <div class="vm-overlap-container container">
+      <div class="vm-overlap-card reveal">
+        <div class="vm-grid-overlap">
+          <div class="vm-item">
+            <div class="vm-icon">
+              <Eye :size="24" />
+            </div>
+            <div class="vm-content">
+              <h3>Our Vision</h3>
+              <p>{{ vision }}</p>
+            </div>
+          </div>
+          <div class="vm-divider" />
+          <div class="vm-item">
+            <div class="vm-icon pink">
+              <Target :size="24" />
+            </div>
+            <div class="vm-content">
+              <h3>Our Mission</h3>
+              <p>{{ mission }}</p>
+            </div>
+          </div>
         </div>
-        <h3>Our Vision</h3>
-        <p>{{ vision }}</p>
-      </div>
-      <div class="vm-card reveal reveal-delay-1">
-        <div class="vm-icon pink">
-          <Target :size="28" />
-        </div>
-        <h3>Our Mission</h3>
-        <p>{{ mission }}</p>
       </div>
     </div>
 
@@ -79,40 +88,44 @@ import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
   background: var(--white);
 }
 
-/* Vision & Mission Cards */
-.vm-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: -4rem;
+/* Vision & Mission Overlap Card */
+.vm-overlap-container {
   position: relative;
   z-index: 10;
+  margin-top: -10rem;
 }
 
-.vm-card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
+.vm-overlap-card {
+  background: #fdfdfd;
+  border-radius: 3.5rem 3.5rem 1.5rem 1.5rem;
+  padding: 4rem 5rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
-.vm-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.vm-grid-overlap {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.vm-item {
+  flex: 1;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .vm-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius);
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   background: var(--bg-green);
   color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
 }
 
 .vm-icon.pink {
@@ -120,18 +133,25 @@ import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
   color: var(--accent);
 }
 
-.vm-card h3 {
+.vm-content h3 {
   font-family: var(--ff-serif);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-.vm-card p {
-  font-size: 0.9rem;
-  line-height: 1.7;
+.vm-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-muted);
+}
+
+.vm-divider {
+  width: 1px;
+  height: 80px;
+  background: rgba(0,0,0,0.06);
+  align-self: center;
 }
 
 /* Who We Are */
@@ -215,9 +235,19 @@ import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
 }
 
 @media (max-width: 900px) {
-  .vm-cards {
-    grid-template-columns: 1fr;
-    margin-top: 2rem;
+  .vm-overlap-container {
+    margin-top: -5rem;
+  }
+  .vm-overlap-card {
+    padding: 2.5rem;
+    border-radius: 2rem;
+  }
+  .vm-grid-overlap {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .vm-divider {
+    display: none;
   }
   .about-content {
     grid-template-columns: 1fr;
