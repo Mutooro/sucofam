@@ -361,6 +361,12 @@ const scrollToAbout = () => {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-right-float {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .hero {
     min-height: 85vh; /* Slightly reduced height on mobile to show more photo width */

@@ -269,6 +269,15 @@ import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
   }
 }
 
+@media (max-width: 768px) {
+  .vm-overlap-container {
+    display: none;
+  }
+  .home-about {
+    padding-top: 4rem;
+  }
+}
+
 @media (max-width: 500px) {
   .about-img-float {
     display: none;

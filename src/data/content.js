@@ -16,6 +16,7 @@ import nyamwamba from '@/assets/img/nyamwamba.jpeg'
 import agronomy from '@/assets/img/agronomy.jpeg'
 import rwenzori_farmers from '@/assets/img/rwenzori_farmers.jpeg'
 import beatrice from '@/assets/img/beatrice.jpeg'
+import enid from '@/assets/img/enid.jpeg'
 
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
@@ -241,50 +242,48 @@ export const navLinks = [
 ]
 
 export const teamMembers = [
-
+  {
+    name: 'Maate Coroneri',
+    role: 'Executive Director',
+    bio: 'Maate Coroneri is a passionate and dedicated leader with a deep commitment to community development. As Executive Director of SUCOFAM Uganda, he spearheads the organization’s vision of transforming the lives of farmers through sustainable agriculture and value chain development.',
+    image: test2,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
+  },
   {
     name: 'Beatrice Nyangoma',
     role: 'Director of Operations',
     bio: 'Beatrice Nyangoma is a seasoned communications professional with over eight years of experience in driving operational excellence. At SUCOFAM, she spearheads strategic partnership engagement and oversees client relations, ensuring that high-level collaborations translate into sustainable growth.',
     image: beatrice,
-    social: { linkedin: '#', twitter: '#', email: 'beatrice.nyangoma@sucofam.org' }
-  },
-  {
-    name: 'David Mumbere',
-    role: 'MEAL Practitioner',
-    bio: 'Mumbere David is a results-driven Monitoring, Evaluation, Accountability, and Learning (MEAL) practitioner with extensive experience in data management, research, and community-based programming. At SUCOFAM Uganda, he supports organizational learning and program effectiveness through high-quality data systems and impactful community engagement.',
-    image: mukokoma,
-    social: { linkedin: '#', twitter: '#', email: 'david.mukokoma@sucofam.org' }
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Baluku Wangehya',
     role: 'Coffee Value Chain Manager',
     bio: 'A committed coffee value chain professional dedicated to advancing sustainable coffee farming practices. His work focuses on boosting farmer incomes, enhancing coffee quality and production volumes, and championing climate-smart agriculture. Through continuous training and farmer mentorship, he plays a pivotal role in SUCOFAM Uganda’s mission to foster agricultural transformation and community resilience.',
     image: test5,
-    social: { linkedin: '#', twitter: '#', email: 'wangehya.b@sucofam.org' }
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Bazale Jonah',
     role: 'Agritourism Manager',
     bio: 'Bazale Jonah is a passionate and creative Agritourism practitioner dedicated to advancing sustainable agricultural tourism. At SUCOFAM Uganda, he designs and implements tourism initiatives that highlight the value chains of coffee, cocoa, and honey, fostering meaningful connections between visitors and farming communities. His work blends agricultural knowledge with tourism innovation to promote local culture, environmental stewardship, and economic development.',
     image: test1,
-    social: { linkedin: '#', twitter: '#', email: 'bazale.j@sucofam.org' }
-  },
-  {
-    name: 'Maate Coroneri',
-    role: 'Head of Operations',
-    bio: 'Maate Coroneri is a passionate and creative Agritourism practitioner dedicated to advancing sustainable agricultural tourism. At SUCOFAM Uganda, he designs and implements tourism initiatives that highlight the value chains of coffee, cocoa, and honey, fostering meaningful connections between visitors and farming communities. His work blends agricultural knowledge with tourism innovation to promote local culture, environmental stewardship, and economic development.',
-    image: test2,
-    social: { linkedin: '#', twitter: '#', email: 'coroner.maate@sucofam.org' }
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Enid Biira',
     role: 'Legal Administrator',
     bio: 'Enid is a results-driven Legal practitioner with extensive experience in the legal and administrative domain. At SUCOFAM Uganda, she supports the organization’s legal and administrative functions, ensuring smooth operations and compliance with relevant regulations.',
-    image: test1,
-    social: { linkedin: '#', twitter: '#', email: 'enid.biira@sucofam.org' }
+    image: enid,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
+  },
+  {
+    name: 'David Mumbere',
+    role: 'MEAL Practitioner',
+    bio: 'Mumbere David is a results-driven Monitoring, Evaluation, Accountability, and Learning (MEAL) practitioner with extensive experience in data management, research, and community-based programming. At SUCOFAM Uganda, he supports organizational learning and program effectiveness through high-quality data systems and impactful community engagement.',
+    image: mukokoma,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   }
-  
 ]
 
 export const testimonials = [
