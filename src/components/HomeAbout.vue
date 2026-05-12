@@ -1,31 +1,6 @@
 <template>
   <section id="about" class="home-about">
-    <!-- Vision & Mission Overlap Card -->
-    <div class="vm-overlap-container container">
-      <div class="vm-overlap-card reveal">
-        <div class="vm-grid-overlap">
-          <div class="vm-item">
-            <div class="vm-icon">
-              <Eye :size="24" />
-            </div>
-            <div class="vm-content">
-              <h3>Our Vision</h3>
-              <p>{{ vision }}</p>
-            </div>
-          </div>
-          <div class="vm-divider" />
-          <div class="vm-item">
-            <div class="vm-icon pink">
-              <Target :size="24" />
-            </div>
-            <div class="vm-content">
-              <h3>Our Mission</h3>
-              <p>{{ mission }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Who We Are Section -->
     <div class="about-content container">
@@ -63,7 +38,7 @@
             loading="lazy"
           />
           <div class="about-stat-float">
-            <span class="stat-num">200+</span>
+            <span class="stat-num">4,532+</span>
             <span class="stat-label">Farmers Empowered</span>
           </div>
         </div>

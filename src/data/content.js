@@ -174,6 +174,7 @@ export const newsArticles = [
     id: 4,
     date: 'May 06, 2026',
     title: 'Promoting Agritourism in Rwenzori Region',
+    category: 'Agritourism',
     summary: 'SUCOFAM joined the rest of the tourism actors in Rwenzori region to participate in a three weeks long training in Fort Portal. In partnership with Mubec safaris, we are on a journey to promote Agritourism in the value chains of coffee, cocoa and honey.',
     image: partnership
   },
@@ -181,6 +182,7 @@ export const newsArticles = [
     id: 6,
     date: 'May 07, 2026',
     title: "Empowering Thuwatikanaye Coffee Cooperative",
+    category: 'Farmer Empowerment',
     summary: "Our team engaged members of Thuwatikanaye Coffee Cooperative Society in Nyamwamba Division in Kasese district and shared experiences on good agronomic practices. SUCOFAM is aiming at not only improving farmers' income but also emphasises on the quality and quantity of the harvest. We have trained and equipped our model farmers who will host our demo gardens from where the rest of the communities will learn from.",
     image: nyamwamba
   },
@@ -188,6 +190,7 @@ export const newsArticles = [
     id: 5,
     date: 'May 06, 2026',
     title: "Rwenzori Agroecology Actors' Platform Strategic Planning",
+    category: 'Strategic Partnerships',
     summary: "SUCOFAM believes that we do more together! We recently joined other likeminded organisations in the Rwenzori region under our coalition; Rwenzori Agroecology Actors' Platform (RAAP) to develop a five year strategic plan. RAAP is actively promoting sustainable agricultural practices to protect the ecosystem and ensure food security.",
     image: raap
   },
@@ -195,6 +198,7 @@ export const newsArticles = [
     id: 7,
     date: 'May 07, 2026',
     title: "Scaling Good Agronomic Practices for Farmer Prosperity",
+    category: 'Agronomy Training',
     summary: "Our agronomists are actively on the ground training farmers in Good Agronomic Practices (GAP). Through this continuous capacity building, farming households are seeing a significant transformation—harvest quantities are increasing, and farmers are earning more from their gardens than ever before.",
     image: agronomy
   },
@@ -202,6 +206,7 @@ export const newsArticles = [
     id: 1,
     date: 'April 24, 2026',
     title: 'Expanding Our Climate-Smart Initiatives',
+    category: 'Climate Action',
     summary: 'SUCOFAM reaches a milestone of 50,000 trees planted across Kasese region as part of our carbon sequestration program.',
     image: rwenzori_farmers
   },
@@ -209,6 +214,7 @@ export const newsArticles = [
     id: 2,
     date: 'April 15, 2026',
     title: 'New Market Linkages for Honey Producers',
+    category: 'Market Access',
     summary: 'Connecting our women-led bee keeping groups to premium export markets, ensuring fair prices and sustainable growth.',
     image: placeholder1
   },
@@ -216,6 +222,7 @@ export const newsArticles = [
     id: 3,
     date: 'March 28, 2026',
     title: 'Youth Agribusiness Training Kicks Off',
+    category: 'Youth Empowerment',
     summary: 'Over 100 young farmers have enrolled in our latest agribusiness and value addition masterclass.',
     image: coffee3
   }
