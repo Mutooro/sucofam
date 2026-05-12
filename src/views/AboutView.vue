@@ -56,7 +56,7 @@
             <div class="about-info-card">
               <Globe :size="24" />
               <span class="info-label">Reach</span>
-              <span class="info-value">3 Districts</span>
+              <span class="info-value">5 Districts</span>
             </div>
           </div>
         </div>
@@ -135,43 +135,11 @@
       </div>
     </section>
 
-    <!-- Section Divider -->
-    <div class="section-wave-divider">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
 
-    <!-- Organizational Structure -->
-    <section id="structure" class="structure-section bg-soft section-padding">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">Governance</div>
-          <h2 class="section-title">Our <em>Structure</em></h2>
-          <div class="section-line" />
-          <p class="section-desc">
-            SUCOFAM is built on a robust governance framework designed to ensure transparency, 
-            efficiency, and maximum impact for our farming communities.
-          </p>
-        </div>
 
-        <div class="structure-box reveal">
-          <div class="organogram-wrapper">
-            <img :src="organogramImg" alt="SUCOFAM Organogram" class="organogram-img" />
-          </div>
-          <div class="structure-legend">
-            <p><Info :size="16" /> Tip: Click the image to view in full resolution.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Section Divider Inverted -->
-    <div class="section-wave-divider inverted">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-      </svg>
-    </div>
+
+
 
     <!-- Group Photo -->
     <section class="group-photo-section bg-white">
@@ -202,7 +170,10 @@
             :class="`reveal-delay-${i % 3}`"
           >
             <div class="team-image">
-              <img :src="member.image" :alt="member.name" />
+              <img v-if="member.image" :src="member.image" :alt="member.name" />
+              <div v-else class="team-placeholder">
+                <User :size="64" />
+              </div>
               <div class="team-socials" v-if="member.social">
                 <a v-if="member.social.linkedin" :href="member.social.linkedin" target="_blank" class="social-link" title="LinkedIn">
                   <Linkedin :size="18" />
@@ -216,9 +187,10 @@
               </div>
             </div>
             <div class="team-info">
-              <h3>{{ member.name }}</h3>
+              <h3 class="team-name">{{ member.name }}</h3>
               <span class="team-role">{{ member.role }}</span>
-              <p>{{ member.bio }}</p>
+              <div class="team-divider"></div>
+              <p class="team-bio">{{ member.bio }}</p>
             </div>
           </div>
         </div>
@@ -501,104 +473,140 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   }
 }
 
-/* Team */
+/* Team Section Redesign - Osela Style */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .team-card {
-  background: var(--white);
-  border-radius: 2rem;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .team-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-10px);
+  background: var(--white);
+  border-color: #0a4a6e;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .team-image {
-  height: 320px;
-  overflow: hidden;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
   position: relative;
+  overflow: hidden;
+  border: 4px solid transparent;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.team-card:hover .team-image {
+  border-color: #0a4a6e;
 }
 
 .team-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transition: transform 0.5s ease;
 }
 
-.team-card:hover .team-image img {
-  transform: scale(1.1);
-}
-
-.team-socials {
-  position: absolute;
-  inset: 0;
-  background: rgba(27, 67, 50, 0.7);
+.team-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  opacity: 0;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(2px);
+  color: #0a4a6e;
 }
 
-.team-card:hover .team-socials {
-  opacity: 1;
+.team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0a4a6e;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.team-card:hover .team-name {
+  color: #ff5722;
+}
+
+.team-role {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff5722;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.team-card:hover .team-role {
+  color: #0a4a6e;
+}
+
+.team-divider {
+  width: 0;
+  height: 2px;
+  background: #0a4a6e;
+  margin-bottom: 1rem;
+  transition: width 0.4s ease;
+}
+
+.team-card:hover .team-divider {
+  width: 40px;
+}
+
+.team-bio {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.team-socials {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .social-link {
-  width: 40px;
-  height: 40px;
-  background: var(--white);
-  color: var(--primary);
+  width: 36px;
+  height: 36px;
+  background: #eee;
+  color: #0a4a6e;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .social-link:hover {
-  background: var(--accent);
-  color: var(--white);
-  transform: translateY(-5px);
-}
-
-.team-info {
-  padding: 1.5rem;
-}
-
-.team-info h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 0.25rem;
-}
-
-.team-role {
-  display: block;
-  font-size: 0.8rem;
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.team-info p {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: var(--text-muted);
+  background: #0a4a6e;
+  color: #fff;
+  transform: translateY(-3px);
 }
 
 /* Group Photo */

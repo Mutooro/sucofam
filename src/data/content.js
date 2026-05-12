@@ -154,10 +154,10 @@ export const products = [
 ]
 
 export const impactStats = [
-  { number: '200+', label: 'Youth & Women Trained', detail: 'In agronomy, agribusiness, and leadership' },
+  { number: '4,532+', label: 'Farmers Reached', detail: 'Across our value chains in Uganda' },
+  { number: '100+', label: 'Bee Hives Sited', detail: 'Supporting honey production and pollination' },
   { number: '50,000+', label: 'Trees Planted', detail: 'Climate action initiatives in 2025/2026' },
-  { number: 'Premium', label: 'Market Access', detail: 'Connecting groups to structured markets' },
-  { number: '3+', label: 'Operating Locations', detail: 'Kasese, Kampala & Kyegegwa' },
+  { number: '5+', label: 'Operating Locations', detail: 'Kasese, Kabarole, Kyegegwa, Bunyangabu & Rubirizi' },
 ]
 
 export const whyPartner = [
@@ -246,42 +246,63 @@ export const teamMembers = [
     name: 'Maate Coroneri',
     role: 'Executive Director',
     bio: 'Maate Coroneri is a passionate and dedicated leader with a deep commitment to community development. As Executive Director of SUCOFAM Uganda, he spearheads the organization’s vision of transforming the lives of farmers through sustainable agriculture and value chain development.',
-    image: test2,
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Beatrice Nyangoma',
     role: 'Director of Operations',
     bio: 'Beatrice Nyangoma is a seasoned communications professional with over eight years of experience in driving operational excellence. At SUCOFAM, she spearheads strategic partnership engagement and oversees client relations, ensuring that high-level collaborations translate into sustainable growth.',
-    image: beatrice,
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Baluku Wangehya',
     role: 'Coffee Value Chain Manager',
     bio: 'A committed coffee value chain professional dedicated to advancing sustainable coffee farming practices. His work focuses on boosting farmer incomes, enhancing coffee quality and production volumes, and championing climate-smart agriculture. Through continuous training and farmer mentorship, he plays a pivotal role in SUCOFAM Uganda’s mission to foster agricultural transformation and community resilience.',
-    image: test5,
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Bazale Jonah',
     role: 'Agritourism Manager',
     bio: 'Bazale Jonah is a passionate and creative Agritourism practitioner dedicated to advancing sustainable agricultural tourism. At SUCOFAM Uganda, he designs and implements tourism initiatives that highlight the value chains of coffee, cocoa, and honey, fostering meaningful connections between visitors and farming communities. His work blends agricultural knowledge with tourism innovation to promote local culture, environmental stewardship, and economic development.',
-    image: test1,
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'Enid Biira',
     role: 'Legal Administrator',
     bio: 'Enid is a results-driven Legal practitioner with extensive experience in the legal and administrative domain. At SUCOFAM Uganda, she supports the organization’s legal and administrative functions, ensuring smooth operations and compliance with relevant regulations.',
-    image: enid,
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   },
   {
     name: 'David Mumbere',
     role: 'MEAL Practitioner',
     bio: 'Mumbere David is a results-driven Monitoring, Evaluation, Accountability, and Learning (MEAL) practitioner with extensive experience in data management, research, and community-based programming. At SUCOFAM Uganda, he supports organizational learning and program effectiveness through high-quality data systems and impactful community engagement.',
-    image: mukokoma,
+    image: null,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
+  },
+  {
+    name: 'Kansiime Doreen',
+    role: 'Nutrition and Food Security Lead',
+    bio: 'Kansiime Doreen is a dedicated Nutrition and Food Security Lead at SUCOFAM Uganda. She specializes in implementing community-based nutrition programs, promoting household food security through sustainable kitchen gardening, and providing education on dietary diversity to farming families.',
+    image: null,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
+  },
+  {
+    name: 'Kule Opio',
+    role: 'Coffee Agronomy Officer',
+    bio: 'Kule Opio is a Coffee Agronomy Officer at SUCOFAM Uganda. He is committed to supporting coffee farmers in implementing good agronomic practices (GAP) to improve crop yields, ensure bean quality, and promote climate-resilient farming techniques.',
+    image: null,
+    social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
+  },
+  {
+    name: 'Baluku Bobo',
+    role: 'Coffee Business Development Officer',
+    bio: 'Baluku Bobo serves as the Coffee Business Development Officer at SUCOFAM Uganda. He focuses on strengthening coffee value chains, facilitating market linkages for farmer groups, and developing agribusiness strategies that ensure farmers secure fair and sustainable incomes.',
+    image: null,
     social: { linkedin: '#', twitter: '#', email: 'info@sucofam.org' }
   }
 ]
