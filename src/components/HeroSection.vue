@@ -45,7 +45,7 @@
     </div>
     
     <!-- Right — floating trust card (Absolute positioned relative to hero) -->
-    <div class="hero-right-float reveal reveal-delay-3">
+    <!-- <div class="hero-right-float reveal reveal-delay-3">
       <div class="trust-card">
         <div class="trust-avatars">
           <img :src="test1" alt="Farmer" />
@@ -58,7 +58,7 @@
         </div>
         <p class="trust-text">Farmers empowered across Uganda</p>
       </div>
-    </div>
+    </div> -->
 
     <!-- Scroll indicator -->
     <!-- <div class="scroll-hint" @click="scrollToAbout">
