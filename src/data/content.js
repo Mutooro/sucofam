@@ -317,7 +317,7 @@ export const teamMembers = [
 export const testimonials = [
   {
     quote: "SUCOFAM has completely changed the way I manage my coffee farm. Their training in agronomic practices helped me double my yield in just one season.",
-    name: "John Baptist",
+    name: "Martha Biira",
     role: "Coffee Farmer, Kasese",
     image: test2
   },
