@@ -45,6 +45,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Our Programs | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'Explore SUCOFAM\'s holistic agricultural programs. We focus on climate-smart agriculture, farmer organization, and agribusiness value addition.'
+    }
+  ]
+})
+
 import { 
   CloudRain, Users, Settings, ShoppingBag, Utensils, Trees,
   Scale, Coins, Heart, BookOpen, Check

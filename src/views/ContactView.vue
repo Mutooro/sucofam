@@ -110,6 +110,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Contact Us | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'Get in touch with SUCOFAM. Partner with us, inquire about our value chains, or learn more about how you can support Ugandan farmers.'
+    }
+  ]
+})
+
 import { ref } from 'vue'
 import { MapPin, Mail, Phone, Send } from 'lucide-vue-next'
 import { officeLocations } from '@/data/content.js'

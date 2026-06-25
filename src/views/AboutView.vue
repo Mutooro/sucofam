@@ -216,6 +216,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'About Us | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'Learn about SUCOFAM\'s mission to transform agricultural livelihoods in Uganda. Discover our history, vision, and how we empower women and youth in farming.'
+    }
+  ]
+})
+
 import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info, Linkedin, Twitter, Mail } from 'lucide-vue-next'
 import { vision, mission, culture, ourGoals, teamMembers } from '../data/content.js'
 import organogramImg from '@/assets/img/organogram.png'

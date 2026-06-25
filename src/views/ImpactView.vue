@@ -67,6 +67,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Our Impact | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'See the real-world impact of SUCOFAM\'s work in Uganda. Over 4,500 farmers reached, 50,000 trees planted, and sustainable livelihoods built.'
+    }
+  ]
+})
+
 import { Users, TreePine, TrendingUp, MapPin, ArrowRight } from 'lucide-vue-next'
 import { impactStats, whyPartner } from '../data/content.js'
 

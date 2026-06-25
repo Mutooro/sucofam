@@ -39,7 +39,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
 import { newsArticles } from '../data/content.js'
+
+useHead({
+  title: 'News & Updates | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'Read the latest news and updates from SUCOFAM. Stories from the field, program highlights, and agricultural insights from Uganda.'
+    }
+  ]
+})
 </script>
 
 <style scoped>

@@ -66,6 +66,18 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Gallery | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'View photos of SUCOFAM\'s work in the field. See our farmers, training sessions, and the impact of our agricultural programs in Uganda.'
+    }
+  ]
+})
+
 import { ref, computed } from 'vue'
 import { ZoomIn, X } from 'lucide-vue-next'
 import { galleryImages } from '../data/content.js'

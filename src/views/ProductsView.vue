@@ -45,8 +45,19 @@
 </template>
 
 <script setup>
+import { useHead } from '@unhead/vue'
 import { Coffee, Bean, Droplets, ArrowRight } from 'lucide-vue-next'
 import { products } from '../data/content.js'
+
+useHead({
+  title: 'Value Chains (Coffee, Cocoa, Honey) | SUCOFAM',
+  meta: [
+    {
+      name: 'description',
+      content: 'SUCOFAM works within the coffee, cocoa, and honey value chains in Uganda to improve quality, secure fair markets, and increase farmer incomes.'
+    }
+  ]
+})
 
 const iconMap = { Coffee, Bean, Droplets }
 const getIcon = (name) => iconMap[name] || Coffee
