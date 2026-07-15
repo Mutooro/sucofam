@@ -519,8 +519,8 @@ export const testimonials = [
 export const officeLocations = [
   {
     type: 'Head Office',
-    address: 'P.O.Box, 430664, Kasese-Uganda',
-    details: 'Rwenzori Road-Kasese Municipality.'
+    address: 'Kibbenge Tourist Model Village, Katonzi Cell, Bulembia Division, Kasese Municipality',
+    details: '4kms along Kilembe Road · P.O.Box 430664'
   },
   {
     type: 'Coordination Office',

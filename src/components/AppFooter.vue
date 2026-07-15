@@ -43,7 +43,7 @@
           <ul class="contact-list">
             <li>
               <MapPin :size="16" class="inline-icon" />
-              <span>Kasese-Uganda, Rwenzori Road</span>
+              <span>Kibbenge Tourist Model Village, Katonzi Cell, Bulembia Division, Kasese Municipality · P.O.Box 430664</span>
             </li>
             <li>
               <Mail :size="16" class="inline-icon" />
