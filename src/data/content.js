@@ -18,6 +18,17 @@ import rwenzori_farmers from '@/assets/img/rwenzori_farmers.jpeg'
 import beatrice from '@/assets/img/beatrice.jpeg'
 import enid from '@/assets/img/enid.jpeg'
 
+// ─── Program section images (extracted from Detailed SUCOFAM Program docx) ───
+import progCsaAgroforestry1 from '@/assets/img/prog_csa_agroforestry1.jpeg'
+import progCsaAgroforestry2 from '@/assets/img/prog_csa_agroforestry2.jpeg'
+import progCsaAgroforestry3 from '@/assets/img/prog_csa_agroforestry3.jpeg'
+import progCsaSoilWater1 from '@/assets/img/prog_csa_soil_water1.jpeg'
+import progCsaSoilWater2 from '@/assets/img/prog_csa_soil_water2.jpeg'
+import progCsaSoilWater3 from '@/assets/img/prog_csa_soil_water3.jpeg'
+import progCsaCapacity1 from '@/assets/img/prog_csa_capacity1.jpeg'
+import progCsaCapacity2 from '@/assets/img/prog_csa_capacity2.jpeg'
+import progF2mpOrg1 from '@/assets/img/prog_f2mp_org1.jpeg'
+
 export const vision = "To build a transformed agricultural sector in Uganda where farmers especially women and youth adopt improved agronomic practices, produce high-quality, market-compliant products, and participate equitably in transparent and profitable value chains free from exploitation."
 
 export const mission = "To empower farmers through capacity building in good agronomic practices, quality assurance, and post-harvest management, while strengthening access to market information, financial services, and structured markets enabling them to reduce distress sales, overcome middlemen exploitation, and secure fair, sustainable incomes from coffee, cocoa, and honey value chains."
@@ -65,65 +76,234 @@ export const ourGoals = [
 
 export const programs = [
   {
+    id: 'climate-smart-agriculture',
     icon: 'CloudRain',
     title: 'Climate-Smart Agriculture',
     desc: 'Promoting sustainable practices that build long-term productivity and climate resilience.',
-    items: ['Sustainable farming practices promotion', 'Soil fertility improvement & agroforestry', 'Climate adaptation & resilience building'],
+    goal: 'To implement climate-smart agricultural interventions that enhance productivity, protect the environment, and build resilient farming livelihoods in the Rwenzori region.',
+    sections: [
+      {
+        title: 'Environmental Protection, Agroforestry & Tree Planting',
+        desc: 'This is the most widely promoted CSA intervention in the Rwenzori region.',
+        images: [progCsaAgroforestry1, progCsaAgroforestry2, progCsaAgroforestry3],
+        activities: [
+          'Planting shade trees in coffee and cocoa plantations.',
+          'Establishing woodlots for sustainable fuel and timber.',
+          'Planting fruit trees to improve household nutrition and income.',
+          'Restoring degraded hillsides and riverbanks through soil-binding plants.',
+          'Conserving and promoting indigenous tree species.'
+        ],
+        benefits: [
+          'Reduces heat stress on coffee and cocoa crops.',
+          'Improves soil fertility through organic leaf litter.',
+          'Enhances carbon sequestration capacity.',
+          'Protects and restores local biodiversity.',
+          'Diversifies and stabilizes household income.'
+        ]
+      },
+      {
+        title: 'Soil and Water Conservation',
+        desc: 'Because the Rwenzori landscape is mountainous, preventing soil erosion is essential.',
+        images: [progCsaSoilWater1, progCsaSoilWater2, progCsaSoilWater3],
+        activities: [
+          'Constructing terraces on steep agricultural slopes.',
+          'Implementing contour farming and planting grass strips.',
+          'Building stone bunds and check dams to control water runoff.',
+          'Applying mulching and organic composting to conserve soil moisture.',
+          'Establishing rainwater harvesting systems and drainage channels.'
+        ],
+        benefits: [
+          'Significantly reduces soil erosion and landslide risks.',
+          'Conserves soil moisture during dry spells.',
+          'Reduces localized floods and water runoff damage.',
+          'Improves soil organic matter content and structure.',
+          'Maintains long-term agricultural productivity.'
+        ]
+      },
+      {
+        title: 'Climate-Resilient Crop and Livestock Production',
+        desc: 'Farmers are encouraged to adopt improved technologies that can withstand changing weather.',
+        activities: [
+          'Distributing and planting drought- and disease-tolerant crop varieties.',
+          'Introducing improved coffee and banana varieties.',
+          'Diversifying household farming enterprises (coffee, cocoa, bananas, beans, vegetables, fruits).',
+          'Improving pasture management and establishing zero-grazing systems.',
+          'Upgrading livestock housing and promoting improved fodder production.'
+        ],
+        benefits: [
+          'Ensures stable yields despite climate variability.',
+          'Reduces overall risk of complete crop failure.',
+          'Improves livestock health and dairy/meat productivity.',
+          'Enhances household food security and dietary diversity.'
+        ]
+      },
+      {
+        title: 'Integrated Soil Fertility and Pest Management',
+        desc: 'Healthy soils and reduced pest pressure increase resilience to climate change.',
+        activities: [
+          'Promoting compost and farmyard manure application.',
+          'Implementing green manuring and crop rotation practices.',
+          'Encouraging intercropping to maximize space and nutrients.',
+          'Training on Integrated Pest Management (IPM) techniques.',
+          'Promoting biological pest controls and reducing dependence on synthetic chemicals.'
+        ],
+        benefits: [
+          'Restores and maintains natural soil fertility.',
+          'Reduces production costs by minimizing synthetic input usage.',
+          'Fosters healthier agricultural ecosystems.',
+          'Builds crop resistance to emerging pests and diseases.',
+          'Increases crop yields sustainably.'
+        ]
+      },
+      {
+        title: 'Farmer Capacity Building and Climate Information Services',
+        desc: 'Knowledge transfer is critical for successful CSA adoption.',
+        images: [progCsaCapacity1, progCsaCapacity2],
+        activities: [
+          'Establishing Farmer Field Schools (FFS) for hands-on learning.',
+          'Setting up demonstration gardens as localized learning hubs.',
+          'Providing climate and weather advisory services to guide farming calendars.',
+          'Strengthening community-based extension services.',
+          'Supporting record keeping and farm business management training.'
+        ],
+        benefits: [
+          'Accelerates adoption of climate-smart agricultural technologies.',
+          'Enables better, data-driven farm decision-making.',
+          'Improves farmer access to structured value chains.',
+          'Increases community resilience to sudden climate shocks.',
+          'Strengthens farmer groups and cooperatives.'
+        ]
+      }
+    ]
   },
   {
-    icon: 'Users',
-    title: 'Farmer Organization & Empowerment',
-    desc: 'Building strong, inclusive farmer groups with effective leadership and governance.',
-    items: ['Youth & women farmer group formation', 'Leadership development & governance', 'Inclusive value chain participation'],
-  },
-  {
-    icon: 'Settings',
-    title: 'Value Addition & Agribusiness',
-    desc: 'Transforming raw farm output into quality, market-ready branded products.',
-    items: ['Processing, quality assurance & branding', 'Youth-led agribusiness enterprise dev', 'Post-harvest handling skills'],
-  },
-  {
+    id: 'farm-to-market',
     icon: 'ShoppingBag',
-    title: 'Market Access & Trade Linkages',
-    desc: 'Connecting farmers to structured, fair, and premium markets nationally.',
-    items: ['Structured aggregation & bulking', 'Coffee, cocoa & honey market connections', 'Branded product promotion & scaling'],
+    title: 'Farm-to-Market Enterprise Development (F2MP)',
+    desc: 'Empowering farmers, adding value, and connecting value chain products to premium markets.',
+    tagline: 'Empowering Farmers, Adding Value, Connecting Markets.',
+    goal: 'To strengthen farmer organizations and agribusiness enterprises through value addition, entrepreneurship development, market integration, and sustainable trade partnerships that increase household incomes and employment opportunities.',
+    sections: [
+      {
+        title: 'Farmer Organization, Strengthening & Competitiveness',
+        images: [progF2mpOrg1],
+        activities: [
+          'Mobilizing and registering farmer groups, cooperatives, and producer organizations.',
+          'Strengthening governance, leadership, and financial management of cooperatives.',
+          'Promoting inclusive participation of women, youth, and PWDs in cooperative leadership.',
+          'Developing organizational strategic and business plans for long-term growth.',
+          'Building digital cooperative management and record-keeping systems.',
+          'Supporting quality certifications (Organic, Fairtrade, Rainforest Alliance, UTZ).',
+          'Implementing crop/product traceability systems from farm to buyer.',
+          'Promoting climate-smart and sustainable agribusiness models.'
+        ]
+      },
+      {
+        title: 'Agribusiness Development',
+        activities: [
+          'Training farmers in agribusiness management, financial literacy, and entrepreneurship.',
+          'Promoting business planning, record keeping, and enterprise development.',
+          'Supporting producer-led agribusiness enterprises and start-ups.',
+          'Facilitating access to professional Business Development Services (BDS).',
+          'Improving farmer investment readiness and loan management capacity.'
+        ]
+      },
+      {
+        title: 'Value Addition, Agro-processing & Market Access',
+        activities: [
+          'Training on good post-harvest handling (drying, sorting, storage) and quality management.',
+          'Establishing and upgrading processing facilities (wet mills, hullers, honey processors).',
+          'Supporting product packaging, branding, and national UNBS certification.',
+          'Developing new value-added products from coffee, cocoa, and honey value chains.',
+          'Linking farmer groups directly with local, regional, and international buyers.',
+          'Facilitate contract farming and structured premium marketing arrangements.',
+          'Organizing trade fairs, business forums, and buyer-seller matchmaking events.',
+          'Promoting digital marketing and e-commerce platforms for wider trade outreach.'
+        ]
+      },
+      {
+        title: 'Financial Inclusion and Enterprise Financing',
+        activities: [
+          'Establishing and strengthening Village Savings and Loan Associations (VSLAs).',
+          'Facilitating access to affordable agricultural finance and credit products.',
+          'Linking farmer groups and cooperatives to commercial banks and microfinance institutions.',
+          'Promoting warehouse receipt systems and inventory financing.',
+          'Building household capacity in financial planning, savings, and investments.'
+        ]
+      },
+      {
+        title: 'Employment and Youth Enterprise Development',
+        activities: [
+          'Supporting youth-led agricultural start-ups and services (e.g., pruning, spraying teams).',
+          'Developing vocational skills in agro-processing, machinery repair, and agribusiness.',
+          'Promoting decent rural employment opportunities for youth and women.',
+          'Strengthening and mentoring women-owned agricultural enterprises.',
+          'Facilitating business incubation, mentorship, and coaching for emerging entrepreneurs.'
+        ]
+      }
+    ]
   },
   {
-    icon: 'Utensils',
-    title: 'Nutrition & Household Food Security',
-    desc: 'Strengthening household nutrition through kitchen gardens and education.',
-    items: ['Kitchen gardening promotion', 'Nutrition education for households', 'Improved dietary diversity'],
-  },
-  {
-    icon: 'Trees',
-    title: 'Environmental Sustainability',
-    desc: 'Restoring ecosystems and building carbon sequestration capacity.',
-    items: ['Afforestation & reforestation initiatives', 'Carbon sequestration programs', 'Land restoration initiatives'],
-  },
-  {
-    icon: 'Scale',
-    title: 'Gender Inclusivity',
-    desc: 'Dismantling barriers to ensure equal participation and leadership for women.',
-    items: ['Equal participation in decision-making', 'Supporting women leadership', 'Addressing gender-based barriers'],
-  },
-  {
-    icon: 'Coins',
-    title: 'Financial Inclusion',
-    desc: 'Linking farmers to savings, credit, and investment opportunities.',
-    items: ['Savings groups & SACCO linkages', 'Financial literacy promotion', 'Enterprise investment support'],
-  },
-  {
+    id: 'community-well-fair',
     icon: 'Heart',
-    title: 'Health & Well-being',
-    desc: 'Promoting healthy lifestyles, sanitation, and access to health awareness.',
-    items: ['Healthy lifestyle promotion', 'Basic health awareness access', 'Nutrition, sanitation & hygiene integration'],
-  },
-  {
-    icon: 'BookOpen',
-    title: 'Education',
-    desc: 'Supporting learning from children in farm households to youth in agribusiness.',
-    items: ["Children's education awareness", 'Youth agricultural skills development', 'Lifelong learning & knowledge transfer'],
-  },
+    title: 'Community Well-Fair',
+    desc: 'Holistic social interventions addressing nutrition, health, education, and social protection.',
+    goal: 'To improve the general well-being of farming households by addressing interconnected social drivers of development including food security, public health, access to education, and social protection.',
+    sections: [
+      {
+        title: 'Nutrition and Household Food Security',
+        activities: [
+          'Promoting diversified household food production through kitchen and backyard gardens.',
+          'Establishing school and community demonstration gardens for crop diversity.',
+          'Training households in balanced diets, clean food preparation, preservation, and storage.',
+          'Promoting nutrition-sensitive agriculture, including biofortified crop varieties.',
+          'Supporting household food security planning to bridge the lean season gaps.',
+          'Conducting nutrition awareness campaigns for pregnant women, youth, and caregivers.'
+        ]
+      },
+      {
+        title: 'Health and Well-being',
+        activities: [
+          'Conducting community health education and hygiene behavior change campaigns.',
+          'Promoting maternal, newborn, and child health awareness and access to services.',
+          'Supporting Water, Sanitation, and Hygiene (WASH) initiatives (safe water sources, latrines).',
+          'Facilitate community health outreach and disease prevention camps (malaria, waterborne diseases).',
+          'Promoting mental health awareness, counseling, and psychosocial well-being.',
+          'Encouraging healthy lifestyles through physical activity and substance abuse prevention.'
+        ]
+      },
+      {
+        title: 'Education and Skills Development',
+        activities: [
+          'Supporting school enrollment, regular attendance, and retention, particularly for girls.',
+          'Promoting adult functional literacy and numeracy programs within cooperatives.',
+          'Providing vocational, technical, and life-skills training for youth and women.',
+          'Establishing community learning and resource centers equipped with study materials.',
+          'Promoting digital literacy and access to modern learning technologies.',
+          'Supporting school feeding/nutrition programs to improve concentration and health.'
+        ]
+      },
+      {
+        title: 'Social Inclusion and Protection',
+        activities: [
+          'Strengthening community support networks, self-help groups, and safety nets.',
+          'Promoting gender equality, household joint-decision making, and women\'s leadership.',
+          'Empowering youth through leadership training and inclusion in local planning committees.',
+          'Supporting rights and access to resources for PWDs and other marginalized groups.',
+          'Facilitating access to social protection schemes and legal/referral services.'
+        ]
+      },
+      {
+        title: 'Community Awareness and Behaviour Change',
+        activities: [
+          'Conducting awareness campaigns on nutrition, hygiene, child protection, and ecology.',
+          'Promoting positive parenting and child protection practices in farming households.',
+          'Facilitating local community dialogues on social development and conflict resolution.',
+          'Strengthening local leadership capacity in community-driven development planning.'
+        ]
+      }
+    ]
+  }
 ]
 
 export const products = [
@@ -236,7 +416,7 @@ export const navLinks = [
     { label: 'How We Do It', section: 'about', hash: '#how-we-do-it' },
   ]},
   { label: 'Programs', section: 'programs', children:
-    programs.map(p => ({ label: p.title, section: 'programs', hash: `#${p.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-')}` }))
+    programs.map(p => ({ label: p.title, section: 'programs', hash: `#${p.id}` }))
   },
   { label: 'Value Chains', section: 'products', children: [
     { label: 'Coffee', section: 'products', hash: '#coffee' },
