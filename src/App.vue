@@ -5,12 +5,14 @@
       <RouterView />
     </main>
     <AppFooter />
+    <Analytics />
   </div>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
+import { Analytics } from '@vercel/analytics/vue'
 import NavBar from './components/NavBar.vue'
 import AppFooter from './components/AppFooter.vue'
 
