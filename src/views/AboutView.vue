@@ -26,8 +26,8 @@
               value chain participation.
             </p>
             <p>
-              We recognized that while Uganda's agricultural potential is immense, many farmers — especially 
-              women and youth — remain trapped in subsistence farming due to limited knowledge, poor market 
+              We recognized that while Uganda's agricultural potential is immense, many farmers especially 
+              women and youth remain trapped in subsistence farming due to limited knowledge, poor market 
               access, and exploitative middlemen.
             </p>
             <p>

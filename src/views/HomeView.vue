@@ -2,6 +2,7 @@
   <div class="home-view">
     <HeroSection />
     <HomeAbout />
+    <HomeValueChains />
     <HomePrograms />
     <HomePartners />
     <HomeImpact />
@@ -19,13 +20,14 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'SUCOFAM empowers smallholder farmers — especially women and youth — across Uganda through the coffee, cocoa, and honey value chains. Sustainable livelihoods, not subsistence.'
+      content: 'SUCOFAM empowers smallholder farmers especially women and youth across Uganda through the coffee, cocoa, and honey value chains. Sustainable livelihoods, not subsistence.'
     }
   ]
 })
 
 import HeroSection from '../components/HeroSection.vue'
 import HomeAbout from '../components/HomeAbout.vue'
+import HomeValueChains from '../components/HomeValueChains.vue'
 import HomePrograms from '../components/HomePrograms.vue'
 import HomePartners from '../components/HomePartners.vue'
 import HomeImpact from '../components/HomeImpact.vue'

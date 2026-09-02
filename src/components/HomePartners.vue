@@ -11,12 +11,16 @@
         </p>
       </div>
 
-      <div class="partners-grid reveal">
-        <div v-for="partner in partners" :key="partner.name" class="partner-card">
-          <div class="partner-image">
-            <img :src="partner.src" :alt="partner.alt" loading="lazy" />
-          </div>
-          <div class="partner-name">{{ partner.name }}</div>
+      <div class="partners-marquee reveal">
+        <div class="partners-track">
+          <img
+            v-for="(partner, i) in loopedPartners"
+            :key="`${partner.name}-${i}`"
+            class="partner-logo"
+            :src="partner.src"
+            :alt="partner.alt"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
@@ -39,6 +43,9 @@ const partners = [
   { name: 'UkIRAMU', src: ukiramuLogo, alt: 'Ukiramu partnership image' },
   { name: 'Wakanda Coffee', src: wakandaLogo, alt: 'Wakanda partnership image' }
 ]
+
+// Duplicate the list so the marquee track can loop seamlessly (CSS scrolls -50%)
+const loopedPartners = [...partners, ...partners]
 </script>
 
 <style scoped>
@@ -46,64 +53,71 @@ const partners = [
   padding: var(--section-pad) 0;
 }
 
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-.partner-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.partner-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(116, 161, 46, 0.15);
-}
-
-.partner-image {
-  width: 100%;
-  max-width: 220px;
-  aspect-ratio: 4 / 3;
+.partners-marquee {
   overflow: hidden;
-  border-radius: 1rem;
-  background: var(--bg-soft);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: partners-scroll 28s linear infinite;
+}
+
+.partners-marquee:hover .partners-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.partner-logo {
+  flex: 0 0 180px;
+  width: 180px;
+  height: 110px;
+  object-fit: contain;
+  object-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.partner-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.partner-name {
-  margin-top: 1rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  font-size: 1rem;
-}
-
-@media (max-width: 900px) {
-  .partners-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.partner-logo:hover {
+  transform: scale(1.05);
 }
 
 @media (max-width: 640px) {
-  .partners-grid {
-    grid-template-columns: 1fr;
+  .partner-logo {
+    flex-basis: 150px;
+    width: 150px;
+    height: 90px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-track {
+    animation: none;
+  }
+  .partners-marquee {
+    overflow-x: auto;
   }
 }
 </style>

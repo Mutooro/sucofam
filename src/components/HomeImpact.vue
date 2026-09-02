@@ -1,5 +1,5 @@
 <template>
-  <section class="home-impact">
+  <section class="home-impact" ref="sectionEl">
     <div class="container">
       <div class="impact-grid">
         <div 
@@ -11,7 +11,7 @@
           <div class="impact-icon">
             <component :is="getIcon(i)" :size="32" />
           </div>
-          <div class="impact-number">{{ stat.number }}</div>
+          <div class="impact-number">{{ displayNumbers[i] }}</div>
           <div class="impact-label">{{ stat.label }}</div>
           <div class="impact-detail">{{ stat.detail }}</div>
         </div>
@@ -21,11 +21,72 @@
 </template>
 
 <script setup>
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { Users, TreePine, TrendingUp, MapPin } from 'lucide-vue-next'
 import { impactStats } from '../data/content.js'
 
 const icons = [Users, TreePine, TrendingUp, MapPin]
 const getIcon = (i) => icons[i] || Users
+
+const sectionEl = ref(null)
+let observer = null
+let hasAnimated = false
+
+// Parsed target numbers + prefix/suffix (e.g. "4,532+" -> value 4532, suffix "+")
+const parsedStats = impactStats.map((stat) => {
+  const match = stat.number.match(/^([\d,]+)(.*)$/)
+  const value = match ? parseInt(match[1].replace(/,/g, ''), 10) : 0
+  const suffix = match ? match[2] : ''
+  return { value, suffix }
+})
+
+// What's currently shown on screen, starts at 0
+const displayNumbers = reactive(parsedStats.map(() => '0'))
+
+const easeOutQuad = (t) => t * (2 - t)
+
+const animateCount = (index) => {
+  const { value, suffix } = parsedStats[index]
+  const duration = 1600
+  const start = performance.now()
+
+  const step = (now) => {
+    const elapsed = now - start
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = easeOutQuad(progress)
+    const current = Math.round(value * eased)
+    displayNumbers[index] = current.toLocaleString() + suffix
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    }
+  }
+  requestAnimationFrame(step)
+}
+
+const animateAll = () => {
+  if (hasAnimated) return
+  hasAnimated = true
+  parsedStats.forEach((_, i) => animateCount(i))
+}
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateAll()
+          observer.disconnect()
+        }
+      })
+    },
+    { threshold: 0.3 }
+  )
+  if (sectionEl.value) observer.observe(sectionEl.value)
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
 </script>
 
 <style scoped>

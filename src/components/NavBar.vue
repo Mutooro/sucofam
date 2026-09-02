@@ -2,7 +2,9 @@
   <nav id="mainNav" :class="{ 'scrolled': scrolled, 'menu-open': isMenuOpen }">
     <div class="nav-inner container">
       <router-link to="/" class="nav-logo">
-        <img :src="logoImg" alt="SUCOFAM Logo" />
+        <span class="nav-logo-badge">
+          <img :src="logoImg" alt="SUCOFAM Logo" />
+        </span>
       </router-link>
 
       <ul class="nav-links">
@@ -123,7 +125,7 @@ import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Menu, X, ChevronDown } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
-import logoImg from '@/assets/img/logo.jpeg'
+import logoImg from '@/assets/img/logo-transparent.png'
 
 const scrolled = ref(false)
 const isMenuOpen = ref(false)
@@ -214,10 +216,19 @@ onUnmounted(() => {
   align-items: center;
 }
 
+.nav-logo-badge {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-green) 0%, var(--white) 100%);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
 .nav-logo img {
-  height: 52px;
+  height: 46px;
   width: auto;
-  border-radius: var(--radius-sm);
+  display: block;
 }
 
 /* Nav links */

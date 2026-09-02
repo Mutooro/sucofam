@@ -151,9 +151,9 @@ useHead({
 })
 
 const iconMap = {
-  CloudRain,
-  ShoppingBag,
-  Heart
+  // CloudRain,
+  // ShoppingBag,
+  // Heart
 }
 
 const getIcon = (name) => iconMap[name] || Settings

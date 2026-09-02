@@ -11,7 +11,7 @@
         </h2>
         <div class="section-line" />
         <p class="about-text">
-          SUCOFAM empowers smallholder farmers — especially women and youth —
+          SUCOFAM empowers smallholder farmers especially women and youth
           across Uganda through the coffee, cocoa, and honey value chains.
           Sustainable livelihoods, not subsistence.
         </p>
@@ -52,8 +52,9 @@ import { Eye, Target, ArrowRight } from 'lucide-vue-next'
 import { vision, mission } from '../data/content.js'
 
 // Import local images
-import aboutMainImg from '@/assets/img/rwenzori_farmers.jpeg'
-import aboutFloatImg from '@/assets/img/smell_coffee.jpg'
+import aboutMainImg from '@/assets/img/smell_coffee.jpg' 
+
+import aboutFloatImg from '@/assets/img/rwenzori_farmers.jpeg'
 </script>
 
 <style scoped>

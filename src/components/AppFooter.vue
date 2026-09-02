@@ -5,10 +5,12 @@
         <!-- Brand -->
         <div class="footer-brand">
           <router-link to="/" class="brand-logo">
-            <img :src="logoImg" alt="SUCOFAM Logo" class="footer-logo-img" />
+            <span class="footer-logo-badge">
+              <img :src="logoImg" alt="SUCOFAM Logo" class="footer-logo-img" />
+            </span>
           </router-link>
           <p class="brand-tagline">
-            Empowering smallholder farmers across Uganda through coffee, cocoa, and honey value chains—ensuring fair incomes and sustainable growth.
+            Empowering smallholder farmers across Uganda through coffee, cocoa, and honey value chains ensuring fair incomes and sustainable growth.
           </p>
           <div class="social-row">
             <a class="social-btn" href="mailto:info@sucofam.org" title="Email us">
@@ -53,8 +55,8 @@
               <Phone :size="16" class="inline-icon" />
               <div class="phone-list">
                 <a href="tel:+256782285490">+256 782 285 490</a>
-                <a href="tel:+256775199363">+256 775 199 363</a>
-                <a href="tel:+256706432002">+256 706 432 002</a>
+                <!-- <a href="tel:+256775199363">+256 775 199 363</a>
+                <a href="tel:+256706432002">+256 706 432 002</a> -->
               </div>
             </li>
           </ul>
@@ -73,7 +75,7 @@
 import { RouterLink } from 'vue-router'
 import { Mail, Phone, Facebook, MapPin, Twitter } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
-import logoImg from '@/assets/img/logo.jpeg'
+import logoImg from '@/assets/img/logo-transparent.png'
 
 const year = new Date().getFullYear()
 </script>
@@ -104,10 +106,19 @@ const year = new Date().getFullYear()
   margin-bottom: 1.2rem;
 }
 
+.footer-logo-badge {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-green) 0%, var(--white) 100%);
+  border-radius: var(--radius-lg);
+  padding: 0.6rem 1.1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
 .footer-logo-img {
-  height: 56px;
+  height: 48px;
   width: auto;
-  border-radius: var(--radius-sm);
+  display: block;
 }
 
 .brand-logo span {
