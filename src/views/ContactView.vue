@@ -169,6 +169,10 @@
                 <span v-else>Sending...</span>
               </button>
               <p v-if="submitted" class="form-success">Thank you! Your message has been received and our team will respond shortly.</p>
+              <p v-if="handoff" class="form-handoff" role="status">
+                Your email app should have opened with this message ready to send. Nothing happened?
+                Use the email address listed on this page and paste your message.
+              </p>
               <p v-if="submitError" class="form-error" role="alert">{{ submitError }}</p>
             </form>
           </div>
@@ -198,6 +202,7 @@ import { ref, computed } from 'vue'
 import { usePageSeo } from '../composables/usePageSeo.js'
 import { MapPin, Mail, Phone, Send, Check } from 'lucide-vue-next'
 import { officeLocations } from '../data/content.js'
+import { buildInquiryMailto } from '../utils/inquiryMailto.js'
 import heroBg from '@/assets/img/coffee1.jpg'
 
 usePageSeo({
@@ -211,6 +216,8 @@ usePageSeo({
 const submitting = ref(false)
 const submitted = ref(false)
 const submitError = ref('')
+// True once a submission has been handed to the visitor's email client (no POST endpoint set).
+const handoff = ref(false)
 const contactEndpoint = import.meta.env.VITE_CONTACT_FORM_ENDPOINT
 
 const formData = ref({
@@ -317,28 +324,32 @@ const handleSubmit = async () => {
 
   submitting.value = true
   submitError.value = ''
-
-  if (!contactEndpoint) {
-    submitError.value = 'Contact submission is not configured yet. Please email info.sucofam@gmail.com directly.'
-    submitting.value = false
-    return
-  }
+  handoff.value = false
 
   try {
-    const response = await fetch(contactEndpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...formData.value })
-    })
+    if (contactEndpoint) {
+      const response = await fetch(contactEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData.value })
+      })
 
-    if (!response.ok) throw new Error(`Contact submission failed with status ${response.status}`)
+      if (!response.ok) throw new Error(`Contact submission failed with status ${response.status}`)
 
-    submitted.value = true
-    resetForm()
-    window.setTimeout(() => { submitted.value = false }, 5000)
+      submitted.value = true
+      resetForm()
+      window.setTimeout(() => { submitted.value = false }, 5000)
+      return
+    }
+
+    // No endpoint configured: hand the composed message to the visitor's email client. The
+    // form keeps its values because a mailto: navigation cannot report whether anything was
+    // actually sent, so the visitor may still have to send it themselves.
+    window.location.href = buildInquiryMailto(formData.value)
+    handoff.value = true
   } catch (error) {
     console.error('Contact form submission failed', error)
-    submitError.value = 'We could not send your message. Please try again or email info.sucofam@gmail.com directly.'
+    submitError.value = 'We could not open your email app. Please use the email address listed on this page.'
   } finally {
     submitting.value = false
   }
@@ -584,7 +595,19 @@ const handleSubmit = async () => {
 }
 
 .form-success {
-  color: var(--primary);
+  color: var(--success-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  background: var(--bg-green);
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Mailto handoff: the message is composed, not delivered, so the copy (and the neutral
+   sage panel) says "check your email app" rather than claiming receipt. */
+.form-handoff {
+  color: var(--success-text);
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
