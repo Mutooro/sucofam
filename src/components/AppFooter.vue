@@ -55,8 +55,6 @@
               <Phone :size="16" class="inline-icon" />
               <div class="phone-list">
                 <a href="tel:+256782285490">+256 782 285 490</a>
-                <a href="tel:+256775199363">+256 775 199 363</a>
-                <a href="tel:+256706432002">+256 706 432 002</a>
               </div>
             </li>
           </ul>
