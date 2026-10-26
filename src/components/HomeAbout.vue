@@ -11,9 +11,7 @@
         </h2>
         <div class="section-line" />
         <p class="about-text">
-          SUCOFAM empowers smallholder farmers especially women and youth
-          across Uganda through the coffee, cocoa, and honey value chains.
-          Sustainable livelihoods, not subsistence.
+          SUCOFAM empowers smallholder farmers, especially women and youth, across Western Uganda's Rwenzori region through the coffee, cocoa, and honey value chains. Sustainable livelihoods, not subsistence.
         </p>
         <p class="about-text">
           Every program we run translates into real change at the farmer household level,
@@ -48,8 +46,7 @@
 </template>
 
 <script setup>
-import { Eye, Target, ArrowRight } from 'lucide-vue-next'
-import { vision, mission } from '../data/content.js'
+import { ArrowRight } from 'lucide-vue-next'
 
 // Import local images
 import aboutMainImg from '@/assets/img/smell_coffee.jpg' 
@@ -62,72 +59,6 @@ import aboutFloatImg from '@/assets/img/rwenzori_farmers.jpeg'
   position: relative;
   padding-bottom: var(--section-pad);
   background: var(--white);
-}
-
-/* Vision & Mission Overlap Card */
-.vm-overlap-container {
-  position: relative;
-  z-index: 10;
-  margin-top: -10rem;
-}
-
-.vm-overlap-card {
-  background: #fdfdfd;
-  border-radius: 3.5rem 3.5rem 1.5rem 1.5rem;
-  padding: 4rem 5rem;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.03);
-}
-
-.vm-grid-overlap {
-  display: flex;
-  align-items: flex-start;
-  gap: 3rem;
-}
-
-.vm-item {
-  flex: 1;
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.vm-icon {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--bg-green);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vm-icon.pink {
-  background: var(--bg-pink);
-  color: var(--accent);
-}
-
-.vm-content h3 {
-  font-family: var(--ff-serif);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 0.5rem;
-}
-
-.vm-content p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-.vm-divider {
-  width: 1px;
-  height: 80px;
-  background: rgba(0,0,0,0.06);
-  align-self: center;
 }
 
 /* Who We Are */
@@ -211,20 +142,6 @@ import aboutFloatImg from '@/assets/img/rwenzori_farmers.jpeg'
 }
 
 @media (max-width: 900px) {
-  .vm-overlap-container {
-    margin-top: -3rem;
-  }
-  .vm-overlap-card {
-    padding: 2rem 1.5rem;
-    border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
-  }
-  .vm-grid-overlap {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .vm-divider {
-    display: none;
-  }
   .about-content {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -246,9 +163,6 @@ import aboutFloatImg from '@/assets/img/rwenzori_farmers.jpeg'
 }
 
 @media (max-width: 768px) {
-  .vm-overlap-container {
-    display: none;
-  }
   .home-about {
     padding-top: 4rem;
   }

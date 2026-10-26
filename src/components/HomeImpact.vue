@@ -31,6 +31,8 @@ const getIcon = (i) => icons[i] || Users
 const sectionEl = ref(null)
 let observer = null
 let hasAnimated = false
+const prefersReducedMotion = ref(false)
+let motionQuery
 
 // Parsed target numbers + prefix/suffix (e.g. "4,532+" -> value 4532, suffix "+")
 const parsedStats = impactStats.map((stat) => {
@@ -47,11 +49,12 @@ const easeOutQuad = (t) => t * (2 - t)
 
 const animateCount = (index) => {
   const { value, suffix } = parsedStats[index]
-  const duration = 1600
+  const duration = 1250
+  const delay = index * 90
   const start = performance.now()
 
   const step = (now) => {
-    const elapsed = now - start
+    const elapsed = Math.max(0, now - start - delay)
     const progress = Math.min(elapsed / duration, 1)
     const eased = easeOutQuad(progress)
     const current = Math.round(value * eased)
@@ -66,10 +69,18 @@ const animateCount = (index) => {
 const animateAll = () => {
   if (hasAnimated) return
   hasAnimated = true
+  if (prefersReducedMotion.value) {
+    parsedStats.forEach(({ value, suffix }, i) => {
+      displayNumbers[i] = value.toLocaleString() + suffix
+    })
+    return
+  }
   parsedStats.forEach((_, i) => animateCount(i))
 }
 
 onMounted(() => {
+  motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  prefersReducedMotion.value = motionQuery.matches
   observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {

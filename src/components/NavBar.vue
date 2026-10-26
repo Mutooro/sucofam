@@ -25,19 +25,23 @@
           </router-link>
 
           <template v-else>
-            <router-link
-              :to="{ name: link.section }"
-              active-class="active"
+            <button
+              type="button"
               class="dropdown-trigger"
+              :class="{ active: activeDropdown === link.section }"
+              :aria-expanded="activeDropdown === link.section"
+              :aria-controls="`dropdown-${link.section}`"
+              @click="toggleDropdown(link.section)"
             >
               {{ link.label }}
               <ChevronDown :size="14" class="chevron-icon" :class="{ 'rotated': activeDropdown === link.section }" />
-            </router-link>
+            </button>
 
             <Transition name="dropdown">
               <div 
                 v-if="activeDropdown === link.section" 
                 class="dropdown-panel"
+                :id="`dropdown-${link.section}`"
                 :class="{ 'mega-menu': link.children.length > 4 }"
               >
                 <router-link
@@ -59,21 +63,26 @@
       </ul>
 
       <button
+        ref="navToggle"
         class="nav-toggle"
+        type="button"
         @click="toggleMobileMenu"
         :class="{ 'open': isMenuOpen }"
         aria-label="Menu"
+        :aria-expanded="isMenuOpen"
+        aria-controls="mobile-navigation"
       >
         <Menu v-if="!isMenuOpen" :size="24" />
         <X v-else :size="24" />
+        <span class="nav-toggle-label">{{ isMenuOpen ? 'Close' : 'Menu' }}</span>
       </button>
     </div>
   </nav>
 
   <Transition name="fade">
-    <div v-if="isMenuOpen" class="mobile-menu" @click="isMenuOpen = false">
-      <div class="mobile-menu-content" @click.stop>
-        <button class="close-btn" @click="isMenuOpen = false">
+    <div v-if="isMenuOpen" class="mobile-menu" @click="closeMobileMenu">
+      <div ref="mobileMenu" id="mobile-navigation" class="mobile-menu-content" role="dialog" aria-modal="true" aria-label="Mobile navigation" @click.stop>
+        <button ref="mobileClose" class="close-btn" type="button" @click="closeMobileMenu" aria-label="Close menu">
           <X :size="28" />
         </button>
         <div class="mobile-links">
@@ -82,7 +91,7 @@
             <router-link
               v-if="!link.children"
               :to="{ name: link.section }"
-              @click="isMenuOpen = false"
+              @click="closeMobileMenu"
               active-class="active"
             >
               {{ link.label }}
@@ -104,7 +113,7 @@
                     v-for="child in link.children"
                     :key="child.label"
                     :to="child.hash ? { name: child.section, hash: child.hash } : { name: child.section }"
-                    @click="isMenuOpen = false; mobileExpanded = null"
+                    @click="closeMobileMenu"
                     class="mobile-sub-link"
                   >
                     {{ child.label }}
@@ -113,7 +122,7 @@
               </Transition>
             </div>
           </template>
-          <router-link to="/contact" class="mobile-cta" @click="isMenuOpen = false">Partner With Us</router-link>
+          <router-link to="/contact" class="mobile-cta" @click="closeMobileMenu">Partner With Us</router-link>
         </div>
       </div>
     </div>
@@ -121,7 +130,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Menu, X, ChevronDown } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
@@ -131,11 +140,28 @@ const scrolled = ref(false)
 const isMenuOpen = ref(false)
 const activeDropdown = ref(null)
 const mobileExpanded = ref(null)
+const navToggle = ref(null)
+const mobileMenu = ref(null)
+const mobileClose = ref(null)
+let lastFocusedElement = null
 
 let dropdownTimeout = null
 
 const toggleMobileMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
+  if (isMenuOpen.value) {
+    closeMobileMenu()
+    return
+  }
+  lastFocusedElement = document.activeElement
+  isMenuOpen.value = true
+}
+
+const closeMobileMenu = () => {
+  isMenuOpen.value = false
+}
+
+const toggleDropdown = (section) => {
+  activeDropdown.value = activeDropdown.value === section ? null : section
 }
 
 const openDropdown = (section) => {
@@ -157,21 +183,49 @@ const handleScroll = () => {
   scrolled.value = window.scrollY > 40
 }
 
+const handleKeydown = (event) => {
+  if (event.key === 'Escape') {
+    activeDropdown.value = null
+    if (isMenuOpen.value) closeMobileMenu()
+  }
+
+  if (event.key === 'Tab' && isMenuOpen.value && mobileMenu.value) {
+    const focusable = [...mobileMenu.value.querySelectorAll('button, a[href]')]
+      .filter((element) => !element.hasAttribute('disabled'))
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+
+    if (!first || !last) return
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first.focus()
+    }
+  }
+}
+
 watch(isMenuOpen, (open) => {
   if (open) {
     document.body.style.overflow = 'hidden'
+    nextTick(() => mobileClose.value?.focus())
   } else {
     document.body.style.overflow = ''
     mobileExpanded.value = null
+    nextTick(() => (lastFocusedElement || navToggle.value)?.focus())
+    lastFocusedElement = null
   }
 })
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('keydown', handleKeydown)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('keydown', handleKeydown)
   clearTimeout(dropdownTimeout)
 })
 </script>
@@ -243,7 +297,8 @@ onUnmounted(() => {
   position: relative;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-links .dropdown-trigger {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -255,12 +310,20 @@ onUnmounted(() => {
   gap: 0.25rem;
 }
 
-.nav-links a:hover {
+.dropdown-trigger {
+  font: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-links a:hover,
+.nav-links .dropdown-trigger:hover {
   color: var(--accent);
   background: rgba(166, 124, 82, 0.06);
 }
 
-.nav-links a.active {
+.nav-links a.active,
+.nav-links .dropdown-trigger.active {
   color: var(--accent);
   background: rgba(166, 124, 82, 0.1);
   font-weight: 600;
@@ -358,12 +421,18 @@ onUnmounted(() => {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.65rem;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--text-dark);
   border-radius: var(--radius-sm);
+  gap: 0.35rem;
+}
+
+.nav-toggle-label {
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .nav-toggle:hover {
@@ -400,7 +469,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0.65rem;
   color: var(--text-dark);
   background: none;
   border: none;
@@ -472,7 +541,7 @@ onUnmounted(() => {
 .mobile-sub-link {
   font-size: 0.95rem;
   color: var(--text-muted);
-  padding: 0.55rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: var(--radius-sm);
   border-left: 2px solid var(--border);
   transition: all 0.2s ease;

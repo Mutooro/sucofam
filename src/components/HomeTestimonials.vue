@@ -11,33 +11,50 @@
       </div>
 
       <div class="testimonials-wrapper">
-        <div class="testimonials-track" :style="trackStyle">
-          <div 
-            v-for="(t, i) in duplicatedTestimonials" 
-            :key="`${i}-${t.name}`"
-            class="testimonial-card"
-            :class="{ active: i === currentIndex }"
+        <div class="testimonial-stage">
+          <button
+            class="carousel-control carousel-control--previous"
+            type="button"
+            aria-label="Show previous testimonial"
+            @click="previous"
           >
+            <span aria-hidden="true">&larr;</span>
+          </button>
+
+          <Transition name="testimonial" mode="out-in">
+            <article :key="activeTestimonial.name" class="testimonial-card">
             <div class="testimonial-content">
               <div class="quote-icon">"</div>
-              <p class="testimonial-quote">{{ t.quote }}</p>
+              <p class="testimonial-quote">{{ activeTestimonial.quote }}</p>
               <div class="testimonial-author">
-                <img :src="t.image" :alt="t.name" loading="lazy" />
+                <img :src="activeTestimonial.image" :alt="activeTestimonial.name" loading="lazy" />
                 <div class="author-info">
-                  <span class="author-name">{{ t.name }}</span>
-                  <span class="author-role">{{ t.role }}</span>
+                  <span class="author-name">{{ activeTestimonial.name }}</span>
+                  <span class="author-role">{{ activeTestimonial.role }}</span>
                 </div>
               </div>
             </div>
-          </div>
+            </article>
+          </Transition>
+
+          <button
+            class="carousel-control carousel-control--next"
+            type="button"
+            aria-label="Show next testimonial"
+            @click="next"
+          >
+            <span aria-hidden="true">&rarr;</span>
+          </button>
         </div>
 
         <div class="testimonial-nav">
-          <button 
-            v-for="(_, i) in testimonials.length" 
+          <button
+            v-for="(_, i) in testimonials.length"
             :key="i"
             class="nav-dot"
-            :class="{ active: i === activeDot }"
+            :class="{ active: i === currentIndex }"
+            :aria-label="`Show testimonial ${i + 1}`"
+            :aria-current="i === currentIndex ? 'true' : undefined"
             @click="goTo(i)"
           />
         </div>
@@ -53,14 +70,7 @@ import { testimonials } from '../data/content.js'
 const currentIndex = ref(0)
 const autoPlayInterval = ref(null)
 
-const duplicatedTestimonials = computed(() => [...testimonials, ...testimonials])
-
-const activeDot = computed(() => currentIndex.value % testimonials.length)
-
-const trackStyle = computed(() => ({
-  transform: `translateX(calc(-${currentIndex.value} * (var(--card-width) + var(--card-gap))))`,
-  transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-}))
+const activeTestimonial = computed(() => testimonials[currentIndex.value])
 
 const goTo = (index) => {
   currentIndex.value = index
@@ -69,6 +79,12 @@ const goTo = (index) => {
 
 const next = () => {
   currentIndex.value = (currentIndex.value + 1) % testimonials.length
+  resetAutoPlay()
+}
+
+const previous = () => {
+  currentIndex.value = (currentIndex.value - 1 + testimonials.length) % testimonials.length
+  resetAutoPlay()
 }
 
 const resetAutoPlay = () => {
@@ -92,9 +108,6 @@ onUnmounted(() => {
 <style scoped>
 .home-testimonials {
   padding: var(--section-pad) 0;
-  --card-width: 380px;
-  --card-gap: 1.5rem;
-  overflow: hidden;
 }
 
 .testimonials-wrapper {
@@ -102,32 +115,53 @@ onUnmounted(() => {
   position: relative;
 }
 
-.testimonials-track {
-  display: flex;
-  gap: var(--card-gap);
-  padding: 0 1rem;
+.testimonial-stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 760px) auto;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .testimonial-card {
-  flex-shrink: 0;
-  width: var(--card-width);
+  width: 100%;
   background: var(--white);
   border-radius: 2rem;
   padding: 3rem 2.5rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border);
-  transition: all 0.4s ease;
-  opacity: 0.5;
-  transform: scale(0.9);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--accent-light);
   display: flex;
   flex-direction: column;
 }
 
-.testimonial-card.active {
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--accent-light);
+.carousel-control {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--accent);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-control:hover,
+.carousel-control:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+.testimonial-enter-active,
+.testimonial-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.testimonial-enter-from,
+.testimonial-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 .quote-icon {
@@ -205,20 +239,36 @@ onUnmounted(() => {
   border-radius: 6px;
 }
 
-@media (max-width: 900px) {
-  .home-testimonials {
-    --card-width: 320px;
-  }
-}
-
 @media (max-width: 600px) {
-  .home-testimonials {
-    --card-width: 280px;
-    --card-gap: 1rem;
+  .testimonial-stage {
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
   }
+
   .testimonial-card {
+    grid-column: 1 / -1;
+    grid-row: 1;
     padding: 2rem 1.5rem;
   }
+
+  .carousel-control {
+    width: 42px;
+    height: 42px;
+  }
+
+  .carousel-control--previous {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: end;
+  }
+
+  .carousel-control--next {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+  }
+
   .testimonial-quote {
     font-size: 1rem;
   }
@@ -230,9 +280,4 @@ onUnmounted(() => {
   }
 }
 
-@media (max-width: 400px) {
-  .home-testimonials {
-    --card-width: 240px;
-  }
-}
 </style>

@@ -34,6 +34,9 @@
                 Learn more <ArrowRight :size="14" />
               </span>
             </div>
+            <div class="hp-arrow">
+              <ArrowRight :size="20" />
+            </div>
           </div>
         </router-link>
       </div>
@@ -77,7 +80,7 @@ const getIcon = (name) => iconMap[name] || Settings
   border-radius: var(--radius);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition);
   position: relative;
 }
 
@@ -89,7 +92,7 @@ const getIcon = (name) => iconMap[name] || Settings
   background: linear-gradient(90deg, var(--primary), var(--accent));
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.35s ease;
+  transition: transform var(--transition);
 }
 
 .hp-card:hover {
@@ -129,7 +132,7 @@ const getIcon = (name) => iconMap[name] || Settings
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  transition: all 0.3s ease;
+  transition: all var(--transition);
 }
 
 .hp-card:hover .hp-icon-wrapper {
@@ -185,6 +188,20 @@ const getIcon = (name) => iconMap[name] || Settings
 
 .hp-card:hover .hp-link {
   gap: 0.6rem;
+}
+
+.hp-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.hp-card:hover .hp-arrow {
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 .hp-footer {

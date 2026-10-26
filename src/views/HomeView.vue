@@ -13,51 +13,41 @@
 </template>
 
 <script setup>
-import { useHead } from '@unhead/vue'
+import { usePageSeo, SITE_URL } from '../composables/usePageSeo.js'
 
-useHead({
-  title: 'SUCOFAM | Empowering Farmers Across Uganda',
-  link: [
-    { rel: 'canonical', href: 'https://www.sucofam.org/' }
-  ],
-  meta: [
+usePageSeo({
+  title: 'SUCOFAM Uganda | Sustainable Agriculture & Farmer Markets',
+  description:
+    'SUCOFAM Uganda Limited empowers smallholder farmers, especially women and youth, in Western Uganda through coffee, cocoa, and honey value chains and climate-smart agriculture.',
+  path: '/',
+  graph: [
     {
-      name: 'description',
-      content: 'SUCOFAM empowers smallholder farmers especially women and youth across Uganda through the coffee, cocoa, and honey value chains. Sustainable livelihoods, not subsistence.'
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'SUCOFAM Uganda Limited',
+      alternateName: 'Sustainably Connected Farmers Agripreneur Market',
+      url: `${SITE_URL}/`,
+      logo: `${SITE_URL}/assets/logo-transparent-DykyThBo.png`,
+      description:
+        'SUCOFAM Uganda Limited supports smallholder farmers in Western Uganda through coffee, cocoa, and honey value chains, agroforestry, and climate resilience.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Kibbenge Tourist Model Village, Katonzi Cell, Bulembia Division',
+        addressLocality: 'Kasese',
+        addressRegion: 'Western Uganda',
+        addressCountry: 'UG'
+      },
+      areaServed: 'Western Uganda',
+      email: 'info@sucofam.org',
+      telephone: '+256782285490'
     },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://www.sucofam.org/' },
-    { property: 'og:title', content: 'SUCOFAM | Empowering Farmers Across Uganda' },
-    { property: 'og:description', content: "SUCOFAM strengthens Uganda's coffee, cocoa, and honey value chains while building sustainable livelihoods for smallholder farmers." },
-    { property: 'og:image', content: 'https://www.sucofam.org/hero-bg.jpg' },
-    { name: 'twitter:card', content: 'summary_large_image' }
-  ],
-  script: [
     {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@graph': [
-          {
-            '@type': 'Organization',
-            '@id': 'https://www.sucofam.org/#organization',
-            name: 'SUCOFAM',
-            url: 'https://www.sucofam.org/',
-            logo: 'https://www.sucofam.org/assets/logo-transparent-DykyThBo.png',
-            description: 'SUCOFAM supports smallholder farmers across Uganda through the coffee, cocoa, and honey value chains.',
-            areaServed: 'Uganda',
-            email: 'info@sucofam.org'
-          },
-          {
-            '@type': 'WebSite',
-            '@id': 'https://www.sucofam.org/#website',
-            name: 'SUCOFAM',
-            url: 'https://www.sucofam.org/',
-            publisher: { '@id': 'https://www.sucofam.org/#organization' },
-            inLanguage: 'en'
-          }
-        ]
-      })
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'SUCOFAM Uganda',
+      url: `${SITE_URL}/`,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: 'en'
     }
   ]
 })

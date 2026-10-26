@@ -10,7 +10,7 @@
             </span>
           </router-link>
           <p class="brand-tagline">
-            Empowering smallholder farmers across Uganda through coffee, cocoa, and honey value chains ensuring fair incomes and sustainable growth.
+            SUCOFAM Uganda Limited empowers smallholder farmers across Western Uganda through coffee, cocoa, and honey value chains, ensuring fair incomes, climate resilience, and sustainable growth.
           </p>
           <div class="social-row">
             <a class="social-btn" href="mailto:info@sucofam.org" title="Email us">
@@ -19,10 +19,10 @@
             <a class="social-btn" href="tel:+256782285490" title="Call us">
               <Phone :size="18" />
             </a>
-            <a class="social-btn" href="#" title="Facebook">
-              <Facebook :size="18" />
+            <a class="social-btn" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <Linkedin :size="18" />
             </a>
-            <a class="social-btn" href="#" title="Twitter">
+            <a class="social-btn" href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="Twitter">
               <Twitter :size="18" />
             </a>
           </div>
@@ -41,22 +41,22 @@
 
         <!-- Contact -->
         <div class="footer-col">
-          <h4 class="col-heading">Contact</h4>
+          <h4 class="col-heading">Headquarters &amp; Contact</h4>
           <ul class="contact-list">
             <li>
               <MapPin :size="16" class="inline-icon" />
-              <span>Kibbenge Tourist Model Village, Katonzi Cell, Bulembia Division, Kasese Municipality · P.O.Box 430664</span>
+              <span>Kibbenge Tourist Model Village, Katonzi Cell, Bulembia Division, Kasese Municipality · P.O. Box 430664, Kasese - Uganda</span>
             </li>
             <li>
               <Mail :size="16" class="inline-icon" />
-              <a href="mailto:info@sucofam.org">info@sucofam.org</a>
+              <a href="mailto:info.sucofam@gmail.com">info.sucofam@gmail.com</a>
             </li>
             <li>
               <Phone :size="16" class="inline-icon" />
               <div class="phone-list">
                 <a href="tel:+256782285490">+256 782 285 490</a>
-                <!-- <a href="tel:+256775199363">+256 775 199 363</a>
-                <a href="tel:+256706432002">+256 706 432 002</a> -->
+                <a href="tel:+256775199363">+256 775 199 363</a>
+                <a href="tel:+256706432002">+256 706 432 002</a>
               </div>
             </li>
           </ul>
@@ -64,8 +64,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span class="copy">© {{ year }} SUCOFAM. All rights reserved.</span>
-        <span class="copy">Empowering Farmers, Building Futures.</span>
+        <span class="copy">© {{ year }} SUCOFAM Uganda Limited. All rights reserved.</span>
+        <span class="copy">Sustainably Connected Farmers Agripreneur Market</span>
       </div>
     </div>
   </footer>
@@ -73,7 +73,7 @@
 
 <script setup>
 import { RouterLink } from 'vue-router'
-import { Mail, Phone, Facebook, MapPin, Twitter } from 'lucide-vue-next'
+import { Mail, Phone, MapPin, Twitter, Linkedin } from 'lucide-vue-next'
 import { navLinks } from '../data/content.js'
 import logoImg from '@/assets/img/logo-transparent.png'
 
@@ -121,19 +121,11 @@ const year = new Date().getFullYear()
   display: block;
 }
 
-.brand-logo span {
-  font-family: var(--ff-serif);
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
-}
-
 .brand-tagline {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   line-height: 1.7;
-  max-width: 300px;
+  max-width: 340px;
   margin-bottom: 1.5rem;
 }
 

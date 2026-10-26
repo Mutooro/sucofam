@@ -47,7 +47,12 @@
                 <div class="hnc-date">{{ article.date }}</div>
                 <h3 class="hnc-title">{{ article.title }}</h3>
                 <p class="hnc-summary">{{ article.summary }}</p>
-                <router-link to="/news" class="hnc-more">Read More <ArrowRight :size="14" /></router-link>
+                <router-link :to="{ name: 'news', hash: `#article-${article.id}` }" class="hnc-more">
+                  Read More <ArrowRight :size="14" />
+                </router-link>
+                <div class="hn-arrow">
+                  <ArrowRight :size="20" />
+                </div>
               </div>
             </article>
           </swiper-slide>
@@ -110,14 +115,14 @@ import 'swiper/css/navigation'
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: all var(--transition);
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .hn-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--accent-light);
 }
@@ -131,7 +136,7 @@ import 'swiper/css/navigation'
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-slow);
 }
 
 .hn-card:hover .hn-image img {
@@ -188,6 +193,20 @@ import 'swiper/css/navigation'
 .hnc-more:hover {
   gap: 0.6rem;
   color: var(--accent-hover);
+}
+
+.hn-arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.hn-card:hover .hn-arrow {
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 .hn-footer {

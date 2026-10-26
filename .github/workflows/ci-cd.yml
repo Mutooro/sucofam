@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,33 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build first so tests/ssg-output.spec.js can assert against the pre-rendered
+      # pages; it skips when dist/ is missing and would otherwise pass vacuously.
+      - name: Build application
+        run: npm run build
+
+      - name: Run unit, component and pre-render tests
+        run: npm test
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -32,6 +58,7 @@ jobs:
 
   docker:
     name: Build Docker image
+    needs: test
     runs-on: ubuntu-latest
 
     steps:

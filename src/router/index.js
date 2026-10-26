@@ -1,4 +1,3 @@
-import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ProgramsView from '../views/ProgramsView.vue'
@@ -7,6 +6,8 @@ import ImpactView from '../views/ImpactView.vue'
 import ContactView from '../views/ContactView.vue'
 import NewsView from '../views/NewsView.vue'
 import GalleryView from '../views/GalleryView.vue'
+import AccountabilityView from '../views/AccountabilityView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
   {
@@ -25,10 +26,14 @@ const routes = [
     component: ProgramsView
   },
   {
-    path: '/products',
-    name: 'products',
+    path: '/value-chains',
+    name: 'value-chains',
+    // The legacy /products URL stays a real route (alias, not redirect) so vite-ssg
+    // pre-renders it and it hydrates without falling through to the SPA shell; the
+    // canonical emitted by usePageSeo folds it onto /value-chains. A second record
+    // redirecting /products was unreachable behind this alias and has been removed.
     component: ProductsView,
-    alias: '/value-chains'
+    alias: ['/products']
   },
   {
     path: '/impact',
@@ -46,9 +51,19 @@ const routes = [
     component: NewsView
   },
   {
+    path: '/accountability',
+    name: 'accountability',
+    component: AccountabilityView
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: ContactView
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: NotFoundView
   }
 ]
 

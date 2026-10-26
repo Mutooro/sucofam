@@ -2,61 +2,68 @@
   <div class="page-view">
     <div class="page-hero">
       <div class="page-hero-bg">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920" alt="About SUCOFAM" />
+        <img :src="heroBg" alt="About SUCOFAM Uganda" />
         <div class="page-hero-overlay" />
       </div>
       <div class="page-hero-content container">
-        <div class="section-tag white reveal">About Us</div>
+        <div class="section-tag white reveal">About SUCOFAM</div>
         <h1 class="page-hero-title reveal reveal-delay-1">Who We Are</h1>
         <p class="page-hero-desc reveal reveal-delay-2">
-          Learn about our mission, vision, and the passionate team driving agricultural transformation.
+          Building sustainable rural prosperity through climate-smart agriculture, farmer aggregation, and equitable market linkages.
         </p>
       </div>
     </div>
 
+    <!-- Our Story & Institutional Identity -->
     <section id="who-we-are" class="about-section bg-white section-padding">
       <div class="container">
         <div class="about-grid">
           <div class="about-text-block reveal">
-            <h2 class="heading-md">Our Story</h2>
+            <h2 class="heading-md">Our Story &amp; Mandate</h2>
             <div class="section-line" />
             <p>
-               Sustainably Connected Farmers Agriprenuer Market (SUCOFAM) was established in June 2024 in Kasese, Uganda, with a clear mandate: to transform 
-              the lives of smallholder farmers through sustainable agriculture, market access, and inclusive 
-              value chain participation.
+              <strong>SUCOFAM Uganda Limited</strong> (operating as <em>Sustainably Connected Farmers Agripreneur Market</em>) was established in June 2024 in Kasese, Western Uganda, with a clear mandate: to transform the livelihoods of smallholder farming households through regenerative agriculture, farmer-owned aggregation, and structured market access.
             </p>
             <p>
-              We recognized that while Uganda's agricultural potential is immense, many farmers especially 
-              women and youth remain trapped in subsistence farming due to limited knowledge, poor market 
-              access, and exploitative middlemen.
+              While the Rwenzori region possesses exceptional volcanic soils and ideal agroecological conditions for coffee, cocoa, and honey, thousands of farmers, particularly women and youth, have historically remained trapped in subsistence poverty due to limited agronomic training, severe post-harvest losses, and exploitation by speculative intermediaries.
             </p>
             <p>
-              Today, SUCOFAM operates across multiple districts, working with organized farmer groups in 
-              coffee, cocoa, and honey value chains. Our approach combines capacity building, structured 
-              market linkages, and climate-smart practices to ensure long-term, sustainable impact.
+              Today, SUCOFAM operates across five focal districts in Western Uganda (Kasese, Kabarole, Kyegegwa, Bunyangabu, and Rubirizi), organizing over 4,500 smallholder farmers into democratic producer groups and cooperatives. Our holistic model pairs Good Agronomic Practices (GAP) and climate resilience with direct market linkages and household social development.
             </p>
           </div>
 
           <div class="about-cards reveal reveal-delay-1">
             <div class="about-info-card">
               <Calendar :size="24" />
-              <span class="info-label">Founded</span>
+              <span class="info-label">Established</span>
               <span class="info-value">June 2024</span>
+              <div class="card-arrow">
+                <ArrowRight :size="16" />
+              </div>
             </div>
             <div class="about-info-card">
               <MapPin :size="24" />
-              <span class="info-label">Location</span>
+              <span class="info-label">Headquarters</span>
               <span class="info-value">Kasese, Uganda</span>
+              <div class="card-arrow">
+                <ArrowRight :size="16" />
+              </div>
             </div>
             <div class="about-info-card">
-              <Users :size="24" />
-              <span class="info-label">Team</span>
-              <span class="info-value">15+ Staff</span>
+              <ShieldCheck :size="24" />
+              <span class="info-label">Legal Form</span>
+              <span class="info-value">Company Ltd by Guarantee</span>
+              <div class="card-arrow">
+                <ArrowRight :size="16" />
+              </div>
             </div>
             <div class="about-info-card">
               <Globe :size="24" />
-              <span class="info-label">Reach</span>
-              <span class="info-value">5 Districts</span>
+              <span class="info-label">Focus Region</span>
+              <span class="info-value">5 Rwenzori Districts</span>
+              <div class="card-arrow">
+                <ArrowRight :size="16" />
+              </div>
             </div>
           </div>
         </div>
@@ -85,12 +92,52 @@
       </div>
     </section>
 
+    <!-- Governance Structure -->
+    <section id="governance" class="governance-section bg-white section-padding">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-tag">Institutional Integrity</div>
+          <h2 class="section-title">Governance &amp; <em>Oversight</em></h2>
+          <div class="section-line" />
+          <p class="section-desc">
+            To guarantee transparency, donor confidence, and strategic alignment, SUCOFAM maintains a clear division between fiduciary board oversight and operational management.
+          </p>
+        </div>
+
+        <div class="governance-grid">
+          <div 
+            v-for="(pillar, i) in governanceStructure.pillars" 
+            :key="pillar.role"
+            class="gov-card reveal"
+            :class="`reveal-delay-${i}`"
+          >
+            <div class="gov-num">0{{ i + 1 }}</div>
+            <h3>{{ pillar.role }}</h3>
+            <p>{{ pillar.scope }}</p>
+          </div>
+        </div>
+
+        <!-- Organogram Visual -->
+        <div class="structure-box reveal reveal-delay-2">
+          <div class="organogram-wrapper">
+            <img :src="organogramImg" alt="SUCOFAM Organizational Structure" class="organogram-img" />
+          </div>
+          <div class="structure-legend">
+            <p>
+              <Info :size="16" />
+              Organizational hierarchy depicting Board Oversight, Directorate, Technical Programs, and Community Cooperative Committees.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Our Goals -->
     <section id="what-we-do" class="goals-section bg-soft section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">Our Objectives</div>
-          <h2 class="section-title">Our <em>Goals</em></h2>
+          <div class="section-tag">Strategic Objectives</div>
+          <h2 class="section-title">Our Strategic <em>Goals</em></h2>
           <div class="section-line" />
         </div>
 
@@ -115,7 +162,7 @@
     <section id="how-we-do-it" class="values-section bg-white section-padding">
       <div class="container">
         <div class="section-header reveal">
-          <div class="section-tag">Our Identity</div>
+          <div class="section-tag">Core Values</div>
           <h2 class="section-title">SUCOFAM <em>Culture</em></h2>
           <div class="section-line" />
         </div>
@@ -135,31 +182,28 @@
       </div>
     </section>
 
-
-
-
-
-
-
     <!-- Group Photo -->
-    <section class="group-photo-section bg-white">
+    <section class="group-photo-section bg-soft">
       <div class="container">
         <div class="group-photo-box reveal">
-          <img :src="groupPhoto" alt="SUCOFAM Team and Partners" class="group-photo-img" />
+          <img :src="groupPhoto" alt="SUCOFAM Team and Regional Partners" class="group-photo-img" />
           <div class="group-photo-caption">
-            <p>Our dedicated team and partners working together for agricultural transformation.</p>
+            <p>SUCOFAM leadership, field agronomists, and regional partners collaborating during our multi-stakeholder strategic forum.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Team -->
-    <section class="team-section bg-white section-padding">
+    <section id="our-team" class="team-section bg-white section-padding">
       <div class="container">
         <div class="section-header reveal centered-mobile">
-          <div class="section-tag">Our People</div>
+          <div class="section-tag">Operational Leadership</div>
           <h2 class="section-title">Meet the <em>Team</em></h2>
           <div class="section-line" />
+          <p class="section-desc">
+            Our dedicated technical, agronomic, and operational professionals driving sustainable impact across the Rwenzori region.
+          </p>
         </div>
 
         <div class="team-grid">
@@ -170,15 +214,15 @@
             :class="`reveal-delay-${i % 3}`"
           >
             <div class="team-image">
-              <img v-if="member.image" :src="member.image" :alt="member.name" />
+              <img v-if="member.image" :src="member.image" :alt="member.name" loading="lazy" />
               <div v-else class="team-placeholder">
                 <User :size="64" />
               </div>
               <div class="team-socials" v-if="member.social">
-                <a v-if="member.social.linkedin" :href="member.social.linkedin" target="_blank" class="social-link" title="LinkedIn">
+                <a v-if="member.social.linkedin" :href="member.social.linkedin" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
                   <Linkedin :size="18" />
                 </a>
-                <a v-if="member.social.twitter" :href="member.social.twitter" target="_blank" class="social-link" title="Twitter">
+                <a v-if="member.social.twitter" :href="member.social.twitter" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter">
                   <Twitter :size="18" />
                 </a>
                 <a v-if="member.social.email" :href="`mailto:${member.social.email}`" class="social-link" title="Email">
@@ -191,6 +235,9 @@
               <span class="team-role">{{ member.role }}</span>
               <div class="team-divider"></div>
               <p class="team-bio">{{ member.bio }}</p>
+              <div class="team-arrow">
+                <ArrowRight :size="20" />
+              </div>
             </div>
           </div>
         </div>
@@ -203,12 +250,16 @@
         <div class="cta-box reveal">
           <h2 class="cta-title">Partner With Us</h2>
           <p class="cta-desc">
-            Join us in creating lasting impact for farming communities across Uganda. 
-            Whether you're an organization, donor, or private sector partner, there's a place for you.
+            Join us in creating lasting, measurable impact for smallholder farming households across Western Uganda. Whether you are an institutional donor, commercial off-taker, or technical development agency, we welcome collaborative partnerships.
           </p>
-          <router-link to="/contact" class="btn btn-accent">
-            Get In Touch <ArrowRight :size="16" />
-          </router-link>
+          <div class="cta-btn-group">
+            <router-link to="/contact" class="btn btn-accent">
+              Get In Touch <ArrowRight :size="16" />
+            </router-link>
+            <router-link to="/accountability" class="btn btn-outline">
+              View Institutional Policies
+            </router-link>
+          </div>
         </div>
       </div>
     </section>
@@ -216,22 +267,20 @@
 </template>
 
 <script setup>
-import { useHead } from '@unhead/vue'
-
-useHead({
-  title: 'About Us | SUCOFAM',
-  meta: [
-    {
-      name: 'description',
-      content: 'Learn about SUCOFAM\'s mission to transform agricultural livelihoods in Uganda. Discover our history, vision, and how we empower women and youth in farming.'
-    }
-  ]
-})
-
-import { Eye, Target, Calendar, MapPin, Users, Globe, ArrowRight, Info, Linkedin, Twitter, Mail } from 'lucide-vue-next'
-import { vision, mission, culture, ourGoals, teamMembers } from '../data/content.js'
+import { usePageSeo } from '../composables/usePageSeo.js'
+import { Eye, Target, Calendar, MapPin, Globe, ArrowRight, Info, ShieldCheck, User, Linkedin, Twitter, Mail } from 'lucide-vue-next'
+import { legalProfile, vision, mission, culture, ourGoals, governanceStructure, teamMembers } from '../data/content.js'
 import organogramImg from '@/assets/img/organogram.png'
 import groupPhoto from '@/assets/img/partnership.jpeg'
+import heroBg from '@/assets/img/coffee1.jpg'
+
+usePageSeo({
+  title: 'About SUCOFAM Uganda | Legal Identity, Team & Governance',
+  description:
+    'Learn about SUCOFAM Uganda Limited (Sustainably Connected Farmers Agripreneur Market). Discover our legal identity, board governance, mission, team, and work across 5 districts in Western Uganda.',
+  path: '/about',
+  breadcrumbs: [{ name: 'About', path: '/about' }]
+})
 </script>
 
 <style scoped>
@@ -256,13 +305,13 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .page-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(8, 28, 21, 0.85) 0%, rgba(27, 67, 50, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(8, 28, 21, 0.9) 0%, rgba(27, 67, 50, 0.85) 100%);
   z-index: 2;
 }
 
@@ -270,7 +319,7 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   position: relative;
   z-index: 3;
   padding: 8rem 1.5rem 4rem;
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .page-hero-title {
@@ -283,7 +332,7 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 
 .page-hero-desc {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
 }
 
@@ -315,13 +364,28 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   text-align: center;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: all var(--transition);
+  position: relative;
 }
 
 .about-info-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--accent);
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.about-info-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 .about-info-card svg {
@@ -342,7 +406,7 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   display: block;
   font-weight: 700;
   color: var(--text-dark);
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 /* VM Section */
@@ -390,6 +454,51 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   color: var(--text-muted);
 }
 
+/* Governance */
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.gov-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+
+.gov-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.gov-num {
+  font-family: var(--ff-serif);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.35;
+  margin-bottom: 0.5rem;
+}
+
+.gov-card h3 {
+  font-family: var(--ff-serif);
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.gov-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
 /* Values */
 .values-grid {
   display: grid;
@@ -403,11 +512,11 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   padding: 2rem;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: all var(--transition);
 }
 
 .value-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--accent);
 }
@@ -477,15 +586,7 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   color: var(--text-muted);
 }
 
-@media (max-width: 600px) {
-  .goal-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-}
-
-/* Team Section Redesign - Osela Style */
+/* Team Section */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -493,39 +594,40 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 }
 
 .team-card {
-  background: #f8f9fa;
-  border-radius: 15px;
+  background: var(--bg-soft);
+  border-radius: var(--radius);
   padding: 2.5rem 1.5rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border: 1px solid transparent;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .team-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-6px);
   background: var(--white);
-  border-color: #0a4a6e;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
 }
 
 .team-image {
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   margin-bottom: 1.5rem;
   position: relative;
   overflow: hidden;
   border: 4px solid transparent;
-  transition: all 0.4s ease;
+  transition: all var(--transition);
   flex-shrink: 0;
+  background: var(--bg-green);
 }
 
 .team-card:hover .team-image {
-  border-color: #0a4a6e;
+  border-color: var(--accent);
 }
 
 .team-image img {
@@ -537,11 +639,10 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 .team-placeholder {
   width: 100%;
   height: 100%;
-  background: #e9ecef;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0a4a6e;
+  color: var(--primary);
 }
 
 .team-info {
@@ -551,36 +652,36 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 }
 
 .team-name {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #0a4a6e;
-  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  margin-bottom: 0.4rem;
   transition: color 0.3s ease;
 }
 
 .team-card:hover .team-name {
-  color: #ff5722;
+  color: var(--accent);
 }
 
 .team-role {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #ff5722;
-  margin-bottom: 1rem;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
   transition: color 0.3s ease;
 }
 
 .team-card:hover .team-role {
-  color: #0a4a6e;
+  color: var(--primary);
 }
 
 .team-divider {
   width: 0;
   height: 2px;
-  background: #0a4a6e;
-  margin-bottom: 1rem;
+  background: var(--accent);
+  margin-bottom: 0.75rem;
   transition: width 0.4s ease;
 }
 
@@ -589,11 +690,23 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 }
 
 .team-bio {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.6;
   color: #666;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.team-arrow {
+  margin-top: 1rem;
+  color: var(--accent);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-arrow {
+  opacity: 1;
+  transform: translateX(4px);
 }
 
 .team-socials {
@@ -604,10 +717,10 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 }
 
 .social-link {
-  width: 36px;
-  height: 36px;
-  background: #eee;
-  color: #0a4a6e;
+  width: 34px;
+  height: 34px;
+  background: var(--bg-soft);
+  color: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -616,14 +729,14 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 }
 
 .social-link:hover {
-  background: #0a4a6e;
-  color: #fff;
+  background: var(--primary);
+  color: var(--white);
   transform: translateY(-3px);
 }
 
 /* Group Photo */
 .group-photo-section {
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 
 .group-photo-box {
@@ -637,14 +750,14 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 
 .group-photo-img {
   width: 100%;
-  height: 500px;
+  height: 480px;
   object-fit: cover;
   object-position: center;
   display: block;
 }
 
 .group-photo-caption {
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: var(--white);
   text-align: center;
   border-top: 1px solid var(--border);
@@ -657,15 +770,44 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  .group-photo-img {
-    height: 300px;
-  }
+/* Structure Organogram */
+.structure-box {
+  max-width: 950px;
+  margin: 3rem auto 0;
+}
+
+.organogram-wrapper {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.organogram-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.structure-legend {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.structure-legend p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 /* Partner CTA */
 .partner-cta .cta-box {
-  background: linear-gradient(135deg, var(--bg-green) 0%, var(--bg-soft) 100%);
+  background: linear-gradient(135deg, var(--bg-green) 0%, var(--white) 100%);
   border-radius: var(--radius-lg);
   padding: 3rem;
   text-align: center;
@@ -682,96 +824,31 @@ import groupPhoto from '@/assets/img/partnership.jpeg'
 
 .partner-cta .cta-desc {
   color: var(--text-muted);
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto 1.5rem;
   line-height: 1.7;
 }
 
-/* Divider */
-.section-wave-divider {
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  background: var(--white);
-}
-
-.section-wave-divider svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 60px;
-}
-
-.section-wave-divider .shape-fill {
-  fill: var(--bg-soft);
-}
-
-.section-wave-divider.inverted {
-  transform: rotate(180deg);
-  background: var(--bg-soft);
-}
-
-.section-wave-divider.inverted .shape-fill {
-  fill: var(--white);
-}
-
-/* Structure */
-.structure-box {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.organogram-wrapper {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 1rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  transition: transform 0.3s ease;
-}
-
-.organogram-wrapper:hover {
-  transform: scale(1.01);
-}
-
-.organogram-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius);
-}
-
-.structure-legend {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.structure-legend p {
+.cta-btn-group {
   display: flex;
-  align-items: center;
+  gap: 1rem;
   justify-content: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .vm-grid { grid-template-columns: 1fr; }
+  .governance-grid { grid-template-columns: repeat(2, 1fr); }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .centered-mobile { text-align: center; }
-  .centered-mobile .section-line { margin: 1rem auto; }
+  .group-photo-img { height: 320px; }
 }
 
 @media (max-width: 600px) {
+  .governance-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
   .about-cards { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 480px) {
   .team-grid { grid-template-columns: 1fr; }
-  .team-image { height: 280px; }
 }
 </style>

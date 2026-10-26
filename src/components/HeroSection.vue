@@ -24,10 +24,7 @@
           :slides-per-view="1"
           :effect="'fade'"
           :loop="true"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false
-          }"
+          :autoplay="swiperAutoplay"
           :navigation="{
             nextEl: '.hero-next',
             prevEl: '.hero-prev',
@@ -60,21 +57,22 @@
           <h1 class="hero-title reveal reveal-delay-1">
             We Turn Ugandan Farms Into
             <em class="rotating-headline">
-              <span aria-live="polite">{{ typedWord }}</span><span class="typing-cursor" aria-hidden="true" />
+              <Transition name="headline-word" mode="out-in">
+                <span :key="activeWord" aria-live="polite">{{ rotatingWords[activeWord] }}</span>
+              </Transition>
             </em>
           </h1>
 
           <p class="hero-desc reveal reveal-delay-2">
-            SUCOFAM empowers 4,500+ smallholder farmers especially women and youth
-            across Uganda's coffee, cocoa, and honey value chains.
+            SUCOFAM empowers 4,500+ smallholder farmers, especially women and youth, across Western Uganda's coffee, cocoa, and honey value chains.
           </p>
 
           <div class="hero-actions reveal reveal-delay-3">
             <router-link to="/contact" class="btn btn-accent">
-              Get Started <ArrowRight class="icon-sm" />
+              Partner With Us <ArrowRight class="icon-sm" />
             </router-link>
             <router-link to="/programs" class="btn btn-outline-white">
-              Our Services
+              Our Programs
             </router-link>
           </div>
 
@@ -113,10 +111,10 @@ import 'swiper/css'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 
-// Real farmer photo (public/hero-bg.jpg) — always-visible base layer, and video poster/fallback
+// Real farmer photo (public/hero-bg.jpg) - always-visible base layer, and video poster/fallback
 const heroPoster = '/hero-bg.jpg'
 
-// Drop a hero-video.mp4 into /public to enable the video background — this is a plain
+// Drop a hero-video.mp4 into /public to enable the video background - this is a plain
 // string (not a static `src=` attribute) so Vite doesn't try to bundle a file that doesn't exist yet.
 const heroVideoSrc = '/hero-video.mp4'
 
@@ -128,38 +126,46 @@ const heroSlides = computed(() => {
 // If /hero-video.mp4 hasn't been added yet (or fails to load), fall back to the photo swiper
 const videoFailed = ref(false)
 
-const rotatingWords = ['Coffee', 'Cocoa', 'Honey']
-const typedWord = ref('')
-let typingTimer
-let wordIndex = 0
-let isDeleting = false
+const prefersReducedMotion = ref(false)
+const swiperAutoplay = computed(() => prefersReducedMotion.value
+  ? false
+  : { delay: 5000, disableOnInteraction: false }
+)
 
-const typeNextCharacter = () => {
-  const currentWord = rotatingWords[wordIndex]
-  typedWord.value = isDeleting
-    ? currentWord.slice(0, typedWord.value.length - 1)
-    : currentWord.slice(0, typedWord.value.length + 1)
+const rotatingWords = ['Fair Incomes', 'Cocoa', 'Honey']
+const activeWord = ref(0)
+let wordTimer
+let motionQuery
+let syncMotionPreference
 
-  let delay = isDeleting ? 55 : 95
-
-  if (!isDeleting && typedWord.value === currentWord) {
-    isDeleting = true
-    delay = 1500
-  } else if (isDeleting && typedWord.value === '') {
-    isDeleting = false
-    wordIndex = (wordIndex + 1) % rotatingWords.length
-    delay = 350
-  }
-
-  typingTimer = window.setTimeout(typeNextCharacter, delay)
+const startWordRotation = () => {
+  window.clearInterval(wordTimer)
+  wordTimer = window.setInterval(() => {
+    activeWord.value = (activeWord.value + 1) % rotatingWords.length
+  }, 2800)
 }
 
 onMounted(() => {
-  typeNextCharacter()
+  motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  syncMotionPreference = () => {
+    prefersReducedMotion.value = motionQuery.matches
+    window.clearInterval(wordTimer)
+
+    if (prefersReducedMotion.value) {
+      activeWord.value = 0
+      return
+    }
+
+    startWordRotation()
+  }
+
+  motionQuery.addEventListener('change', syncMotionPreference)
+  syncMotionPreference()
 })
 
 onBeforeUnmount(() => {
-  window.clearTimeout(typingTimer)
+  window.clearInterval(wordTimer)
+  motionQuery?.removeEventListener('change', syncMotionPreference)
 })
 
 const trustPartners = ['Enabel', 'ESAT', 'MUBEC', 'Wakanda Coffee']
@@ -200,7 +206,7 @@ const scrollToAbout = () => {
   background: var(--primary-deep);
 }
 
-/* Always-present base photo — visible instantly, and still underneath the
+/* Always-present base photo - visible instantly, and still underneath the
    video/swiper so there's never a blank flash while either one loads. */
 .hero-poster {
   position: absolute;
@@ -353,18 +359,16 @@ const scrollToAbout = () => {
   min-height: 1.1em;
 }
 
-.typing-cursor {
+.headline-word-enter-active,
+.headline-word-leave-active {
   display: inline-block;
-  width: 2px;
-  height: 0.9em;
-  margin-left: 0.12em;
-  vertical-align: -0.08em;
-  background: var(--accent-light);
-  animation: cursor-blink 0.85s step-end infinite;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
-@keyframes cursor-blink {
-  50% { opacity: 0; }
+.headline-word-enter-from,
+.headline-word-leave-to {
+  opacity: 0;
+  transform: translateY(0.18em);
 }
 
 .hero-desc {
